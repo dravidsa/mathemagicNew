@@ -1,50 +1,72 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
-
-import { User } from '../../providers';
-import { MainPage } from '../';
-
+import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
+import { AuthService } from '../../providers/auth-service/auth-service';
+import { CoursesService } from '../../providers/courses-service/courses-service';
+ 
 @IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login.html',
 })
 export class LoginPage {
-  // The account fields for the login form.
-  // If you're using the username field with or without email, make
-  // sure to add it to the type
-  account: { email: string, password: string } = {
-    email: 'test@example.com',
-    password: 'test'
-  };
-
-  // Our translated text strings
-  private loginErrorString: string;
-
-  constructor(public navCtrl: NavController,
-    public user: User,
-    public toastCtrl: ToastController,
-    public translateService: TranslateService) {
-
-    this.translateService.get('LOGIN_ERROR').subscribe((value) => {
-      this.loginErrorString = value;
-    })
+  loading: Loading;
+  registerCredentials = { username: 'sandra', password: 'sandeep123' };
+ 
+  constructor(private nav: NavController, private auth: AuthService, private courses : CoursesService , private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
+ 
+  public createAccount() {
+    this.nav.push('RegisterPage');
   }
+ 
+  public login() {
+    console.log( "got credentials " + JSON.stringify( this.registerCredentials)) ; 
 
-  // Attempt to login in through our User service
-  doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
-      this.navCtrl.push(MainPage);
-      // Unable to log in
-      let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
+    this.showLoading()
+    this.auth.login(this.registerCredentials).subscribe(loginMessage => {
+      console.log ( "allowed is " + loginMessage ) ; 
+     // next: value => console.log("next vvalue" + value  ) ; 
+      
+      //console.log ( " back here allowed is" + allowed )
+      if (loginMessage == "Login successful") {        
+        //console.log( " calling courses") ; 
+      
+     
+      this.courses.getCoursesForUser(this.registerCredentials.username).subscribe( data => { 
+      console.log( "got this data " + JSON.stringify( data )) ; 
+      this.nav.setRoot('MenuPage');
       });
-      toast.present();
+  
+  
+
+        this.nav.setRoot('TabsHomePage');
+
+        
+      } else {
+        console.log( "failed ") ; 
+        this.showError("Access Denied");
+      }
+    },
+      error => {
+        this.showError(error);
+      });
+  }
+ 
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
     });
+    this.loading.present();
+  }
+ 
+  showError(text) {
+    this.loading.dismiss();
+ 
+    let alert = this.alertCtrl.create({
+      title: 'Fail',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    //alert.present(prompt);
   }
 }

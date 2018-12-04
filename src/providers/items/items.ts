@@ -9,7 +9,8 @@ export class Items {
   constructor(public api: Api) { }
 
   query(params?: any) {
-    return this.api.get('/items', params);
+    console.log( "in items for params " + params );
+   return this.api.get('http://ipm-mathemagic.com/api/ipm_get_products/', params);
   }
 
   add(item: Item) {

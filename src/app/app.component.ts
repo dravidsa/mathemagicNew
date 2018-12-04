@@ -27,7 +27,9 @@ import { Settings } from '../providers';
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+
+  rootPage:any = 'LoginPage';
+  //rootPage = FirstRunPage;
 
   @ViewChild(Nav) nav: Nav;
 

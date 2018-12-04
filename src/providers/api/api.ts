@@ -6,16 +6,19 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://example.com/api/v1';
+  url: string = 'http://ipm-mathemagic.com/api/';
 
   constructor(public http: HttpClient) {
+    console.log( 'in constructor of api ') ; 
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
+    console.log( " in get ") ; 
     if (!reqOpts) {
       reqOpts = {
         params: new HttpParams()
       };
+     
     }
 
     // Support easy query params for GET requests
@@ -25,12 +28,15 @@ export class Api {
         reqOpts.params = reqOpts.params.set(k, params[k]);
       }
     }
-
-    return this.http.get(this.url + '/' + endpoint, reqOpts);
+    console.log( " end point is "+ endpoint)
+    //return this.http.get(this.url + '/' + endpoint, reqOpts);
+    return this.http.get(endpoint, reqOpts);
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
-    return this.http.post(this.url + '/' + endpoint, body, reqOpts);
+    console.log( "got in post " + "end point is " + endpoint , "body is " +JSON.stringify( body )+ "opts are " + JSON.stringify(reqOpts ) ); 
+    return this.http.post( endpoint, JSON.stringify(body ) , reqOpts);
+    //return this.http.post(this.url + '/' + endpoint, body, reqOpts);
   }
 
   put(endpoint: string, body: any, reqOpts?: any) {

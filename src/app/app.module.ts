@@ -9,9 +9,20 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { Items } from '../mocks/providers/items';
+import { Items } from '../providers/items/items';
+//import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
+
+
+import { AuthService } from '../providers/auth-service/auth-service';
+import { QuizService } from '../providers/quiz-service/quiz-service';
+import { TestsService } from '../providers/tests-service/tests-service';
+import { ProductsService } from '../providers/products-service/products-service';
+import { MessagesService } from '../providers/messages-service/messages-service';
+import { CoursesService } from '../providers/courses-service/courses-service';
+import { SanitizeHtmlPipe } from '../components/sanitizehtml-pipe/sanitizehtml-pipe';
+//import {  RouterModule,  Routes} from '@angular/router'
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -36,7 +47,8 @@ export function provideSettings(storage: Storage) {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp , 
+    
   ],
   imports: [
     BrowserModule,
@@ -49,7 +61,9 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -64,7 +78,16 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthService,
+    QuizService,
+    TestsService,
+    ProductsService,
+    MessagesService,
+    TestsService,
+    CoursesService , 
+    SanitizeHtmlPipe 
+
   ]
 })
 export class AppModule { }

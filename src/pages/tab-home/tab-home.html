@@ -1,0 +1,65 @@
+<!--
+  Generated template for the TabHomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="blue">
+      <ion-title>
+        Mathemagic HOME 
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="logout()">
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+
+        <ion-card-header>
+          IPM Important Messages 
+        </ion-card-header>
+
+    <ion-list *ngIf="messages">
+        <ion-card >
+            <img src="http://ipm-mathemagic.com/new/images/app/app.jpg"/>
+            <ion-card-content>
+              <ion-card-title>
+                Why this app ? 
+                </ion-card-title>
+              <p>
+                {{messages[0].message_text}}
+              </p>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card>
+              <img src="http://ipm-mathemagic.com/new/images/app/exam.jpg"/>
+              <ion-card-content>
+                <ion-card-title>
+                  Exam Schedule
+                  </ion-card-title>
+                <p>
+                  {{messages[1].message_text}} 
+                </p>
+              </ion-card-content>
+            </ion-card>
+
+            <ion-card>
+                <img src="http://ipm-mathemagic.com/new/images/app/calendar.jpg"/>
+                <ion-card-content>
+                  <ion-card-title>
+                    Enrollment
+                    </ion-card-title>
+                  <p>
+                  {{messages[2].message_text}} 
+                  </p>
+                </ion-card-content>
+              </ion-card>
+              </ion-list> 
+    
+</ion-content>
