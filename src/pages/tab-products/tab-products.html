@@ -28,7 +28,7 @@
 <ion-header>
     <ion-navbar color="blue">
       <ion-title>
-        Mathemagic HOME 
+        Mathemagic 
       </ion-title>
       <ion-buttons end>
         <button ion-button (click)="logout()">
@@ -39,16 +39,16 @@
   </ion-header>
 
 
-<ion-content padding>
+<ion-content class="products-content" padding>
 
         <ion-card-header>
-          IPM Products 
+    
         </ion-card-header>
 
- 
+        <font size= 6> 
 
         <div *ngIf="products"> 
-        <button ion-item *ngFor="let product of products" (click)="buyProduct(product.product_name,product.product_id,product.price)" >
+        <button ion-item *ngFor="let product of products" (click)="buyProduct(product.product_name,product.product_id,product.price,product.img_src)" >
 
             <ion-card>
                 
@@ -58,22 +58,41 @@
                   <ion-card-title>
                    {{product.product_name}}  
                     </ion-card-title>
-                  <p>
+                    <ion-grid> 
+                    <ion-row> 
+                      
+                      <ion-col width-25>
+
+                         
+                              <img src={{product.img_src}} />
+                           
+                    </ion-col>
+                  
+                  
+                   <ion-col>
+                    <p text-wrap>
                     {{product.product_desc}}   
                   </p>
+
                   <p>
-                      Price : Rs.{{product.price}}   
+                      <b>Price : Rs.{{product.price}}   </b>
                     </p>
                     <p>
                         <button ion-button color="secondary" (click)="buyProduct()" >Buy This</button>
 
                       </p>
+                    </ion-col>
+
+                    </ion-row>
+                  </ion-grid>
                 </ion-card-content>
               </ion-card>
           </button>
         </div>
 
 
+
+</font>
           
           
    

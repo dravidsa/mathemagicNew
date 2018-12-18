@@ -7,16 +7,20 @@ import { Api } from '../api/api';
 export class User {
   name: string;
   email: string;
+  id : string  ; 
+
  
-  constructor(name: string, email: string) {
+  constructor(name: string, email: string , id : string ) {
     this.name = name;
     this.email = email;
+    this.id = id ; 
   }
 }
  
 @Injectable()
 export class AuthService {
   currentUser: User;
+  
  
   constructor( public api: Api) {} 
 
@@ -41,9 +45,16 @@ export class AuthService {
   let access ; 
   this.api.post("http://ipm-mathemagic.com/api/userlogin/", postData, requestOptions) 
     .subscribe(data => { 
-      console.log(JSON.stringify(data));  
+      console.log("user obj is " + JSON.stringify(data));  
+      //console.log( " username " + data.username + "email is "  + data.email)  ; 
       access = true; 
-      this.currentUser = new User("XXX", "YYY");
+      this.currentUser = new User(data.username , data.email , data.id  );
+
+        localStorage.setItem("loggedUser",this.currentUser.name) ; 
+        localStorage.setItem("loggedUserId",this.currentUser.id) ; 
+        localStorage.setItem("loggedUserEmail",this.currentUser.email) ; 
+        console.log( " set user in local " + this.currentUser.name + "-" + this.currentUser.id + "-"+ this.currentUser.email ) ; 
+        
       //console.log( "name " + data.username + "Mesg"  + data.Msg) ; 
 
       observer.next("Login successful");

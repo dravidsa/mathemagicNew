@@ -7,13 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>buyProduct</ion-title>
+    <ion-title>Buy Products</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="buyproducts-content" padding>
 
     <ion-card>
 
@@ -23,7 +23,7 @@
           
         <ion-item>
           <ion-avatar item-start>
-            <img src="http://ipm-mathemagic.com/new/images/app/online.jpg">
+            <img src={{img_src}} >
           </ion-avatar>
           <h2>Product Selected : {{ productName }} </h2>
           <p> <b>Price {{ productPrice}} </b></p>
@@ -51,25 +51,29 @@
 
 
       </ion-row>
+     
+
       </ion-card>
-      <ion-card> 
+      <BR/>
+      <ion-card *ngIf="productName =='Supreme' || productName=='Elearning' || productName =='IPM 2019 Exam Enrollment'" > 
           <ion-card-header>
             Student Details
             </ion-card-header>
       
-        <ion-list>
+        <ion-list  >
             <ion-item>
               <ion-label stacked>Student Name </ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" [(ngModel)]="studentName" ></ion-input>
             </ion-item>
               <ion-item>
                     <ion-label stacked>Enter part of school Name and click search </ion-label>
-                    <ion-input type="text"></ion-input>
+                    <ion-input type="text" [(ngModel)]="schoolName"></ion-input>
                   </ion-item>
-                  <button ion-button color="secondary">Search School</button>
+                  <button ion-button color="secondary" (click)="showSchools(schoolName)" >Search School</button>
 
           </ion-list>
         </ion-card>
+<BR/>
 
         <ion-card> 
             <ion-card-header>
@@ -79,21 +83,21 @@
           <ion-list>
               <ion-item>
                   <ion-label stacked>Billing Name </ion-label>
-                  <ion-input type="text"></ion-input>
+                  <ion-input type="text" [(ngModel)]="billingName" ></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label stacked>Billing Address </ion-label>
-                    <ion-input type="text"></ion-input>
+                    <ion-input type="text"  [(ngModel)]="billingAddress" ></ion-input>
                   </ion-item>
 
                   <ion-item>
                       <ion-label stacked>Billing Phone </ion-label>
-                      <ion-input type="text"></ion-input>
+                      <ion-input type="text"  [(ngModel)]="billingPhone"></ion-input>
                     </ion-item>
 
                     <ion-item>
                         <ion-label stacked>Billing City  </ion-label>
-                        <ion-input type="text"></ion-input>
+                        <ion-input type="text"  [(ngModel)]="billingCity" ></ion-input>
                       </ion-item>
                       <ion-row>
                         <ion-col>
@@ -102,13 +106,22 @@
                       
                       <ion-item>
                           <ion-label stacked>Pin code </ion-label>
-                          <ion-input type="text"></ion-input>
+                          <ion-input type="text"  [(ngModel)]="billingPincode" ></ion-input>
                         </ion-item>
                       </ion-col>
                       <ion-col>
                         <ion-item>
                           <ion-label>State</ion-label>
-                          <ion-select [(ngModel)]="state">
+                          
+
+                          <ion-select [(ngModel)]="billingState" (ionChange)="calcShipping()">
+                              <ion-option value="428">Maharashtra</ion-option>
+                              
+                                  <ion-option *ngFor="let state of states" [value]="state.id"  >
+                                    {{state.state}}
+                                  </ion-option>
+
+                           
                           
                           </ion-select>
                         </ion-item>
@@ -117,5 +130,62 @@
                       </ion-row>
                 </ion-list>
               </ion-card> 
+
+
+              <ion-card  *ngIf="(productName =='Supreme' || productName=='Elearning' || productName =='IPM 2019 Exam Enrollment') && ( billingState !='MH')" > 
+                  <ion-card-header>
+                   Out Of Maharashtra  Charges  
+                    </ion-card-header>
+              
+                <ion-list  >
+                    <ion-item>
+                      <p>Out Of Maharashtra  Charges  : {{outOfMHCharges }} </p> 
+                  
+                     </ion-item>
+                     </ion-list>
+
+
+
+                    </ion-card>
+
+                    <ion-card *ngIf="productName =='IPM Book Set'" > 
+                        <ion-card-header>
+                          Shipping Charges : 
+                          </ion-card-header>
+                    
+                      <ion-list  >
+                          <ion-item>
+                            <p>Shiiping Charges  : {{shippingCharges}} </p> 
+                        
+                           </ion-item>
+                           </ion-list>
+      
+      
+      
+                          </ion-card>
+
+                    
+
+              <ion-card> 
+                  <ion-card-header>
+                    Total Charges
+                    </ion-card-header>
+              
+                <ion-list>
+                    <ion-item>
+                      <p> Total Charges :  {{ totalCharges}} </p> 
+                  
+                     </ion-item>
+                     </ion-list>
+
+
+                    </ion-card>
+
+
+              <p color="danger" >  {{errorMessage }} </p>  
+              <p>
+                  <button ion-button ion-button full=true color="primary" (click)="goForPayment()" >Go For Payment</button>
+
+                </p>
 
 </ion-content>

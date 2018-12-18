@@ -18,18 +18,18 @@
   </ion-header>>
 
 
-<ion-content padding>
+<ion-content class="testsummary-content" padding>
 
     <ion-grid>
         <ion-row>
-          <ion-col>
-           Question #
+          <ion-col> <ion-item>
+           Question #</ion-item>
           </ion-col>
-          <ion-col>
-            Status
+          <ion-col><ion-item>
+            Status</ion-item>
           </ion-col>
-          <ion-col>
-            Flagged?
+          <ion-col><ion-item>
+            Flagged?</ion-item>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -38,12 +38,14 @@
           <button ion-item *ngFor="let question of questions" (click)="gotoQuestion(question.question_no)">
           <ion-row>
           <ion-col>
+            <ion-item>
               {{ question.question_no }}
+            </ion-item>
           </ion-col>
-          <ion-col *ngIf="question.userSelection" ion-text color="primary">Answered</ion-col>
-          <ion-col *ngIf="!question.userSelection" ion-text color="danger" >Not Answered</ion-col>
-        
-          <ion-col  *ngIf="question.isFlagged" ion-text color="primary" > <ion-icon name="flag"></ion-icon></ion-col>
+          <ion-col *ngIf="question.userSelection" ion-text color="primary"><ion-item>Answered</ion-item></ion-col>
+          <ion-col *ngIf="!question.userSelection" ion-text color="danger" ><ion-item>Not Answered</ion-item></ion-col>
+          <ion-col  *ngIf="!question.isFlagged" ion-text color="primary" ><ion-item>  </ion-item></ion-col>
+          <ion-col  *ngIf="question.isFlagged" ion-text color="primary" ><ion-item> <ion-icon name="flag"></ion-icon></ion-item></ion-col>
            </ion-row>
           </button>
 

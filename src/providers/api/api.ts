@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ResponseType } from '../../../node_modules/@angular/http';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -12,7 +13,7 @@ export class Api {
     console.log( 'in constructor of api ') ; 
   }
 
-  get(endpoint: string, params?: any, reqOpts?: any) {
+  get(endpoint: string, params?: any, reqOpts?: any ) {
     console.log( " in get ") ; 
     if (!reqOpts) {
       reqOpts = {
@@ -24,9 +25,11 @@ export class Api {
     // Support easy query params for GET requests
     if (params) {
       reqOpts.params = new HttpParams();
+     
       for (let k in params) {
         reqOpts.params = reqOpts.params.set(k, params[k]);
       }
+      console.log ( 'param is ' + JSON.stringify(params )  ) ; 
     }
     console.log( " end point is "+ endpoint)
     //return this.http.get(this.url + '/' + endpoint, reqOpts);
@@ -35,7 +38,7 @@ export class Api {
 
   post(endpoint: string, body: any, reqOpts?: any) {
     console.log( "got in post " + "end point is " + endpoint , "body is " +JSON.stringify( body )+ "opts are " + JSON.stringify(reqOpts ) ); 
-    return this.http.post( endpoint, JSON.stringify(body ) , reqOpts);
+    return this.http.post( endpoint, JSON.stringify(body ) , reqOpts );
     //return this.http.post(this.url + '/' + endpoint, body, reqOpts);
   }
 

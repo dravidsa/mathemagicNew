@@ -18,11 +18,8 @@
   </ion-header>
 
 
-<ion-content padding>
+<ion-content class="testlist-content" padding>
 
-
-   
-
-        <button ion-item *ngFor="let test of tests" (click)="solveTest(test.id)">
+        <button ion-item *ngFor="let test of tests" (click)="solveTest(test.id , test.name)">
           {{test.name}}  </button>  
 </ion-content>

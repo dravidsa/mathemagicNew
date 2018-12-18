@@ -23,15 +23,28 @@ export class TabTestsPage {
   public userCourses ; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams , public coursesService : CoursesService  ) {
-    console.log( " coursesfor this user are " + JSON.stringify(coursesService.courses ) ) ; 
+
+    if ( coursesService.courses == undefined )  {
+      var userName = localStorage.getItem("loggedUser") ; 
+
+      this.coursesService.getCoursesForUser(userName).subscribe( data => { 
+        console.log( "got this course data for logged in user " + JSON.stringify( data )) ; 
+        this.userCourses = coursesService.courses  ; 
+        });
+
+ 
+
+    } 
+    else { 
+    console.log( " coursesfor  this  user are " + JSON.stringify(coursesService.courses ) ) ; 
     this.userCourses = coursesService.courses  ; 
     //console.log( " coursesfor this user are " + JSON.stringify( CoursesService.courses) ) ; 
-
+    } 
   }
 
   public goToTest(courseid ) {
 
-   console.log( " goging to test " + courseid ) ; 
+   console.log( " goging to  test " + courseid ) ; 
    this.navCtrl.setRoot('TestsListPage',{ 'courseid' : courseid } );
 
 

@@ -22,6 +22,10 @@ import { ProductsService } from '../providers/products-service/products-service'
 import { MessagesService } from '../providers/messages-service/messages-service';
 import { CoursesService } from '../providers/courses-service/courses-service';
 import { SanitizeHtmlPipe } from '../components/sanitizehtml-pipe/sanitizehtml-pipe';
+import { GetSchoolsService } from '../providers/get-schools/get-schools';
+import { SaveOrderService } from '../providers/save-order/save-order';
+import { GetBillingService } from '../providers/get-billing/get-billing';
+import { GetBase64ImageService } from '../providers/get-base64-image/get-base64-image';
 //import {  RouterModule,  Routes} from '@angular/router'
 
 // The translate loader needs to know where to load i18n files
@@ -86,7 +90,11 @@ export function provideSettings(storage: Storage) {
     MessagesService,
     TestsService,
     CoursesService , 
-    SanitizeHtmlPipe 
+    SanitizeHtmlPipe,
+    GetSchoolsService,
+    SaveOrderService,
+    GetBillingService,
+    GetBase64ImageService
 
   ]
 })

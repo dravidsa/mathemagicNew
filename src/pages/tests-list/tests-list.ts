@@ -35,10 +35,10 @@ tests : any ;
   
 
   }
-  public solveTest( testid ) { 
+  public solveTest( testid ,testName ) { 
   console.log ( " going to test " + testid ) ; 
 
-  this.navCtrl.setRoot('ShowQuizPage',{ 'testid' : testid } );
+  this.navCtrl.setRoot('ShowQuizPage',{ 'testid' : testid , 'testName' : testName  } );
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TestsListPage');

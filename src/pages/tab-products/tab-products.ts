@@ -30,11 +30,11 @@ products : any ;
 
   }
 
-  public  buyProduct( productName , productId, productPrice  ) { 
+  public  buyProduct( productName , productId, productPrice , productImage   ) { 
 
-   console.log( "going to buy" + productName ) ; 
+   console.log( "going to   buy" + productName ) ; 
 
-   this.navCtrl.setRoot('BuyProductPage' , { productId : productId , productName : productName, productPrice : productPrice });
+   this.navCtrl.setRoot('BuyProductPage' , { productId : productId , productName : productName, productPrice : productPrice , img_src : productImage  });
 
 
 

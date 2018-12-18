@@ -15,4 +15,30 @@
 
 <ion-content padding>
 
+
+    <div *ngIf="schools"> 
+        <button ion-item *ngFor="let school of schools" (click)="setSchool(school.school_code,school.school_name)" >
+
+            <ion-card>
+                
+                 
+                <ion-card-content>
+                   
+                  <ion-card-title>
+                   {{school.school_name}} - {{school.school_code}}
+                    </ion-card-title>
+                  <p>
+                    {{school.school_address}}   
+                  </p>
+                  <p>
+                      {{school.school_city}} 
+                    </p>
+
+                </ion-card-content>
+              </ion-card>
+          </button>
+        </div>
+
+
+
 </ion-content>

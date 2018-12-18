@@ -32,7 +32,7 @@ correctQuestions : number ;
 
   public gotoQuestion( questionNo) { 
     
-   console.log( " reviewing question in results " + questionNo); 
+   console.log( " reviewing question  in results " + questionNo); 
 
     this.navCtrl.setRoot('ShowQuizPage' , { questionNo : questionNo , caller : 'results', questions : this.questions });
     
@@ -54,6 +54,13 @@ correctQuestions : number ;
       this.outOfMarks = this.outOfMarks + Number.parseInt(this.questions[i].marks ); 
        }
      console.log( "correct questions = " + this.correctQuestions+ " total marks " + this.totalMarks + "out of "+ this.outOfMarks) ; 
+
+  }
+
+  public back() 
+  {
+
+    this.navCtrl.setRoot('TabTestsPage'); 
 
   }
   ionViewDidLoad() {

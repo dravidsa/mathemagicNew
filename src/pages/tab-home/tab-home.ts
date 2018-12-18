@@ -21,7 +21,7 @@ export class TabsHomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams , public messagesService : MessagesService) {
 
     this.messagesService.getMessages().subscribe( data => { 
-      console.log( "got this data " + JSON.stringify( data )) ; 
+      console.log( "got this  data  " + JSON.stringify( data )) ; 
       this.messages = this.messagesService.messages; 
       
       ; 
@@ -29,6 +29,15 @@ export class TabsHomePage {
     });
 
 
+
+  }
+
+  public  logout()  {
+   
+  
+  localStorage.removeItem("loggedUser") ; 
+
+  this.navCtrl.setRoot('LoginPage');
 
   }
 

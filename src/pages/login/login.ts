@@ -12,8 +12,24 @@ export class LoginPage {
   loading: Loading;
   registerCredentials = { username: 'sandra', password: 'sandeep123' };
  
-  constructor(private nav: NavController, private auth: AuthService, private courses : CoursesService , private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
- 
+  constructor(private nav: NavController, private auth: AuthService, private courses : CoursesService , private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+
+    if (localStorage.getItem("loggedUser") != null  ) {
+   
+      console.log( " already logged in as " + localStorage.getItem("loggedUser")) ; 
+      this.courses.getCoursesForUser( localStorage.getItem("loggedUser")).subscribe( data => { 
+        console.log( "got this data for courses for user logged in  " + JSON.stringify( data )) ; 
+        this.nav.setRoot('MenuPage');
+        });
+
+     // this.nav.setRoot('MenuPage');
+
+    }
+    else console.log( " not logged in ") ; 
+
+   }
+
+
   public createAccount() {
     this.nav.push('RegisterPage');
   }
@@ -23,16 +39,19 @@ export class LoginPage {
 
     this.showLoading()
     this.auth.login(this.registerCredentials).subscribe(loginMessage => {
-      console.log ( "allowed is " + loginMessage ) ; 
+      console.log ( "allowed is  " + loginMessage ) ; 
      // next: value => console.log("next vvalue" + value  ) ; 
       
       //console.log ( " back here allowed is" + allowed )
       if (loginMessage == "Login successful") {        
+        
+        console.log( "set logged in user as " + localStorage.getItem("loggedUser")) ; 
+
         //console.log( " calling courses") ; 
       
      
       this.courses.getCoursesForUser(this.registerCredentials.username).subscribe( data => { 
-      console.log( "got this data " + JSON.stringify( data )) ; 
+      console.log( "got this data  " + JSON.stringify( data )) ; 
       this.nav.setRoot('MenuPage');
       });
   

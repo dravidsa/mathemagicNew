@@ -18,7 +18,7 @@
   </ion-header>
 
 
-<ion-content padding>
+<ion-content class="testresults-content" padding>
 
     <ion-card>
         <ion-card-header>
@@ -55,13 +55,19 @@
     <ion-grid>
         <ion-row>
           <ion-col>
+            <ion-item>
            Question #
+          </ion-item>
           </ion-col>
           <ion-col>
+              <ion-item>
             Status
+          </ion-item>
           </ion-col>
           <ion-col>
+              <ion-item>
             Marks
+          </ion-item>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -70,15 +76,26 @@
           <button ion-item *ngFor="let question of questions" (click)="gotoQuestion(question.question_no)">
           <ion-row>
           <ion-col>
+              <ion-item>
               {{ question.question_no }}
+              </ion-item>
           </ion-col>
-          <ion-col *ngIf="question.userSelection == question.correct" ion-text color="primary"><ion-icon name="checkbox" item-start></ion-icon></ion-col>
-          <ion-col *ngIf="question.userSelection != question.correct" ion-text color="danger" ><ion-icon name="close" item-start></ion-icon>
-          </ion-col>
+          
+          <ion-col *ngIf="question.userSelection == question.correct" ion-text color="primary">
+              <ion-item>
+            <ion-icon name="checkbox" item-start></ion-icon>
+              </ion-item> </ion-col>
+
+          <ion-col *ngIf="question.userSelection != question.correct" ion-text color="danger" >
+              <ion-item>
+            <ion-icon name="close" item-start></ion-icon> 
+          </ion-item></ion-col>
         
-          <ion-col  *ngIf="question.userSelection == question.correct" ion-text color="primary" >{{question.marks }}</ion-col>
-          <ion-col  *ngIf="question.userSelection != question.correct" ion-text color="primary" >0</ion-col>
-           </ion-row>
+          <ion-col  *ngIf="question.userSelection == question.correct" ion-text color="primary" > <ion-item>{{question.marks }}</ion-item></ion-col>
+          <ion-col  *ngIf="question.userSelection != question.correct" ion-text color="primary" ><ion-item>0</ion-item></ion-col>
+        
+        </ion-row>
+        
           </button>
 
         </ion-list> 
@@ -88,5 +105,5 @@
 
    
   
-      <button   ion-button full=true color="danger" round (click)="submitTest()"  >Submit Test</button>
+      <button   ion-button full=true color="danger" round (click)="back()"  >Back to my Tests</button>
 </ion-content>

@@ -7,7 +7,7 @@
 <ion-header>
     <ion-navbar color="blue">
       <ion-title>
-        My Courses
+        My Tests
       </ion-title>
       <ion-buttons end>
         <button ion-button (click)="logout()">
@@ -18,7 +18,7 @@
   </ion-header>
 
 
-<ion-content padding>
+<ion-content class="tabtests-content" padding>
 
     <ion-card *ngFor="let course of usercourses" (click)="test($event, course)">
         <!--CONTENT HERE-->
