@@ -5,6 +5,11 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Md5} from 'ts-md5/dist/md5';
 import { GetBillingService } from '../../providers/get-billing/get-billing';
+import { cordovaWarn } from '../../../node_modules/@ionic-native/core';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { USE_DEFAULT_LANG } from '../../../node_modules/@ngx-translate/core';
+
 
 
 /**
@@ -155,7 +160,7 @@ export class BuyProductPage {
     } 
     
     ] ; 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public getSchoolsService : GetSchoolsService, authService : AuthService ,public saveOrder : SaveOrderService , public getBilling : GetBillingService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public getSchoolsService : GetSchoolsService, authService : AuthService ,public saveOrder : SaveOrderService , public getBilling : GetBillingService , public iab : InAppBrowser ) {
 
     this.productId =  navParams.get("productId");
     this.productName =  navParams.get("productName");
@@ -248,7 +253,7 @@ export class BuyProductPage {
 
   public goForPayment() { 
   //this.errorMessage = this.standard+'-'+this.billingAddress+'-'+this.billingCity+'-'+ this.billingPincode+'-'+this.billingName+'-' ; 
-    if ( this.billingName ==''   || this.billingAddress =='' ||  this.billingCity == '' || this.billingPincode == '' || this.billingPhone =='' ) { 
+    if ( this.standard == '' ||  this.billingName ==''   || this.billingAddress =='' ||  this.billingCity == '' || this.billingPincode == '' || this.billingPhone =='' ) { 
       this.errorMessage = "All Fields are mandatory  " ;  
       return; 
     }
@@ -278,6 +283,10 @@ export class BuyProductPage {
                           if ( data != "failed") {
                             this.orderNo = data;  
                             console.log( "order no generated is --" + this.orderNo) ; 
+                            if  ( this.orderNo == null ) {
+                              this.errorMessage = "Error in Saving Order Information " ; 
+                              return ; 
+                            }
                             this.showEBS() ; 
                           }
                           else {
@@ -300,20 +309,29 @@ public showEBS()  {
 	//orderData.amount=100; 
 	//order_no = 123456 ; 
   var ref : any ; 
+ 
+  var URL = "http://ipm-mathemagic.com/new/payment.html?amount="+ this.totalCharges+"&order_no=" + this.orderNo + "&name="+this.billingName+"&address="+this.billingAddress+"&city=" +this.billingCity+"&postal_code="+this.billingPincode +"&email="+this.email +"&phone="+this.billingPhone ; 
 
-  var URL = "./payment.html?amount="+ this.totalCharges+"&order_no=" + this.orderNo + "&name="+this.billingName+"&address="+this.billingAddress+"&city=" +this.billingCity+"&postal_code="+this.billingPincode +"&email="+this.email +"&phone="+this.billingPhone ; 
-  console.log( "opening URL " + URL ) ; 
+  console.log( "opening URL  " + URL ) ; 
+  
+  ref =  window.open(URL , '_blank ', "location=no");
+ 
+ // const ref = this.iab.create(URL, '_blank', 'location=no') ; 
+   
+  
 
-  ref =  window.open(URL, '_self', 'location=no');
-  //ref.addEventListener('loadstart', function() {  /*alert ( 'in loadstart') */ }) ;
+
+
+  ref.addEventListener('loadstart', function() {  alert ( 'in loadstart')  }) ;
   //if (ref) { 
+  
   ref.addEventListener('loadstop', function() { 
   ref.executeScript(
        { code: "document.body.innerHTML" },
        function( values ) {
          //  alert( values[ 0 ] );
      var responseText = values[0] ; 
-     //alert ( "exitting with>" + responseText+"<" ) ; 
+     alert ( "exitting with>" + responseText+"<" ) ; 
      if ( responseText.includes("Thanks for your order . Your order is confirmed")) { 
      //alert ( responseText ) ;
      alert( " Thank You for your order. Your order is confirmed.") ; 
@@ -322,13 +340,14 @@ public showEBS()  {
      // $state.go('tab.orders') ; 
      
      }
-   else if ( responseText.includes("Your order could not be processed") ) { 
+   else if ( responseText.includes("Your order  could not be processed") ) { 
      
         alert( "Eror in processing your order . Your order has failed.") ; 
         ref.close(); 
         // $state.go('tab.home') ; 
      }
-     
+    
+
      
        }
 
@@ -341,7 +360,8 @@ public showEBS()  {
   ref.addEventListener('exit', function() {   });
 
 
-  
+
+
   
 
 /*

@@ -60,15 +60,27 @@ public matchList = [];
 
 ngOnInit() {
 
+
+
   if (( this.caller != 'summary') && (  this.caller != 'results')) { 
+
+    if ( localStorage.getItem("quizid"+this.testid)) {
+      console.log( " getting JSON from local for "  + this.testid  +JSON.parse(localStorage.getItem("quizid"+this.testid)) ) ; 
+      this.questions = JSON.parse(localStorage.getItem("quizid"+this.testid) ); 
+      console.log( "questions from local is " + this.questions[0].text) ; 
+    }
+
+    else { 
+    
   this.quizService.getQuestionsForQuiz(this.testid).subscribe( data => { 
     console.log( "got this data " + JSON.stringify( data )) ; 
     this.questions = this.quizService.questions; 
     ; 
     console.log( " fininding base64 ") ; 
-    this.transformQuestion(this.questions , this.getBase64Image);
+    //this.transformQuestion(this.questions , this.getBase64Image);
 
-  });
+        });
+    }
   } 
   else {  console.log( "chill....") ; }
 }
@@ -187,16 +199,6 @@ var imgURL ;
 
 }) );
 
-
-
-// console.log( "image Map is    " + ImageMap  ) ; 
-
-//console.log( questions[i].text.replace(/<img src=...*?.gif>/g,  this.getURL) );
-//console.log( questions[i].text.replace(/<img src=...*?.gif>/g, await this.replaceImage)) ;
-//console.log( "question now is "+questions[1].text ) ; 
-//console.log( "stock is " + stock ) ;
-//console.log(stock.replace(/(\d+) (\w+)/g, minusOne));
-// ? no lemon, 1 cabbage, and 100 eggs
   }
   //console.log ( " match Array is " + ShowQuizPage.matchList) ; 
   console.log( " imgURL arre is now " + imageURLArr.length + imageURLArr   ); 
