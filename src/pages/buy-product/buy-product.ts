@@ -201,7 +201,7 @@ export class BuyProductPage {
         
       }
       else {
-        this.errorMessage = "Error in Saving  Order " ;
+        this.errorMessage = "Error in Saving   Order " ;
         return ; 
       }
 

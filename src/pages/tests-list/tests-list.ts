@@ -47,6 +47,42 @@ loading : Loading ;
   this.navCtrl.setRoot('ShowQuizPage',{ 'testid' : testid , 'testName' : testName  } );
   }
 
+ 
+  public   toDataUrl(url, callback) {
+    console.log( " getting base for " + url)  ; 
+      var xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+          var reader = new FileReader();
+          reader.onloadend = function() {
+              callback(reader.result);
+          }
+          reader.readAsDataURL(xhr.response);
+      };
+      xhr.open('GET', url);
+      xhr.responseType = 'blob';
+      xhr.send();
+    }
+
+   public   getData(url) {
+    //console.log( " in get data ") ; 
+      return( new Promise((resolve, reject ) => {
+       //console.log( 'promise create for ' + url) ; 
+       this.toDataUrl( url, function(myBase64) {
+       // console.log( " for" + url + myBase64); // myBase4 is the base64 string
+       resolve("<img src="+ myBase64 + " />" ) ; 
+      
+      }); 
+       
+       
+        
+      })) ;
+      
+    }
+
+
+
+    
+
   public downloadTest( testid) { 
 
     console.log( "downloading test " + testid ) ; 
@@ -55,14 +91,14 @@ loading : Loading ;
       console.log( "got this data " + JSON.stringify( data )) ; 
       this.questions = this.quizService.questions; 
       ; 
-      console.log( " fininding base64 ") ; 
+      console.log( " fininding base64  ") ; 
       // this.showLoading() ; 
 
       this.transformQuestion(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading);
-      this.transformAnswers(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading,"ans1");
-      this.transformAnswers(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading,"ans2");
-      this.transformAnswers(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading,"ans3");
-      this.transformAnswers(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading,"ans4");  
+      //this.transformAnswers(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading,"ans1");
+      //this.transformAnswers(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading,"ans2");
+      //this.transformAnswers(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading,"ans3");
+      //this.transformAnswers(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading,"ans4");  
 
     
       
@@ -70,96 +106,172 @@ loading : Loading ;
 
   }
 
-  public    transformQuestion(questions , getImage : GetBase64ImageService , testid , nav , loading  ) { 
+  public  async   transformQuestion(questions , getImage : GetBase64ImageService , testid , nav , loading  ) { 
 
   
-    let matchStr = /<img src=....*?.gif>/g;
-    var  strMatch  = new String() ; 
     
-    /*
-    while (match = matchStr.exec(question)) {
-      console.log("Found", match[0], "at", match.index);
-    }
-    */
-     
-    
+  
     let ImageMap : Map< string , string> = new Map<string, string>  () ; 
-    
     let imageURLArr = [] ; 
-    
-    
-    
-    
+      
     var serviceCounter = 0 ; 
     var matchCount = 0 ; 
-    var gifoffset = 0 ; 
-    for ( var i = 0 ; i < questions.length ; i++ ) { 
-    
-    //console.log( "finding match in " + questions[i].text) ; 
+    var  strMatch  = new String() ; 
     var imgURL ; 
-    //console.log( questions[i].text.replace(/<img src=...*?.gif>/g,    function( match, offset ){   
-      console.log( questions[i].text.replace(/<img src=...*?.gif..*>/g,    function( match, offset ){ 
-                                            
-      strMatch = match ; 
-    
-    
-        matchCount++ ; 
-      console.log( "match is  " + match  + "url is " + offset) ;
+    var gifoffset = 0 ; 
+    var base64data  ; 
+
+    for ( var i = 0 ; i < questions.length ; i++ ) { 
+      var text = questions[i].text  ; 
+
+    //for ( var i = 0 ; i < 2 ; i++ ) { 
+      if  ( text.match(/<img src=...*?.gif[ ]*\/>/g))  { 
       
-      gifoffset = strMatch.indexOf( ".gif") ; 
-     // console.log ( "got offset for gif " +  gifoffset   + ">" + strMatch  + "<" + match.length) ; 
-      imgURL  = match.substring(9,gifoffset + 4 );
-      //imgURL  = match.substring(9,match.length-1-offset );
-     // console.log( "get for " + i + "-" +  imgURL ) ;
-       ; 
+        console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+        var matches =  text.match(/<img src=...*?.gif[ ]*/g).toString().split(',') ;
+        //console.log( "matches are " + matches.length + matches[0]  ) ; 
+        strMatch = matches[0] ; 
+        gifoffset = strMatch.indexOf( ".gif") ; 
+        imgURL  = strMatch.substring(9,gifoffset + 4 );
+        console.log( "Image is " + imgURL) ;  
+        console.log ( "waiting " ) ; 
+        base64data  = await this.getData(imgURL) ; 
+        text= text.replace (matches[0], base64data);
+        console.log( " replaced img with " + text ) ; 
+        //return text;
+        questions[i].text = text ; 
+
+            }
+            else { console.log( "no image in questions no "+ i ) ; ;  }
+  
+      
+
+       text = questions[i].ans1.replace('\'','')  ; 
+
+        if  ( text.match(/<img src=...*?.gif[ ]*\/>/g))  { 
+        
+          console.log( " find match in q ans1 "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+          var matches =  text.match(/<img src=...*?.gif[ ]*/g).toString().split(',') ;
+          //console.log( "matches are " + matches.length + matches[0]  ) ; 
+          strMatch = matches[0] ; 
+          gifoffset = strMatch.indexOf( ".gif") ; 
+          imgURL  = strMatch.substring(9,gifoffset + 4 );
+          console.log( "Image is " + imgURL) ;  
+          console.log ( "waiting " ) ; 
+          base64data  = await this.getData(imgURL) ; 
+          text= text.replace (matches[0], base64data);
+          console.log( " replaced img with " + text ) ; 
+          //return text;
+          questions[i].ans1 = text ; 
+  
+              }
+              else { console.log( "no image in questions no  for ans1 "+ i ) ; ;  }
     
-      getImage.getBase64Image(imgURL ).subscribe( data => {
-      serviceCounter ++ ; 
-     // console.log( " sericce counter now is " + serviceCounter ) ; 
-     // console.log( " set base64 image for "  + data + "to " + getImage.base64Image );
-      ImageMap.set( data, getImage.base64Image) ; 
-    
-      //imageURLArr.push( imgURL + '-' + getImage.base64Image  ) ; 
-      if ( serviceCounter == matchCount ) { 
-      //  console.log( "ImageMap i s " + ImageMap.get(imgURL) ) ; 
-    
-        for ( var i = 0 ; i < questions.length ; i++ ) { 
-        var replaceURL ; 
-        questions[i].text = questions[i].text.replace(/<img src=...*?.gif..*>/g,    function( match, offset ){ 
-    
-          gifoffset = strMatch.indexOf( ".gif") ;  
-          imgURL  = match.substring(9,gifoffset  + 4 );
-          
-          replaceURL = "<img src=data:image/jpg;base64," + ImageMap.get(imgURL) + " />" ; 
-          //console.log( " replacing " + imgURL + "with " + replaceURL) ;
-          return replaceURL ; 
-    
-        } ) ; 
-      }
-       // console.log( "replaced question Arr  is " + JSON.stringify(questions) )  ; 
-        localStorage.setItem("quizid" + testid, JSON.stringify(questions) ); 
-        alert( " Test download complete  ") ; 
-        //loading.dismiss() ; 
         
 
-        //nav.setRoot( 'TestsListPage') ; 
 
+         text = questions[i].ans2  ; 
+
+        if  ( text.match(/<img src=...*?.gif[ ]*\/>/g))  { 
+        
+          console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+          var matches =  text.match(/<img src=...*?.gif[ ]*/g).toString().split(',') ;
+          //console.log( "matches are " + matches.length + matches[0]  ) ; 
+          strMatch = matches[0] ; 
+          gifoffset = strMatch.indexOf( ".gif") ; 
+          imgURL  = strMatch.substring(9,gifoffset + 4 );
+          console.log( "Image is " + imgURL) ;  
+          console.log ( "waiting " ) ; 
+          base64data  = await this.getData(imgURL) ; 
+          text= text.replace (matches[0], base64data);
+          console.log( " replaced img with " + text ) ; 
+          //return text;
+          questions[i].ans2 = text ; 
+  
+              }
+              else { console.log( "no image in questions no  for ans2 "+ i ) ; ;  }
+    
+        
+
+         text = questions[i].ans3  ; 
+
+        if  ( text.match(/<img src=...*?.gif[ ]*\/>/g))  { 
+        
+          console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+          var matches =  text.match(/<img src=...*?.gif[ ]*/g).toString().split(',') ;
+          //console.log( "matches are " + matches.length + matches[0]  ) ; 
+          strMatch = matches[0] ; 
+          gifoffset = strMatch.indexOf( ".gif") ; 
+          imgURL  = strMatch.substring(9,gifoffset + 4 );
+          console.log( "Image is " + imgURL) ;  
+          console.log ( "waiting " ) ; 
+          base64data  = await this.getData(imgURL) ; 
+          text= text.replace (matches[0], base64data);
+          console.log( " replaced img with " + text ) ; 
+          //return text;
+          questions[i].ans3 = text ; 
+  
+              }
+              else { console.log( "no image in questions no  for ans1 "+ i ) ; ;  }
+    
+       text = questions[i].ans4  ; 
+
+        if  ( text.match(/<img src=...*?.gif[ ]*\/>/g))  { 
+        
+          console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+          var matches =  text.match(/<img src=...*?.gif[ ]*/g).toString().split(',') ;
+          //console.log( "matches are " + matches.length + matches[0]  ) ; 
+          strMatch = matches[0] ; 
+          gifoffset = strMatch.indexOf( ".gif") ; 
+          imgURL  = strMatch.substring(9,gifoffset + 4 );
+          console.log( "Image is " + imgURL) ;  
+          console.log ( "waiting " ) ; 
+          base64data  = await this.getData(imgURL) ; 
+          text= text.replace (matches[0], base64data);
+          console.log( " replaced img with " + text ) ; 
+          //return text;
+          questions[i].ans4 = text ; 
+  
+              }
+              else { console.log( "no image in questions no  for ans1 "+ i ) ; ;  }
+  
+
+
+   // questions[i].text = this.transformText(questions[i].text) ; console.log( " q now is "  + questions[i].text); 
+   // questions[i].ans1 = this.transformText( questions[i].ans1) ; 
+  //  questions[i].ans2 = this.transformText( questions[i].ans2) ; 
+   // questions[i].ans3 = this.transformText( questions[i].ans3 ) ; 
+   //questions[i].ans4 = this.transformText( questions[i].ans4) ; 
+   }
+    
+  console.log( " imgURL arre is now " + JSON.stringify(questions)   ); 
+  localStorage.setItem("quizid" + testid, JSON.stringify(questions) ); 
+    
+}
+
+    public async transformText( text   ) { 
+      var  strMatch  = new String() ; 
+      var imgURL ; 
+      var gifoffset = 0 ; 
+      var base64data  ; 
+
+      if  ( text.match(/<img src=...*?.gif[ ]*/g))  { 
       
+      console.log( " find match in q "  + text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+      var matches =  text.match(/<img src=...*?.gif[ ]*/g).toString().split(',') ;
+      //console.log( "matches are " + matches.length + matches[0]  ) ; 
+      strMatch = matches[0] ; 
+      gifoffset = strMatch.indexOf( ".gif") ; 
+      imgURL  = strMatch.substring(9,gifoffset + 4 );
+      console.log( "Image is " + imgURL) ;  
+      console.log ( "waiting " ) ; 
+      base64data  = await this.getData(imgURL) ; 
+      text= text.replace (matches[0], base64data);
+      console.log( " replaced img with " + text ) ; 
+      return text; 
+          }
+          else { console.log( "no image in questions no ") ;return text ;  }
 
-    
-        }
-    
-       
-      }) ; 
-    
-    
-    }) );
-    
-    
-      }
-      //console.log ( " match Array is " + ShowQuizPage.matchList) ; 
-      console.log( " imgURL arre is now " + imageURLArr.length + imageURLArr   ); 
-    
     }
     public    transformAnswers(questions , getImage : GetBase64ImageService , testid , nav , loading , ans   ) { 
 
@@ -167,12 +279,6 @@ loading : Loading ;
       let matchStr = /<img src=....*?.gif>/g;
       var  strMatch  = new String() ; 
       
-      /*
-      while (match = matchStr.exec(question)) {
-        console.log("Found", match[0], "at", match.index);
-      }
-      */
-       
       
       let ImageMap : Map< string , string> = new Map<string, string>  () ; 
       
@@ -187,24 +293,13 @@ loading : Loading ;
       for ( var i = 0 ; i < questions.length ; i++ ) { 
       
 
-      if ( ans =="ans1") { 
-        text = questions[i].ans1 
-      }
-      if ( ans =="ans2") { 
-        text = questions[i].ans2 
-      }
-      if ( ans =="ans3") { 
-        text = questions[i].ans3 
-      }
-      if ( ans =="ans4") { 
-        text = questions[i].ans4 
-      } 
+      text = questions[i].text + "~~" + questions[i].ans1 + "~~"+questions[i].ans2 + "~~" + questions[i].ans3 + "~~"+ questions[i].ans4 ; 
 
 
       console.log( "finding match in " + text) ; 
       var imgURL ; 
       //console.log( questions[i].text.replace(/<img src=...*?.gif>/g,    function( match, offset ){   
-        console.log( text.replace(/<img src=...*?.gif..*>/g,    function( match, offset ){ 
+       text.replace(/<img src=...*?.gif..*>/g,    function( match, offset ){ 
                                               
         strMatch = match ; 
       
@@ -238,44 +333,25 @@ loading : Loading ;
             
             replaceURL = "<img src=data:image/jpg;base64," + ImageMap.get(imgURL) + " />" ; 
             //console.log( " replacing " + imgURL + "with " + replaceURL) ;
-            if ( ans =="ans1") { 
-              questions[i].ans1  = text ; 
-           }
-           if ( ans =="ans2") { 
-               questions[i].ans2 = text ; 
-           }
-           if ( ans =="ans3") { 
-               questions[i].ans3 = text ; 
-           }
-           if ( ans =="ans4") { 
-               questions[i].ans4 = text ; 
-           }
-
+      
             return replaceURL ; 
       
-          } ) ;
+              }) ;
         
-        
-      }
+    
+              }
 
           console.log( "replaced ans Arr  is " + JSON.stringify(questions) )  ; 
           localStorage.setItem("quizid" + testid, JSON.stringify(questions) ); 
           alert( " Test download complete  ") ; 
-        //  loading.dismiss() ; 
-          
-  
-          //nav.setRoot( 'TestsListPage') ; 
-  
-        
-  
-      
-          }
+
+              }
       
          
-        }) ; 
+            }) ; 
       
       
-      }) );
+         }) ;
       
       
         }
@@ -284,6 +360,8 @@ loading : Loading ;
       
       }
 
+
+     
     showLoading() {
       this.loading = this.loadingCtrl.create({
         content: 'Please wait for this test is downloaded ...',
