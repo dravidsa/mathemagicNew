@@ -44,7 +44,7 @@ export class TabTestsPage {
 
   public goToTest(courseid ) {
 
-   console.log( " goging to  test  " + courseid ) ; 
+   console.log( " goging to  test " + courseid ) ; 
    this.navCtrl.setRoot('TestsListPage',{ 'courseid' : courseid } );
 
 

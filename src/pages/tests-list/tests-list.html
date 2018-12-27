@@ -20,7 +20,7 @@
 
 <ion-content class="testlist-content" padding>
 <div *ngFor="let test of tests" > 
-<span (click)="solveTest(test.id , test.name)"> {{test.name}} </span> <button ion-button color="dark" (click)= "solveTest(test.id)">Solve</button> <button ion-button color="dark" (click)= "downloadTest(test.id)">Download</button>
+<span (click)="solveTest(test.id , test.name)"> {{test.name}} </span> <button ion-button color="dark" (click)= "solveTest(test.id , test.name)">Solve</button> <button ion-button color="dark" (click)= "downloadTest(test.id)">Download</button>
         
         </div>
 </ion-content>
