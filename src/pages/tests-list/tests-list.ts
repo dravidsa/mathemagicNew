@@ -92,10 +92,10 @@ loading : Loading ;
       this.questions = this.quizService.questions; 
       ; 
     
-       this.showLoading() ; 
+      //this.showLoading() ; 
 
       this.transformQuestion(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading);
-      alert(" Test download Complete ") ; 
+      //alert(" Test download Complete ") ; 
     
       
     });
@@ -129,7 +129,7 @@ loading : Loading ;
         console.log ( "waiting " ) ; 
         base64data  = await this.getData(imgURL) ; 
         text= text.replace (matches[0], base64data);
-        console.log( " replaced img with " + text ) ; 
+        console.log( " replaced img with  " + text ) ; 
         //return text;
         questions[i].text = text ; 
 
@@ -230,7 +230,9 @@ loading : Loading ;
     
   console.log( " imgURL arre is now " + JSON.stringify(questions)   ); 
   localStorage.setItem("quizid" + testid, JSON.stringify(questions) ); 
- 
+  
+  //this.navCtrl.setRoot('TestsListPage') ; 
+
     
 }
 
@@ -255,7 +257,7 @@ loading : Loading ;
       console.log( " replaced img with " + text ) ; 
       return text; 
           }
-          else { console.log( "no image in questions no ") ;return text ;  }
+          else { console.log( "no image  in questions no ") ;return text ;  }
 
     }
     
