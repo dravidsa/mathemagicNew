@@ -157,9 +157,9 @@ var TestsListPage = /** @class */ (function () {
             console.log("got this data " + JSON.stringify(data));
             _this.questions = _this.quizService.questions;
             ;
-            _this.showLoading();
+            //this.showLoading() ; 
             _this.transformQuestion(_this.questions, _this.getBase64Image, testid, _this.navCtrl, _this.loading);
-            alert(" Test download Complete ");
+            //alert(" Test download Complete ") ; 
         });
     };
     TestsListPage.prototype.transformQuestion = function (questions, getImage, testid, nav, loading) {
@@ -193,7 +193,7 @@ var TestsListPage = /** @class */ (function () {
                     case 2:
                         base64data = _a.sent();
                         text = text.replace(matches[0], base64data);
-                        console.log(" replaced img with " + text);
+                        console.log(" replaced img with  " + text);
                         //return text;
                         questions[i].text = text;
                         return [3 /*break*/, 4];
@@ -330,7 +330,7 @@ var TestsListPage = /** @class */ (function () {
                         console.log(" replaced img with " + text);
                         return [2 /*return*/, text];
                     case 2:
-                        console.log("no image in questions no ");
+                        console.log("no image  in questions no ");
                         return [2 /*return*/, text];
                 }
             });
