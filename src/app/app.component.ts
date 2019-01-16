@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Config, Nav, Platform } from 'ionic-angular';
-
+import { Config, Nav, Platform, AlertController } from 'ionic-angular';
+import { Network } from '@ionic-native/network';
 import { FirstRunPage } from '../pages';
 import { Settings } from '../providers';
 
@@ -27,7 +27,8 @@ import { Settings } from '../providers';
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-
+  public onlineOffline: boolean = navigator.onLine;
+  
   rootPage:any = 'LoginPage';
   //rootPage = FirstRunPage;
 
@@ -47,15 +48,90 @@ export class MyApp {
     { title: 'Search', component: 'SearchPage' }
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+
+  
+  constructor(private translate: TranslateService, platform: Platform,     public network: Network  ,    public alertCtrl : AlertController ,settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      if ( this.network.type == 'none')  { 
+
+        alert("Not connected to internet, some features may not work ") ; 
+
+       }
+      // alert("checking net "  + this.network.type ); 
+      
+      let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+        alert('network was disconnected :-(');
+      });
+      
+      // stop disconnect watch
+      disconnectSubscription.unsubscribe();
+      
+      
+      // watch network for a connection
+      let connectSubscription = this.network.onConnect().subscribe(() => {
+        alert('network connected!');
+        // We just got a connection but we need to wait briefly
+         // before we determine the connection type. Might need to wait.
+        // prior to doing any api requests as well.
+        setTimeout(() => {
+          if (this.network.type === 'wifi') {
+            alert('we got a wifi connection, woohoo!');
+          }
+        }, 3000);
+      });
+      
+      // stop connect watch
+      connectSubscription.unsubscribe();
+  
+
+
+
     });
     this.initTranslate();
+ 
+
+
+
+ 
+
+    
+
+
+
+    var lastTimeBackPress = 0;
+    var timePeriodToExit = 2000;
+  
+    platform.registerBackButtonAction(() => {
+      // get current active page
+      let view = this.nav.getActive();
+      //alert( " view is " + view.component.name) ; 
+      if (view.component.name == "MenuPage") {
+        //Double check to exit app                  
+        if (new Date().getTime() - lastTimeBackPress < timePeriodToExit) {
+          platform.exitApp(); //Exit from app
+        } else {
+          let toast = this.alertCtrl.create({
+            message: 'Press back again to exit App'
+            
+          });
+          toast.present();
+          lastTimeBackPress = new Date().getTime();
+        }
+      } else {
+        // go to previous page
+       // alert("going to prev view") ; 
+        this.nav.pop({});
+      }
+    });
+
+
   }
+
+  
 
   initTranslate() {
     // Set the default language for translation strings, and the current language.
@@ -83,9 +159,20 @@ export class MyApp {
     });
   }
 
+
+
+
+
+
+
+
+
+  
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  
 }

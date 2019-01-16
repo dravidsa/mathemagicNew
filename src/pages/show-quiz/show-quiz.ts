@@ -6,6 +6,7 @@ import { IonicPage, NavController, NavParams ,AlertController } from 'ionic-angu
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Observer} from 'rxjs/Observer' ; 
+import { Config, Nav, Platform } from 'ionic-angular';
 
 
  
@@ -37,7 +38,7 @@ public matchList = [];
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams , public alertCtrl: AlertController,public getBase64Image : GetBase64ImageService , public quizService : QuizService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , private platform: Platform,public alertCtrl: AlertController,public getBase64Image : GetBase64ImageService , public quizService : QuizService) {
   
     this.caller = navParams.get("caller") ; 
     console.log ( "called from " + this.caller ) ; 
@@ -53,7 +54,6 @@ public matchList = [];
   this.testid = navParams.get('testid') ; 
   this.testName = navParams.get('testName') ; 
     } 
-
 
  
 }
@@ -83,6 +83,9 @@ ngOnInit() {
     }
   } 
   else {  console.log( "chill....") ; }
+
+ 
+
 }
 
 public prevQuestion()  {
@@ -97,10 +100,23 @@ public nextQuestion(){
   console.log( "showing question "+ this.currentQuestionNo) ; 
 }
 
-showConfirmAlert() {
+showConfirmAlert(option) {
+   var showMessage =  ""; 
+   var nextPage = ""; 
+
+  if ( option == "submit") { 
+  showMessage = 'Are you sure you want to submit this test?' ; 
+  nextPage = "TestSummaryPage" ; 
+
+  }
+  else 
+  {
+  showMessage = "Are you sure to exit and go to back to test List? "
+  nextPage = "TestsListPage" ; 
+  }
   let confirmAlert = this.alertCtrl.create({
     title: 'Are you Sure?',
-    message: 'Are you sure you want to submit this test?',
+    message: showMessage ,
     buttons: [
       {
         text: 'No',
@@ -112,7 +128,11 @@ showConfirmAlert() {
         text: 'Yes',
         handler: () => {
           console.log('Agree clicked');
-          this.navCtrl.setRoot('TestSummaryPage', { questions : this.questions} );
+          if ( option == "submit") {
+            nextPage = "TestSummaryPage" 
+          } else nextPage = "TestsListPage" ; 
+
+          this.navCtrl.setRoot(  nextPage , { questions : this.questions} );
 
           // Your Imagination should go here
         }
@@ -224,7 +244,14 @@ public   toDataUrl(url, callback) {
   xhr.responseType = 'blob';
   xhr.send();
 }
+public  logout()  {
+   
+  
+  localStorage.removeItem("loggedUser") ; 
 
+  this.navCtrl.setRoot('LoginPage');
+
+  }
 
 /*
 public  replaceImage( match , url) {

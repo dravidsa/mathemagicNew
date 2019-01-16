@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { CoursesService } from '../../providers/courses-service/courses-service';
+import { Network } from '@ionic-native/network';
  
 @IonicPage()
 @Component({
@@ -10,9 +11,10 @@ import { CoursesService } from '../../providers/courses-service/courses-service'
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = { username: 'sandra', password: 'sandeep123' };
+  //registerCredentials = { username: 'sandra', password: 'sandeep123' };
+  registerCredentials = { username: '', password: '' };
  
-  constructor(private nav: NavController, private auth: AuthService, private courses : CoursesService , private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(private nav: NavController, private auth: AuthService, public network : Network   , private courses : CoursesService , private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
 
     if (localStorage.getItem("loggedUser") != null  ) {
    
@@ -35,6 +37,16 @@ export class LoginPage {
   }
  
   public login() {
+
+    if ( this.network.type == 'none')  { 
+
+      alert("Not connected to internet, some features may not work ") ; 
+      return; 
+
+     }
+
+
+
     console.log( "got credentials " + JSON.stringify( this.registerCredentials)) ; 
 
     this.showLoading()
@@ -82,10 +94,10 @@ export class LoginPage {
     this.loading.dismiss();
  
     let alert = this.alertCtrl.create({
-      title: 'Fail',
+      title: 'Invalid userid or Password. ',
       subTitle: text,
       buttons: ['OK']
     });
-    //alert.present(prompt);
+    alert.present(alert);
   }
 }

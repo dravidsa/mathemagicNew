@@ -29,6 +29,14 @@ correctQuestions : number ;
 
   }
 
+  public  logout()  {
+   
+  
+    localStorage.removeItem("loggedUser") ; 
+  
+    this.navCtrl.setRoot('LoginPage');
+  
+    }
 
   public gotoQuestion( questionNo) { 
     

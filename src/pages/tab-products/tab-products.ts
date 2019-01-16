@@ -30,6 +30,17 @@ products : any ;
 
   }
 
+  
+  public  logout()  {
+   
+  
+    localStorage.removeItem("loggedUser") ; 
+  
+    this.navCtrl.setRoot('LoginPage');
+  
+    }
+    
+
   public  buyProduct( productName , productId, productPrice , productImage   ) { 
 
    console.log( "going to   buy" + productName ) ; 

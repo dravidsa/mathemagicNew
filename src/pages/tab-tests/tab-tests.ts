@@ -41,10 +41,26 @@ export class TabTestsPage {
     //console.log( " coursesfor this user are " + JSON.stringify( CoursesService.courses) ) ; 
     } 
   }
+  
+  
+  public  logout()  {
+   
+  
+    localStorage.removeItem("loggedUser") ; 
+  
+    this.navCtrl.setRoot('LoginPage');
+  
+    }
+    
+  public goBack() { 
 
+
+
+  }
   public goToTest(courseid ) {
 
    console.log( " goging to  test " + courseid ) ; 
+   this.navCtrl.push(TabTestsPage);
    this.navCtrl.setRoot('TestsListPage',{ 'courseid' : courseid } );
 
 

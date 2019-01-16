@@ -18,9 +18,42 @@
   </ion-header>
 
 
-<ion-content class="testlist-content" padding>
-<div *ngFor="let test of tests" > 
-<span (click)="solveTest(test.id , test.name)"> {{test.name}} </span> <button ion-button color="dark" (click)= "solveTest(test.id , test.name)">Solve</button> <button ion-button color="dark" (click)= "downloadTest(test.id)">Download</button>
+
+
+<ion-content class="testlist-content" padding>                 
+    <div *ngIf="tests" >
+
+    <div *ngFor="let test  of tests" > 
         
+            <ion-card>                           
+              <ion-card-content>
+                   <ion-card-title>
+                   {{test.name }}  
+                    </ion-card-title>
+                   
+                                      
+                  
+                   
+                        <button ion-button  color="secondary" (click)= "solveTest(test.id , test.name)">Solve</button>  
+                        <button ion-button  color="default" (click)= "downloadTest(test.id )">Download</button>  
+                        
+                        <BR/> 
+                        {{showDownloadStatus(test.id) }}
+                                    
+              
+
+                 
+              
+                </ion-card-content>
+                
+              </ion-card>
+
+      
+              </div> 
+
         </div>
+        <button ion-button full=true color="danger" round (click)="goBack()"  >Back</button>
+
 </ion-content>
+
+

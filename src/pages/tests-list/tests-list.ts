@@ -23,6 +23,7 @@ tests : any ;
 questions : any ; 
 getBase64Image  : any ;
 loading : Loading ; 
+downloadStatus : any ; 
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams , public testsService:  TestsService , public quizService : QuizService  , public getImage : GetBase64ImageService, private loadingCtrl: LoadingController) {
@@ -41,12 +42,37 @@ loading : Loading ;
   
 
   }
+
+  
+  public  logout()  {
+   
+  
+    localStorage.removeItem("loggedUser") ; 
+  
+    this.navCtrl.setRoot('LoginPage');
+  
+    }
+
+
+  public goBack() {
+    console.log( "going back 1 level ") ; 
+    this.navCtrl.setRoot('TabTestsPage'); 
+    //this.navCtrl.pop(); 
+
+  }
   public solveTest( testid ,testName ) { 
   console.log ( " going to test " + testid ) ; 
 
   this.navCtrl.setRoot('ShowQuizPage',{ 'testid' : testid , 'testName' : testName  } );
   }
-
+ 
+  public showDownloadStatus ( testid ) { 
+    if  ( localStorage.getItem("quiz" + testid+ "status") == undefined ) { 
+            return "this test is not downloaded on this device "  ; 
+    }
+    else 
+      return ( localStorage.getItem(  "quiz" + testid+ "status"  )) ; 
+  }
  
   public   toDataUrl(url, callback) {
     console.log( " getting base for " + url)  ; 
@@ -91,8 +117,8 @@ loading : Loading ;
       console.log( "got this data " + JSON.stringify( data )) ; 
       this.questions = this.quizService.questions; 
       ; 
-    
-      //this.showLoading() ; 
+      //alert("starting the donwload ...please wait  ") ; 
+      this.showLoading() ; 
 
       this.transformQuestion(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading);
       //alert(" Test download Complete ") ; 
@@ -117,10 +143,11 @@ loading : Loading ;
     for ( var i = 0 ; i < questions.length ; i++ ) { 
       var text = questions[i].text  ; 
        console.log( " looking in " + text ) ; 
-       if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
+       //if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
+        if  ( text.match(/<img src=...*?.gif[ ]*...*/g))  { 
       
         console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
-        var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
+        var matches =  text.match(/<img src=...*?.gif[ ]*...*/g).toString().split(',') ;
         //console.log( "matches are " + matches.length + matches[0]  ) ; 
         strMatch = matches[0] ; 
         gifoffset = strMatch.indexOf( ".gif") ; 
@@ -204,7 +231,8 @@ loading : Loading ;
           questions[i].ans3 = text ; 
   
               }
-              else { console.log( "no image in questions no  for ans1 "+ i ) ; ;  }
+              else { //console.log( "no image in questions no  for ans1 "+ i ) ; ;  
+            }
     
        text = questions[i].ans4.replace('\'','')  ;   ; 
 
@@ -230,7 +258,14 @@ loading : Loading ;
     
   console.log( " imgURL arre is now " + JSON.stringify(questions)   ); 
   localStorage.setItem("quizid" + testid, JSON.stringify(questions) ); 
-  
+  this.loading.dismissAll();
+  //alert("donwload complete ") ; 
+  var d = new Date();
+  var n = d.toDateString(); 
+  this.downloadStatus  = "Test downloaded on device on " +  n ; 
+  localStorage.setItem("quiz"+testid+"status" , this.downloadStatus) ; 
+
+
   //this.navCtrl.setRoot('TestsListPage') ; 
 
     
@@ -266,7 +301,7 @@ loading : Loading ;
      
     showLoading() {
       this.loading = this.loadingCtrl.create({
-        content: 'Please wait for this test is downloaded ...',
+        content: 'Please wait while this test is getting downloaded ...',
         dismissOnPageChange: true
       });
       this.loading.present();

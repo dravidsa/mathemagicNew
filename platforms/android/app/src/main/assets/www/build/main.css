@@ -26037,6 +26037,62 @@ page-tab-products .products-content .register-btn {
   font-size: 0.8em;
 }
 
+page-tab-services .tabservices-content {
+  background: #56CA96;
+}
+
+page-tab-services .tabservices-content .logo-row {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+page-tab-services .tabservices-content .login-box {
+  background: #399F8B;
+  padding: 20px 20px 0px 20px;
+  margin-top: 30px;
+}
+
+page-tab-services .tabservices-content ion-row {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+page-tab-services .tabservices-content ion-item {
+  border-radius: 30px !important;
+  padding-left: 30px !important;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  border: 1px solid #ffffff;
+  border-bottom: 0px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-tab-services .tabservices-content .signup-col {
+  margin: 0px 16px 0px 16px;
+  padding-bottom: 20px;
+}
+
+page-tab-services .tabservices-content .item-inner {
+  border-bottom-color: #ffffff !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-tab-services .tabservices-content .submit-btn {
+  background: #51CFB1;
+  border-radius: 30px !important;
+  border: 1px solid #ffffff;
+}
+
+page-tab-services .tabservices-content .register-btn {
+  color: #ffffff;
+  font-size: 0.8em;
+}
+
 page-tab-tests .tabtests-content {
   background: #56CA96;
 }

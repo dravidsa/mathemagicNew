@@ -7,7 +7,7 @@
 <ion-header>
     <ion-navbar color="blue">
       <ion-title>
-        Solve Test :  {{testName}}
+        Solve Test 
       </ion-title>
       <ion-buttons end>
         <button ion-button (click)="logout()">
@@ -22,6 +22,8 @@
  
 <ion-content class="showquiz-content" padding >
     <font size= 6> 
+        <p align="center" ><B><U> {{testName}}</U> </B> </p>  
+
     <ion-list *ngIf="questions">
        
            
@@ -67,6 +69,10 @@
         <div *ngIf="questions[currentQuestionNo].isFlagged" text-center > This question is Flagged </div> <BR/> 
 
       </ion-list>
- <button  *ngIf="caller!='results'" ion-button full=true color="danger" round (click)="showConfirmAlert()"  >Submit Test</button>
+ <button  *ngIf="caller!='results'" ion-button full=true color="default" round (click)="showConfirmAlert('submit')"  >Submit Test</button>
+ <BR/>
+ 
+ <button  *ngIf="caller!='results'" ion-button full=true color="danger" round (click)="showConfirmAlert('back')"  >Back to Test List</button>
+
     </font>  
 </ion-content>

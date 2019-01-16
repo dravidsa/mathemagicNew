@@ -27,6 +27,8 @@ import { SaveOrderService } from '../providers/save-order/save-order';
 import { GetBillingService } from '../providers/get-billing/get-billing';
 import { GetBase64ImageService } from '../providers/get-base64-image/get-base64-image';
 import { InAppBrowser } from '../../node_modules/@ionic-native/in-app-browser';
+import { Network } from '@ionic-native/network';
+
 //import {  RouterModule,  Routes} from '@angular/router'
 
 // The translate loader needs to know where to load i18n files
@@ -96,7 +98,8 @@ export function provideSettings(storage: Storage) {
     SaveOrderService,
     GetBillingService,
     GetBase64ImageService,
-    InAppBrowser
+    InAppBrowser,
+    Network 
 
   ]
 })

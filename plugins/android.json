@@ -28,6 +28,9 @@
     },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "io.ionic.mathemagic"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.ionic.mathemagic"
     }
   },
   "dependent_plugins": {}
