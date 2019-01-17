@@ -19,8 +19,6 @@ import { Network } from '@ionic-native/network';
  * Ionic pages and navigation.
  */
 
-
-
 @IonicPage()
 @Component({
   selector: 'page-buy-product',
@@ -170,7 +168,7 @@ export class BuyProductPage {
     this.productPrice =  navParams.get("productPrice");
     this.totalCharges = this.productPrice  ; 
     this.img_src = navParams.get("img_src") ; 
-    alert( "net connection is " + this.network.type); 
+   // alert( "net connection is " + this.network.type); 
     
     if ( this.network.type == 'none')  { 
 
@@ -242,7 +240,7 @@ export class BuyProductPage {
   ionViewWillEnter( ) {
     console.log('ionViewDidLoad BuyProductPage'); 
 
-    if ( (this.productName == 'IPM Book Set ') &&  ( this.productName == 'Online Test') ) { 
+    if ( (this.productName != 'IPM Book Set') &&   ( this.productName != 'Online Test') ) { 
     if ( this.refgetSchoolsService != undefined ) {
     this.schoolName  = this.refgetSchoolsService.selectedSchoolName ;
     if ( this.schoolName == undefined ) { 
@@ -281,7 +279,7 @@ export class BuyProductPage {
       }  else {    
            if ( this.schoolMatched == false ) { 
 
-            this.errorMessage = "Your school name was not found , cant continue " ;
+            this.errorMessage = "**Your school name was not found , cant continue " ;
             return; 
 
         }
@@ -376,95 +374,6 @@ channel : channel  ,
 secure_hash : sec_hash 
 };
 
-
-
-
-
-
-
-//var url = "http://ipm-mathemagic.com/new";
-/*
-var ref = window.open("" , "_blank" , "location=no" ) ; 
-var doc = window.document ; 
-var form = doc.createElement("form");
- */
-
- 
-/*
-
-ref.addEventListener('loadstart', function(event) { alert('start: ' ); });
-         ref.addEventListener('loadstop', function(event) { alert('stop: ' ); });
-         ref.addEventListener('loaderror', function(event) { alert('error: '); });
-         ref.addEventListener('exit', function(event) { alert(event.type); });
-*/  
-/*
-          
-  ref.addEventListener('loadstop', function(event) { 
-  
-    ref.executeScript(
-         { code: "document.body.innerHTML" },
-         function( values ) {
-           //  alert( values[ 0 ] );
-       var responseText = values[0] ; 
-       alert ( "exitting with>" + responseText+"<" ) ; 
-       if ( responseText.includes("Thanks for your order . Your order is confirmed")) { 
-       //alert ( responseText ) ;
-       alert( " Thank You for your order. Your order is confirmed.") ; 
-       ref.close()		  ;
-  
-       // $state.go('tab.orders') ; 
-       
-       }
-     else if ( responseText.includes("Your order  could not be processed") ) { 
-       
-          alert( "Eror in processing your order . Your order has failed.") ; 
-          ref.close(); 
-          // $state.go('tab.home') ; 
-       }
-      
-  
-       
-         }
-  
-  
-  
-    )
-    });
-
-
-*/
-
-
-
-
-/*
-
-
-         
-
-console.log ( "params are " + JSON.stringify(options)  ) ;
-var form = doc.createElement("form");
-form.setAttribute("method", "post");
-form.setAttribute("action", 'https://sandbox.secure.ebs.in/pg/ma/payment/request');
-//form.setAttribute("target", '_self');
-for (var i in options) {
-    if (options.hasOwnProperty(i)) {
-        var input = doc.createElement('input');
-        input.type = 'hidden';
-        input.name = i;
-        input.value = options[i];
-        form.appendChild(input);
-    }
- }
-doc.body.appendChild(form);
-// window.open('', winName,windowoption);
-form.target = '_blank';
-console.log(form.action);
-form.submit();
-*/
-
- 
-
   var winName ="_self"; 
   //var key ="e918f92d41508857288b020b3c70dfac";
   var key ="ebskey";
@@ -485,12 +394,7 @@ form.submit();
   
   ref =  window.open(URL , '_self ', "location=no");
  
- // const ref = this.iab.create(URL, '_blank', 'location=no') ; 
-   
   
-
-
-
   ref.addEventListener('loadstart', function() {  //alert ( 'in loadstart') 
   }) ;
   //if (ref) { 
@@ -507,12 +411,7 @@ form.submit();
      alert( " Thank You for your order. Your order is confirmed.") ; 
      ref.close()		  ;
      this.loading.dismissAll()  ;
-     this.navCtrl.setRoot('MenuPage') ; 
-
-
-
-     // $state.go('tab.orders') ; 
-     
+     this.navCtrl.setRoot('MenuPage') ;      
      }
    else if ( responseText.includes("Your order  could not be processed") ) { 
      
@@ -521,11 +420,9 @@ form.submit();
         this.loading.dismissAll();
         this.navCtrl.setRoot('MenuPage') ; 
         // $state.go('tab.home') ; 
-     }
-    
-
+      }  
      
-       }
+    }
 
 
 
@@ -534,72 +431,6 @@ form.submit();
 
   ref.addEventListener('loadloaderror', function() {  alert ( 'Got some Error '); ;  });
   ref.addEventListener('exit', function() {   });
-
-
-
-
-  
-
-/*
-	
-	var order_no = 123456 ; 
-	console.log( "key:" + key  + "account " + account_id +  "amount "+ 105 + "order no" + order_no + " return " + return_url + "mode " + mode );
-	var hash_str =  key + "|" +  account_id + "|" + 105 + "|" + order_no + "|" + return_url + "|" + mode  ;
-	var secured_hash = Md5.hashStr(hash_str) ; 
-	console.log ( "hash str is -" + hash_str + "- hash is -" + secured_hash +"-") ; 
-	
-	
-    var params = {
-		'account_id' :  account_id  ,  
-		'reference_no' : order_no ,  
-		'amount'  : 105 ,  
-		'mode' :  mode ,  
-        'currency'  : 'INR' ,  
-	
-        'description' : 'For Ipm' , 
-        'return_url' :  return_url , 
-        'name' : this.billingName  , 
-		'address' : this.billingAddress  , 
-		'city' :  this.billingCity  , 
-		'country' : 'Ind' ,
-		'postal_code' :  this.billingPincode  , 
-		'email' :  'dravidsa@hotmail.com' , 
-		'secure_hash' : secured_hash   , 
-	    'phone' : 9922955408 , 
-		
-		'channel' : '0' 
-		
-    };
-	
-	console.log ( "params are " + JSON.stringify(params)  ) ; 
-	
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", 'https://secure.ebs.in/pg/ma/payment/request');
-    form.setAttribute("target", winName);
-    for (var i in params) {
-        if (params.hasOwnProperty(i)) {
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = i;
-            input.value = params[i];
-            form.appendChild(input);
-        }
-     }
-    document.body.appendChild(form);
-    // window.open('', winName,windowoption);
-    form.target = winName;
-    console.log(form.action);
-	console.log( "going for submit ") ; 
-	
-	console.log ( "going for socket ") ; 
-	
-
-
- 
-     form.submit();
-	console.log ( "form submitted"); 
-*/
 
 
 }
@@ -648,7 +479,7 @@ form.submit();
 
 ngOnInit() { 
 
-  console.log ( " in ngOninit ") ; 
+  
 
 }
 }

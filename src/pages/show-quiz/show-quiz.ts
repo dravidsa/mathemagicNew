@@ -41,15 +41,15 @@ public matchList = [];
   constructor(public navCtrl: NavController, public navParams: NavParams , private platform: Platform,public alertCtrl: AlertController,public getBase64Image : GetBase64ImageService , public quizService : QuizService) {
   
     this.caller = navParams.get("caller") ; 
-    console.log ( "called from " + this.caller ) ; 
+   // console.log ( "called from " + this.caller ) ; 
     if (( this.caller == 'summary') || (  this.caller == 'results')) {
 
      
       this.currentQuestionNo = navParams.get( "questionNo")-1; 
       this.questions = navParams.get("questions"); 
-      console.log ( "called from summary . got questions " + JSON.stringify(this.questions)) ; 
+    //  console.log ( "called from summary . got questions " + JSON.stringify(this.questions)) ; 
     } else { 
-  console.log ( " showing questions for quiz "  + navParams.get('testid')) ; 
+ // console.log ( " showing questions for quiz "  + navParams.get('testid')) ; 
 
   this.testid = navParams.get('testid') ; 
   this.testName = navParams.get('testName') ; 
@@ -65,24 +65,25 @@ ngOnInit() {
   if (( this.caller != 'summary') && (  this.caller != 'results')) { 
 
     if ( localStorage.getItem("quizid"+this.testid)) {
-      console.log( " getting JSON from local for "  + this.testid  +JSON.parse(localStorage.getItem("quizid"+this.testid)) ) ; 
+      //console.log( " getting JSON from local for "  + this.testid  +JSON.parse(localStorage.getItem("quizid"+this.testid)) ) ; 
       this.questions = JSON.parse(localStorage.getItem("quizid"+this.testid) ); 
-      console.log( "questions from local is " + this.questions[0].text) ; 
+     // console.log( "questions from local is " + this.questions[0].text) ; 
     }
 
     else { 
     
   this.quizService.getQuestionsForQuiz(this.testid).subscribe( data => { 
-    console.log( "got this data " + JSON.stringify( data )) ; 
+    //console.log( "got this data " + JSON.stringify( data )) ; 
     this.questions = this.quizService.questions; 
     ; 
-    console.log( " fininding base64 ") ; 
+    // console.log( " fininding base64 ") ; 
     //this.transformQuestion(this.questions , this.getBase64Image);
 
         });
     }
   } 
-  else {  console.log( "chill....") ; }
+  else {  //console.log( "chill....") ;
+ }
 
  
 
@@ -91,13 +92,13 @@ ngOnInit() {
 public prevQuestion()  {
 
   this.currentQuestionNo -- ; 
-  console.log( "showing question  "+ this.currentQuestionNo) ; 
+  //console.log( "showing question  "+ this.currentQuestionNo) ; 
 }
 
 public nextQuestion(){
 
   this.currentQuestionNo ++ ;  
-  console.log( "showing question "+ this.currentQuestionNo) ; 
+  //console.log( "showing question "+ this.currentQuestionNo) ; 
 }
 
 showConfirmAlert(option) {
@@ -167,7 +168,7 @@ var matchCount = 0 ;
 var gifoffset = 0 ; 
 for ( var i = 0 ; i < questions.length ; i++ ) { 
 
-console.log( "finding match in " + questions[i].text) ; 
+//console.log( "finding match in " + questions[i].text) ; 
 var imgURL ; 
 //console.log( questions[i].text.replace(/<img src=...*?.gif>/g,    function( match, offset ){   
   console.log( questions[i].text.replace(/<img src=...*?.gif..*>/g,    function( match, offset ){ 
@@ -176,13 +177,13 @@ var imgURL ;
 
 
     matchCount++ ; 
-  console.log( "match is  " + match  + "url is " + offset) ;
+//  console.log( "match is  " + match  + "url is " + offset) ;
   
   gifoffset = strMatch.indexOf( ".gif") ; 
-  console.log ( "got offset for gif " +  gifoffset   + ">" + strMatch  + "<" + match.length) ; 
+ // console.log ( "got offset for gif " +  gifoffset   + ">" + strMatch  + "<" + match.length) ; 
   imgURL  = match.substring(9,gifoffset + 4 );
   //imgURL  = match.substring(9,match.length-1-offset );
-  console.log( "get for " + i + "-" +  imgURL ) ;
+  //console.log( "get for " + i + "-" +  imgURL ) ;
    ; 
 
   getImage.getBase64Image(imgURL ).subscribe( data => {
@@ -193,7 +194,7 @@ var imgURL ;
 
   //imageURLArr.push( imgURL + '-' + getImage.base64Image  ) ; 
   if ( serviceCounter == matchCount ) { 
-    console.log( "ImageMap is " + ImageMap.get(imgURL) ) ; 
+   // console.log( "ImageMap is " + ImageMap.get(imgURL) ) ; 
 
     for ( var i = 0 ; i < questions.length ; i++ ) { 
     var replaceURL ; 
@@ -208,7 +209,7 @@ var imgURL ;
 
     } ) ; 
   }
-    console.log( "replaced question Arr  is " + JSON.stringify(questions) )  ; 
+    //console.log( "replaced question Arr  is " + JSON.stringify(questions) )  ; 
 
 
     }
@@ -221,7 +222,7 @@ var imgURL ;
 
   }
   //console.log ( " match Array is " + ShowQuizPage.matchList) ; 
-  console.log( " imgURL arre is now " + imageURLArr.length + imageURLArr   ); 
+ // console.log( " imgURL arre is now " + imageURLArr.length + imageURLArr   ); 
 
 }
 
@@ -253,37 +254,18 @@ public  logout()  {
 
   }
 
-/*
-public  replaceImage( match , url) {
-
-console.log( "match is  " + match  + "url is " + url) ;
-
-URL  = match.substring(9,match.length-1) ; 
-console.log ( "finding data url for " + URL ); 
-//console.log( " this is good " + this.questions); 
-
-ShowQuizPage.toDataUrl(URL , function(myBase64) {
-    console.log(myBase64); // myBase4 is the base64 string
-    
-    return myBase64 ; 
-});
-
-
-}
-*/
 
 public flagQuestion() 
 {
 
   this.questions[this.currentQuestionNo].isFlagged = !this.questions[this.currentQuestionNo].isFlagged ;
-  console.log( "value for flag   toggled ") ; 
+ // console.log( "value for flag   toggled ") ; 
 }
 
 
 
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ShowQuizPage');
+  //  console.log('ionViewDidLoad ShowQuizPage');
   }
 
 }

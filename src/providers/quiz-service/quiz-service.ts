@@ -19,7 +19,7 @@ export class QuizService {
   questions : any   ; 
 
   constructor( public api: Api) {
-    console.log('Hello QuizServiceProvider Provider');
+   // console.log('Hello QuizServiceProvider Provider');
   }
 
   public getQuestionsForQuiz( testid) { 
@@ -37,7 +37,7 @@ export class QuizService {
   let options = new RequestOptions({ headers: headers, params: myParams });
        */
 
-console.log(  "getting courses for user" + testid ); 
+//console.log(  "getting courses for user" + testid ); 
 
 // const requestOptions = new RequestOptions({ headers: headers} )
 this.api.get("http://ipm-mathemagic.com/api/getQuestions/?quizid="+testid) 

@@ -26307,6 +26307,62 @@ page-tutorial p b {
   color: #000000;
 }
 
+page-view-orders .vieworders-content {
+  background: #56CA96;
+}
+
+page-view-orders .vieworders-content .logo-row {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+page-view-orders .vieworders-content .login-box {
+  background: #399F8B;
+  padding: 20px 20px 0px 20px;
+  margin-top: 30px;
+}
+
+page-view-orders .vieworders-content ion-row {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+page-view-orders .vieworders-content ion-item {
+  border-radius: 30px !important;
+  padding-left: 30px !important;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  border: 1px solid #ffffff;
+  border-bottom: 0px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-view-orders .vieworders-content .signup-col {
+  margin: 0px 16px 0px 16px;
+  padding-bottom: 20px;
+}
+
+page-view-orders .vieworders-content .item-inner {
+  border-bottom-color: #ffffff !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-view-orders .vieworders-content .submit-btn {
+  background: #51CFB1;
+  border-radius: 30px !important;
+  border: 1px solid #ffffff;
+}
+
+page-view-orders .vieworders-content .register-btn {
+  color: #ffffff;
+  font-size: 0.8em;
+}
+
 page-welcome .splash-bg {
   position: relative;
   background: url("../assets/img/splashbg.png") no-repeat transparent;

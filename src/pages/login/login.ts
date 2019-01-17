@@ -28,50 +28,31 @@ export class LoginPage {
 
     }
     else console.log( " not logged in ") ; 
-
    }
-
-
   public createAccount() {
     this.nav.push('RegisterPage');
   }
- 
+
   public login() {
-
     if ( this.network.type == 'none')  { 
-
       alert("Not connected to internet, some features may not work ") ; 
       return; 
-
      }
-
-
-
     console.log( "got credentials " + JSON.stringify( this.registerCredentials)) ; 
-
     this.showLoading()
     this.auth.login(this.registerCredentials).subscribe(loginMessage => {
       console.log ( "allowed is  " + loginMessage ) ; 
      // next: value => console.log("next vvalue" + value  ) ; 
-      
+  
       //console.log ( " back here allowed is" + allowed )
       if (loginMessage == "Login successful") {        
-        
         console.log( "set logged in user as " + localStorage.getItem("loggedUser")) ; 
-
         //console.log( " calling courses") ; 
-      
-     
       this.courses.getCoursesForUser(this.registerCredentials.username).subscribe( data => { 
       console.log( "got this data  " + JSON.stringify( data )) ; 
       this.nav.setRoot('MenuPage');
       });
-  
-  
-
-        this.nav.setRoot('TabsHomePage');
-
-        
+      this.nav.setRoot('TabsHomePage');
       } else {
         console.log( "failed ") ; 
         this.showError("Access Denied");

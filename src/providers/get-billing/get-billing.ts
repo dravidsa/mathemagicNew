@@ -36,7 +36,7 @@ billingData  : any;
   let options = new RequestOptions({ headers: headers, params: myParams });
        */
 
-console.log(  "in serivce : getting address for user " + userName ); 
+// console.log(  "in serivce : getting address for user " + userName ); 
 
 // const requestOptions = new RequestOptions({ headers: headers} )
 this.api.get("http://ipm-mathemagic.com/api/getBilling/?username=" + userName) 

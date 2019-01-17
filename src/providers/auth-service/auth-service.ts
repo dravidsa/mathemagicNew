@@ -66,7 +66,7 @@ export class AuthService {
         localStorage.setItem("loggedUser",this.currentUser.name) ; 
         localStorage.setItem("loggedUserId",this.currentUser.id) ; 
         localStorage.setItem("loggedUserEmail",this.currentUser.email) ; 
-        console.log( " set user in local " + this.currentUser.name + "-" + this.currentUser.id + "-"+ this.currentUser.email ) ; 
+        //console.log( " set user in local " + this.currentUser.name + "-" + this.currentUser.id + "-"+ this.currentUser.email ) ; 
         
       //console.log( "name " + data.username + "Mesg"  + data.Msg) ; 
 

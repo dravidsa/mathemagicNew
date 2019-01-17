@@ -37,7 +37,7 @@ public selectedSchoolName : any ;
   let options = new RequestOptions({ headers: headers, params: myParams });
        */
 
-console.log(  "in serivce : getting schools" + schoolName ); 
+//console.log(  "in serivce : getting schools" + schoolName ); 
 
 // const requestOptions = new RequestOptions({ headers: headers} )
 this.api.get("http://ipm-mathemagic.com/api/ipm_get_schools/?school_name=" + schoolName) 

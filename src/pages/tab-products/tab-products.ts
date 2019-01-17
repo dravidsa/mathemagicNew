@@ -21,7 +21,7 @@ products : any ;
   constructor(public navCtrl: NavController, public navParams: NavParams, public productsService : ProductsService) {
 
     this.productsService.getProducts().subscribe( data => { 
-      console.log( "got this data " + JSON.stringify( data )) ; 
+      //console.log( "got this data " + JSON.stringify( data )) ; 
       this.products = this.productsService.products; 
       
       ; 
@@ -43,7 +43,7 @@ products : any ;
 
   public  buyProduct( productName , productId, productPrice , productImage   ) { 
 
-   console.log( "going to   buy" + productName ) ; 
+  // console.log( "going to   buy" + productName ) ; 
 
    this.navCtrl.setRoot('BuyProductPage' , { productId : productId , productName : productName, productPrice : productPrice , img_src : productImage  });
 
@@ -53,7 +53,7 @@ products : any ;
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabProductsPage');
+   // console.log('ionViewDidLoad TabProductsPage');
   }
 
 }

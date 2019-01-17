@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 370:
+/***/ 371:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TestsListPageModule", function() { return TestsListPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tests_list__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tests_list__ = __webpack_require__(403);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,16 +38,16 @@ var TestsListPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 401:
+/***/ 403:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestsListPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(121);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -106,6 +106,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
  */
 var TestsListPage = /** @class */ (function () {
     function TestsListPage(navCtrl, navParams, testsService, quizService, getImage, loadingCtrl) {
+        // console.log( "showing tests for courseid  " + navParams.get('courseid'));
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -113,25 +114,24 @@ var TestsListPage = /** @class */ (function () {
         this.quizService = quizService;
         this.getImage = getImage;
         this.loadingCtrl = loadingCtrl;
-        console.log("showing tests for courseid  " + navParams.get('courseid'));
         this.getBase64Image = getImage;
         testsService.getTestsForCourse(navParams.get('courseid')).subscribe(function (data) {
-            console.log("got this data " + JSON.stringify(data));
+            // console.log( "got this data " + JSON.stringify( data )) ; 
             _this.tests = testsService.tests;
         });
-        console.log("got these tests for course" + JSON.stringify(this.tests));
+        //console.log( "got these tests for course" + JSON.stringify( this.tests)) ; 
     }
     TestsListPage.prototype.logout = function () {
         localStorage.removeItem("loggedUser");
         this.navCtrl.setRoot('LoginPage');
     };
     TestsListPage.prototype.goBack = function () {
-        console.log("going back 1 level ");
+        //  console.log( "going back 1 level ") ; 
         this.navCtrl.setRoot('TabTestsPage');
         //this.navCtrl.pop(); 
     };
     TestsListPage.prototype.solveTest = function (testid, testName) {
-        console.log(" going to test " + testid);
+        //console.log ( " going to test " + testid ) ; 
         this.navCtrl.setRoot('ShowQuizPage', { 'testid': testid, 'testName': testName });
     };
     TestsListPage.prototype.showDownloadStatus = function (testid) {
@@ -167,10 +167,10 @@ var TestsListPage = /** @class */ (function () {
         }));
     };
     TestsListPage.prototype.downloadTest = function (testid) {
+        //console.log( "downloading test " + testid ) ; 
         var _this = this;
-        console.log("downloading test " + testid);
         this.quizService.getQuestionsForQuiz(testid).subscribe(function (data) {
-            console.log("got this data " + JSON.stringify(data));
+            //console.log( "got this data " + JSON.stringify( data )) ; 
             _this.questions = _this.quizService.questions;
             ;
             //alert("starting the donwload ...please wait  ") ; 
@@ -194,11 +194,9 @@ var TestsListPage = /** @class */ (function () {
                         i = 0;
                         _a.label = 1;
                     case 1:
-                        if (!(i < questions.length)) return [3 /*break*/, 16];
+                        if (!(i < questions.length)) return [3 /*break*/, 15];
                         text = questions[i].text;
-                        console.log(" looking in " + text);
                         if (!text.match(/<img src=...*?.gif[ ]*...*/g)) return [3 /*break*/, 3];
-                        console.log(" find match in q " + i + text.match(/<img src=...*?.gif[ ]*/g) + "XXX");
                         matches = text.match(/<img src=...*?.gif[ ]*...*/g).toString().split(',');
                         //console.log( "matches are " + matches.length + matches[0]  ) ; 
                         strMatch = matches[0];
@@ -213,106 +211,96 @@ var TestsListPage = /** @class */ (function () {
                         console.log(" replaced img with  " + text);
                         //return text;
                         questions[i].text = text;
-                        return [3 /*break*/, 4];
+                        return [3 /*break*/, 3];
                     case 3:
-                        console.log("no image in questions no " + i);
-                        _a.label = 4;
-                    case 4:
                         text = questions[i].ans1.replace('\'', '');
-                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 6];
-                        console.log(" find match in q ans1 " + i + text.match(/<img src=...*?.gif[ ]*/g) + "XXX");
+                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 5];
                         matches = text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',');
                         //console.log( "matches are " + matches.length + matches[0]  ) ; 
                         strMatch = matches[0];
                         gifoffset = strMatch.indexOf(".gif");
                         imgURL = strMatch.substring(9, gifoffset + 4);
-                        console.log("Image is " + imgURL);
-                        console.log("waiting ");
                         return [4 /*yield*/, this.getData(imgURL)];
-                    case 5:
+                    case 4:
+                        // console.log( "Image is " + imgURL) ;  
+                        // console.log ( "waiting " ) ; 
                         base64data = _a.sent();
                         text = text.replace(matches[0], base64data);
-                        console.log(" replaced img with " + text);
+                        //console.log( " replaced img with " + text ) ; 
                         //return text;
                         questions[i].ans1 = text;
-                        return [3 /*break*/, 7];
-                    case 6:
-                        console.log("no image in questions no  for ans1 " + i);
+                        return [3 /*break*/, 6];
+                    case 5:
                         ;
-                        _a.label = 7;
-                    case 7:
+                        _a.label = 6;
+                    case 6:
                         text = questions[i].ans2.replace('\'', '');
                         ;
-                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 9];
-                        console.log(" find match in q " + i + text.match(/<img src=...*?.gif[ ]*/g) + "XXX");
+                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 8];
                         matches = text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',');
                         //console.log( "matches are " + matches.length + matches[0]  ) ; 
                         strMatch = matches[0];
                         gifoffset = strMatch.indexOf(".gif");
                         imgURL = strMatch.substring(9, gifoffset + 4);
-                        console.log("Image is " + imgURL);
-                        console.log("waiting ");
                         return [4 /*yield*/, this.getData(imgURL)];
-                    case 8:
+                    case 7:
+                        // console.log( "Image is " + imgURL) ;  
+                        //console.log ( "waiting " ) ; 
                         base64data = _a.sent();
                         text = text.replace(matches[0], base64data);
-                        console.log(" replaced img with " + text);
+                        //console.log( " replaced img with " + text ) ; 
                         //return text;
                         questions[i].ans2 = text;
-                        return [3 /*break*/, 10];
-                    case 9:
-                        console.log("no image in questions no  for ans2 " + i);
+                        return [3 /*break*/, 9];
+                    case 8:
                         ;
-                        _a.label = 10;
-                    case 10:
+                        _a.label = 9;
+                    case 9:
                         text = questions[i].ans3.replace('\'', '');
                         ;
-                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 12];
-                        console.log(" find match in q " + i + text.match(/<img src=...*?.gif[ ]*/g) + "XXX");
+                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 11];
                         matches = text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',');
                         //console.log( "matches are " + matches.length + matches[0]  ) ; 
                         strMatch = matches[0];
                         gifoffset = strMatch.indexOf(".gif");
                         imgURL = strMatch.substring(9, gifoffset + 4);
-                        console.log("Image is " + imgURL);
-                        console.log("waiting ");
                         return [4 /*yield*/, this.getData(imgURL)];
-                    case 11:
+                    case 10:
+                        // console.log( "Image is " + imgURL) ;  
+                        // console.log ( "waiting " ) ; 
                         base64data = _a.sent();
                         text = text.replace(matches[0], base64data);
-                        console.log(" replaced img with " + text);
+                        // console.log( " replaced img with " + text ) ; 
                         //return text;
                         questions[i].ans3 = text;
-                        return [3 /*break*/, 12];
-                    case 12:
+                        return [3 /*break*/, 11];
+                    case 11:
                         text = questions[i].ans4.replace('\'', '');
                         ;
-                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 14];
-                        console.log(" find match in q " + i + text.match(/<img src=...*?.gif[ ]*/g) + "XXX");
+                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 13];
                         matches = text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',');
                         //console.log( "matches are " + matches.length + matches[0]  ) ; 
                         strMatch = matches[0];
                         gifoffset = strMatch.indexOf(".gif");
                         imgURL = strMatch.substring(9, gifoffset + 4);
-                        console.log("Image is " + imgURL);
-                        console.log("waiting ");
                         return [4 /*yield*/, this.getData(imgURL)];
-                    case 13:
+                    case 12:
+                        //console.log( "Image is " + imgURL) ;  
+                        //console.log ( "waiting " ) ; 
                         base64data = _a.sent();
                         text = text.replace(matches[0], base64data);
                         console.log(" replaced img with " + text);
                         //return text;
                         questions[i].ans4 = text;
-                        return [3 /*break*/, 15];
-                    case 14:
-                        console.log("no image in questions no  for ans1 " + i);
+                        return [3 /*break*/, 14];
+                    case 13:
                         ;
-                        _a.label = 15;
-                    case 15:
+                        _a.label = 14;
+                    case 14:
                         i++;
                         return [3 /*break*/, 1];
-                    case 16:
-                        console.log(" imgURL arre is now " + JSON.stringify(questions));
+                    case 15:
+                        // console.log( " imgURL arre is now " + JSON.stringify(questions)   ); 
                         localStorage.setItem("quizid" + testid, JSON.stringify(questions));
                         this.loading.dismissAll();
                         d = new Date();

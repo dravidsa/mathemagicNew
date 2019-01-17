@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 371:
+/***/ 370:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BuyProductPageModule", function() { return BuyProductPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__buy_product__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__buy_product__ = __webpack_require__(401);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,20 +38,20 @@ var BuyProductPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 402:
+/***/ 401:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BuyProductPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_save_order_save_order__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_auth_service_auth_service__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_get_schools_get_schools__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_auth_service_auth_service__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_get_schools_get_schools__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_get_billing_get_billing__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_in_app_browser__ = __webpack_require__(238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__md5__ = __webpack_require__(403);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_network__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__md5__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_network__ = __webpack_require__(59);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -203,7 +203,7 @@ var BuyProductPage = /** @class */ (function () {
         this.productPrice = navParams.get("productPrice");
         this.totalCharges = this.productPrice;
         this.img_src = navParams.get("img_src");
-        alert("net connection is " + this.network.type);
+        // alert( "net connection is " + this.network.type); 
         if (this.network.type == 'none') {
             alert("Not connected to internet, some features may not work ");
             return;
@@ -255,7 +255,7 @@ var BuyProductPage = /** @class */ (function () {
     };
     BuyProductPage.prototype.ionViewWillEnter = function () {
         console.log('ionViewDidLoad BuyProductPage');
-        if ((this.productName == 'IPM Book Set ') && (this.productName == 'Online Test')) {
+        if ((this.productName != 'IPM Book Set') && (this.productName != 'Online Test')) {
             if (this.refgetSchoolsService != undefined) {
                 this.schoolName = this.refgetSchoolsService.selectedSchoolName;
                 if (this.schoolName == undefined) {
@@ -288,7 +288,7 @@ var BuyProductPage = /** @class */ (function () {
             }
             else {
                 if (this.schoolMatched == false) {
-                    this.errorMessage = "Your school name was not found , cant continue ";
+                    this.errorMessage = "**Your school name was not found , cant continue ";
                     return;
                 }
             }
@@ -367,80 +367,6 @@ var BuyProductPage = /** @class */ (function () {
             channel: channel,
             secure_hash: sec_hash
         };
-        //var url = "http://ipm-mathemagic.com/new";
-        /*
-        var ref = window.open("" , "_blank" , "location=no" ) ;
-        var doc = window.document ;
-        var form = doc.createElement("form");
-         */
-        /*
-        
-        ref.addEventListener('loadstart', function(event) { alert('start: ' ); });
-                 ref.addEventListener('loadstop', function(event) { alert('stop: ' ); });
-                 ref.addEventListener('loaderror', function(event) { alert('error: '); });
-                 ref.addEventListener('exit', function(event) { alert(event.type); });
-        */
-        /*
-                  
-          ref.addEventListener('loadstop', function(event) {
-          
-            ref.executeScript(
-                 { code: "document.body.innerHTML" },
-                 function( values ) {
-                   //  alert( values[ 0 ] );
-               var responseText = values[0] ;
-               alert ( "exitting with>" + responseText+"<" ) ;
-               if ( responseText.includes("Thanks for your order . Your order is confirmed")) {
-               //alert ( responseText ) ;
-               alert( " Thank You for your order. Your order is confirmed.") ;
-               ref.close()		  ;
-          
-               // $state.go('tab.orders') ;
-               
-               }
-             else if ( responseText.includes("Your order  could not be processed") ) {
-               
-                  alert( "Eror in processing your order . Your order has failed.") ;
-                  ref.close();
-                  // $state.go('tab.home') ;
-               }
-              
-          
-               
-                 }
-          
-          
-          
-            )
-            });
-        
-        
-        */
-        /*
-        
-        
-                 
-        
-        console.log ( "params are " + JSON.stringify(options)  ) ;
-        var form = doc.createElement("form");
-        form.setAttribute("method", "post");
-        form.setAttribute("action", 'https://sandbox.secure.ebs.in/pg/ma/payment/request');
-        //form.setAttribute("target", '_self');
-        for (var i in options) {
-            if (options.hasOwnProperty(i)) {
-                var input = doc.createElement('input');
-                input.type = 'hidden';
-                input.name = i;
-                input.value = options[i];
-                form.appendChild(input);
-            }
-         }
-        doc.body.appendChild(form);
-        // window.open('', winName,windowoption);
-        form.target = '_blank';
-        console.log(form.action);
-        form.submit();
-        */
         var winName = "_self";
         //var key ="e918f92d41508857288b020b3c70dfac";
         var key = "ebskey";
@@ -457,7 +383,6 @@ var BuyProductPage = /** @class */ (function () {
         //var URL = "http://ipm-mathemagic.com/new/payment.html?amount="+ this.totalCharges+"&order_no=" + this.orderNo + "&name="+this.billingName+"&address="+this.billingAddress+"&city=" +this.billingCity+"&postal_code="+this.billingPincode +"&email="+this.email +"&phone="+this.billingPhone ; 
         console.log("opening URL  " + URL);
         ref = window.open(URL, '_self ', "location=no");
-        // const ref = this.iab.create(URL, '_blank', 'location=no') ; 
         ref.addEventListener('loadstart', function () {
         });
         //if (ref) { 
@@ -472,7 +397,6 @@ var BuyProductPage = /** @class */ (function () {
                     ref.close();
                     this.loading.dismissAll();
                     this.navCtrl.setRoot('MenuPage');
-                    // $state.go('tab.orders') ; 
                 }
                 else if (responseText.includes("Your order  could not be processed")) {
                     alert("Eror in processing your order . Your order has failed.");
@@ -485,66 +409,6 @@ var BuyProductPage = /** @class */ (function () {
         });
         ref.addEventListener('loadloaderror', function () { alert('Got some Error '); ; });
         ref.addEventListener('exit', function () { });
-        /*
-            
-            var order_no = 123456 ;
-            console.log( "key:" + key  + "account " + account_id +  "amount "+ 105 + "order no" + order_no + " return " + return_url + "mode " + mode );
-            var hash_str =  key + "|" +  account_id + "|" + 105 + "|" + order_no + "|" + return_url + "|" + mode  ;
-            var secured_hash = Md5.hashStr(hash_str) ;
-            console.log ( "hash str is -" + hash_str + "- hash is -" + secured_hash +"-") ;
-            
-            
-            var params = {
-                'account_id' :  account_id  ,
-                'reference_no' : order_no ,
-                'amount'  : 105 ,
-                'mode' :  mode ,
-                'currency'  : 'INR' ,
-            
-                'description' : 'For Ipm' ,
-                'return_url' :  return_url ,
-                'name' : this.billingName  ,
-                'address' : this.billingAddress  ,
-                'city' :  this.billingCity  ,
-                'country' : 'Ind' ,
-                'postal_code' :  this.billingPincode  ,
-                'email' :  'dravidsa@hotmail.com' ,
-                'secure_hash' : secured_hash   ,
-                'phone' : 9922955408 ,
-                
-                'channel' : '0'
-                
-            };
-            
-            console.log ( "params are " + JSON.stringify(params)  ) ;
-            
-            var form = document.createElement("form");
-            form.setAttribute("method", "post");
-            form.setAttribute("action", 'https://secure.ebs.in/pg/ma/payment/request');
-            form.setAttribute("target", winName);
-            for (var i in params) {
-                if (params.hasOwnProperty(i)) {
-                    var input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = i;
-                    input.value = params[i];
-                    form.appendChild(input);
-                }
-             }
-            document.body.appendChild(form);
-            // window.open('', winName,windowoption);
-            form.target = winName;
-            console.log(form.action);
-            console.log( "going for submit ") ;
-            
-            console.log ( "going for socket ") ;
-            
-        
-        
-         
-             form.submit();
-            console.log ( "form submitted");
-        */
     };
     BuyProductPage.prototype.calcShipping = function () {
         console.log("in change event ");
@@ -580,7 +444,6 @@ var BuyProductPage = /** @class */ (function () {
         this.loading.present();
     };
     BuyProductPage.prototype.ngOnInit = function () {
-        console.log(" in ngOninit ");
     };
     BuyProductPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
@@ -596,7 +459,7 @@ var BuyProductPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 403:
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

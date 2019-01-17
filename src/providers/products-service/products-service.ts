@@ -18,7 +18,7 @@ export class ProductsService {
 products : any ; 
 
   constructor(public api: Api ) {
-    console.log('Hello ProductsServiceProvider Provider');
+   // console.log('Hello ProductsServiceProvider Provider');
   }
 
   public getProducts( ) { 
@@ -36,7 +36,7 @@ products : any ;
   let options = new RequestOptions({ headers: headers, params: myParams });
        */
 
-console.log(  "getting messages" ); 
+//console.log(  "getting messages" ); 
 
 // const requestOptions = new RequestOptions({ headers: headers} )
 this.api.post("http://ipm-mathemagic.com/api/ipm_get_products/","","") 

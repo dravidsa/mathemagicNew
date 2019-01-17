@@ -30,7 +30,7 @@ export class TabsHomePage {
 
 
     this.messagesService.getMessages().subscribe( data => { 
-      console.log( "got this  data  " + JSON.stringify( data )) ; 
+     // console.log( "got this  data  " + JSON.stringify( data )) ; 
       this.messages = this.messagesService.messages; 
       this.user = localStorage.getItem("loggedUser") ;  console.log( " User is " + this.user );
       ; 
@@ -71,7 +71,7 @@ export class TabsHomePage {
   
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsHomePage');
+   //console.log('ionViewDidLoad TabsHomePage');
   }
 
 }

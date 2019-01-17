@@ -7,7 +7,7 @@ webpackJsonp([11],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabsHomePageModule", function() { return TabsHomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_home__ = __webpack_require__(392);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -43,10 +43,10 @@ var TabsHomePageModule = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsHomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_messages_service_messages_service__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_messages_service_messages_service__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_network__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_network__ = __webpack_require__(59);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -79,7 +79,7 @@ var TabsHomePage = /** @class */ (function () {
             return;
         }
         this.messagesService.getMessages().subscribe(function (data) {
-            console.log("got this  data  " + JSON.stringify(data));
+            // console.log( "got this  data  " + JSON.stringify( data )) ; 
             _this.messages = _this.messagesService.messages;
             _this.user = localStorage.getItem("loggedUser");
             console.log(" User is " + _this.user);
@@ -112,16 +112,15 @@ var TabsHomePage = /** @class */ (function () {
         confirmAlert.present();
     };
     TabsHomePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TabsHomePage');
+        //console.log('ionViewDidLoad TabsHomePage');
     };
     TabsHomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-tab-home',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tab-home\tab-home.html"*/'<!--\n  Generated template for the TabHomePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n \n\n\n<ion-header>\n    <ion-navbar color="blue">\n        \n\n      <ion-title>\n       Home              \n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"> {{user}}</ion-icon>\n        </button>\n        <button menuToggle="left">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content class="home-content" padding>                 \n            <div *ngIf="messages"> \n                <button ion-item *ngFor="let message of messages" >\n                    <ion-card>                           \n                      <ion-card-content>\n                           <ion-card-title>\n                           {{message.message_title }}  \n                            </ion-card-title>\n                            <ion-grid> \n                            <ion-row> \n                             \n                              <ion-col width-25>                    \n                                      <img src={{message.message_img}} />\n                              </ion-col>\n                                              \n                           <ion-col>\n                            <p text-wrap>\n                            {{message.message_text}}   \n                            </p>                  \n                            </ion-col>\n        \n                            </ion-row>\n                          </ion-grid>\n                        </ion-card-content>\n                        \n                      </ion-card>\n\n                      </button> \n        \n                </div>\n      \n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tab-home\tab-home.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_network__["a" /* Network */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__providers_messages_service_messages_service__["a" /* MessagesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_messages_service_messages_service__["a" /* MessagesService */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_network__["a" /* Network */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_0__providers_messages_service_messages_service__["a" /* MessagesService */]])
     ], TabsHomePage);
     return TabsHomePage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=tab-home.js.map

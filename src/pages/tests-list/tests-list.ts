@@ -27,41 +27,35 @@ downloadStatus : any ;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams , public testsService:  TestsService , public quizService : QuizService  , public getImage : GetBase64ImageService, private loadingCtrl: LoadingController) {
-    console.log( "showing tests for courseid  " + navParams.get('courseid'));
+   // console.log( "showing tests for courseid  " + navParams.get('courseid'));
 
    this.getBase64Image =getImage ; 
 
 
    testsService.getTestsForCourse(navParams.get('courseid')).subscribe( data => { 
-   console.log( "got this data " + JSON.stringify( data )) ; 
+  // console.log( "got this data " + JSON.stringify( data )) ; 
    this.tests = testsService.tests; 
 
    }); 
 
-   console.log( "got these tests for course" + JSON.stringify( this.tests)) ; 
-  
-
+   //console.log( "got these tests for course" + JSON.stringify( this.tests)) ; 
   }
 
   
   public  logout()  {
-   
-  
-    localStorage.removeItem("loggedUser") ; 
-  
-    this.navCtrl.setRoot('LoginPage');
-  
-    }
+      localStorage.removeItem("loggedUser") ; 
+      this.navCtrl.setRoot('LoginPage');
+  }
 
 
   public goBack() {
-    console.log( "going back 1 level ") ; 
+  //  console.log( "going back 1 level ") ; 
     this.navCtrl.setRoot('TabTestsPage'); 
     //this.navCtrl.pop(); 
 
   }
   public solveTest( testid ,testName ) { 
-  console.log ( " going to test " + testid ) ; 
+  //console.log ( " going to test " + testid ) ; 
 
   this.navCtrl.setRoot('ShowQuizPage',{ 'testid' : testid , 'testName' : testName  } );
   }
@@ -105,16 +99,12 @@ downloadStatus : any ;
       
     }
 
-
-
-    
-
   public downloadTest( testid) { 
 
-    console.log( "downloading test " + testid ) ; 
+    //console.log( "downloading test " + testid ) ; 
 
     this.quizService.getQuestionsForQuiz(testid).subscribe( data => { 
-      console.log( "got this data " + JSON.stringify( data )) ; 
+      //console.log( "got this data " + JSON.stringify( data )) ; 
       this.questions = this.quizService.questions; 
       ; 
       //alert("starting the donwload ...please wait  ") ; 
@@ -142,11 +132,11 @@ downloadStatus : any ;
 
     for ( var i = 0 ; i < questions.length ; i++ ) { 
       var text = questions[i].text  ; 
-       console.log( " looking in " + text ) ; 
+      // console.log( " looking in " + text ) ; 
        //if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
         if  ( text.match(/<img src=...*?.gif[ ]*...*/g))  { 
       
-        console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+     //   console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
         var matches =  text.match(/<img src=...*?.gif[ ]*...*/g).toString().split(',') ;
         //console.log( "matches are " + matches.length + matches[0]  ) ; 
         strMatch = matches[0] ; 
@@ -161,7 +151,8 @@ downloadStatus : any ;
         questions[i].text = text ; 
 
             }
-            else { console.log( "no image in questions no "+ i ) ;  }
+            else { //console.log( "no image in questions no "+ i ) ; 
+           }
   
       
 
@@ -169,22 +160,23 @@ downloadStatus : any ;
 
         if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
         
-          console.log( " find match in q ans1 "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+         // console.log( " find match in q ans1 "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
           var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
           gifoffset = strMatch.indexOf( ".gif") ; 
           imgURL  = strMatch.substring(9,gifoffset + 4 );
-          console.log( "Image is " + imgURL) ;  
-          console.log ( "waiting " ) ; 
+         // console.log( "Image is " + imgURL) ;  
+         // console.log ( "waiting " ) ; 
           base64data  = await this.getData(imgURL) ; 
           text= text.replace (matches[0], base64data);
-          console.log( " replaced img with " + text ) ; 
+          //console.log( " replaced img with " + text ) ; 
           //return text;
           questions[i].ans1 = text ; 
   
               }
-              else { console.log( "no image in questions no  for ans1 "+ i ) ; ;  }
+              else { //console.log( "no image in questions no  for ans1 "+ i ) ;
+               ;  }
     
         
 
@@ -193,22 +185,23 @@ downloadStatus : any ;
         //if  ( text.match(/<img src=...*?.gif[ ]*\/>/g))  { 
         if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
         
-          console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+         // console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
           var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
           gifoffset = strMatch.indexOf( ".gif") ; 
           imgURL  = strMatch.substring(9,gifoffset + 4 );
-          console.log( "Image is " + imgURL) ;  
-          console.log ( "waiting " ) ; 
+         // console.log( "Image is " + imgURL) ;  
+          //console.log ( "waiting " ) ; 
           base64data  = await this.getData(imgURL) ; 
           text= text.replace (matches[0], base64data);
-          console.log( " replaced img with " + text ) ; 
+          //console.log( " replaced img with " + text ) ; 
           //return text;
           questions[i].ans2 = text ; 
   
               }
-              else { console.log( "no image in questions no  for ans2 "+ i ) ; ;  }
+              else { //console.log( "no image in questions no  for ans2 "+ i ) ;
+               ;  }
     
         
 
@@ -216,17 +209,17 @@ downloadStatus : any ;
 
         if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
         
-          console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+         // console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
           var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
           gifoffset = strMatch.indexOf( ".gif") ; 
           imgURL  = strMatch.substring(9,gifoffset + 4 );
-          console.log( "Image is " + imgURL) ;  
-          console.log ( "waiting " ) ; 
+         // console.log( "Image is " + imgURL) ;  
+         // console.log ( "waiting " ) ; 
           base64data  = await this.getData(imgURL) ; 
           text= text.replace (matches[0], base64data);
-          console.log( " replaced img with " + text ) ; 
+         // console.log( " replaced img with " + text ) ; 
           //return text;
           questions[i].ans3 = text ; 
   
@@ -238,14 +231,14 @@ downloadStatus : any ;
 
         if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
         
-          console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
+          //console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
           var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
           gifoffset = strMatch.indexOf( ".gif") ; 
           imgURL  = strMatch.substring(9,gifoffset + 4 );
-          console.log( "Image is " + imgURL) ;  
-          console.log ( "waiting " ) ; 
+         //console.log( "Image is " + imgURL) ;  
+          //console.log ( "waiting " ) ; 
           base64data  = await this.getData(imgURL) ; 
           text= text.replace (matches[0], base64data);
           console.log( " replaced img with " + text ) ; 
@@ -253,10 +246,11 @@ downloadStatus : any ;
           questions[i].ans4 = text ; 
   
               }
-              else { console.log( "no image in questions no  for ans1 "+ i ) ; ;  }
+              else {// console.log( "no image in questions no  for ans1 "+ i ) ; 
+              ;  }
      }
     
-  console.log( " imgURL arre is now " + JSON.stringify(questions)   ); 
+ // console.log( " imgURL arre is now " + JSON.stringify(questions)   ); 
   localStorage.setItem("quizid" + testid, JSON.stringify(questions) ); 
   this.loading.dismissAll();
   //alert("donwload complete ") ; 
@@ -270,6 +264,7 @@ downloadStatus : any ;
 
     
 }
+
 
     public async transformText( text   ) { 
       var  strMatch  = new String() ; 
@@ -296,6 +291,7 @@ downloadStatus : any ;
 
     }
     
+
 
 
      

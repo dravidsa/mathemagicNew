@@ -28,7 +28,7 @@ export class TabTestsPage {
       var userName = localStorage.getItem("loggedUser") ; 
 
       this.coursesService.getCoursesForUser(userName).subscribe( data => { 
-        console.log( "got this course data for logged in user " + JSON.stringify( data )) ; 
+      //  console.log( "got this course data for logged in user " + JSON.stringify( data )) ; 
         this.userCourses = coursesService.courses  ; 
         });
 
@@ -36,7 +36,7 @@ export class TabTestsPage {
 
     } 
     else { 
-    console.log( " coursesfor  this  user are " + JSON.stringify(coursesService.courses ) ) ; 
+   // console.log( " coursesfor  this  user are " + JSON.stringify(coursesService.courses ) ) ; 
     this.userCourses = coursesService.courses  ; 
     //console.log( " coursesfor this user are " + JSON.stringify( CoursesService.courses) ) ; 
     } 
@@ -59,7 +59,7 @@ export class TabTestsPage {
   }
   public goToTest(courseid ) {
 
-   console.log( " goging to  test " + courseid ) ; 
+  // console.log( " goging to  test " + courseid ) ; 
    this.navCtrl.push(TabTestsPage);
    this.navCtrl.setRoot('TestsListPage',{ 'courseid' : courseid } );
 
@@ -67,7 +67,7 @@ export class TabTestsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabTestsPage');
+   // console.log('ionViewDidLoad TabTestsPage');
   }
 
 }

@@ -7,7 +7,7 @@ webpackJsonp([8],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabTestsPageModule", function() { return TabTestsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_tests__ = __webpack_require__(395);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -44,8 +44,8 @@ var TabTestsPageModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabTestsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_courses_service_courses_service__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_courses_service_courses_service__ = __webpack_require__(227);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -74,12 +74,12 @@ var TabTestsPage = /** @class */ (function () {
         if (coursesService.courses == undefined) {
             var userName = localStorage.getItem("loggedUser");
             this.coursesService.getCoursesForUser(userName).subscribe(function (data) {
-                console.log("got this course data for logged in user " + JSON.stringify(data));
+                //  console.log( "got this course data for logged in user " + JSON.stringify( data )) ; 
                 _this.userCourses = coursesService.courses;
             });
         }
         else {
-            console.log(" coursesfor  this  user are " + JSON.stringify(coursesService.courses));
+            // console.log( " coursesfor  this  user are " + JSON.stringify(coursesService.courses ) ) ; 
             this.userCourses = coursesService.courses;
             //console.log( " coursesfor this user are " + JSON.stringify( CoursesService.courses) ) ; 
         }
@@ -92,12 +92,12 @@ var TabTestsPage = /** @class */ (function () {
     TabTestsPage.prototype.goBack = function () {
     };
     TabTestsPage.prototype.goToTest = function (courseid) {
-        console.log(" goging to  test " + courseid);
+        // console.log( " goging to  test " + courseid ) ; 
         this.navCtrl.push(TabTestsPage_1);
         this.navCtrl.setRoot('TestsListPage', { 'courseid': courseid });
     };
     TabTestsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TabTestsPage');
+        // console.log('ionViewDidLoad TabTestsPage');
     };
     TabTestsPage = TabTestsPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({

@@ -28,6 +28,7 @@ import { GetBillingService } from '../providers/get-billing/get-billing';
 import { GetBase64ImageService } from '../providers/get-base64-image/get-base64-image';
 import { InAppBrowser } from '../../node_modules/@ionic-native/in-app-browser';
 import { Network } from '@ionic-native/network';
+import { GetOrdersProvider } from '../providers/get-orders/get-orders';
 
 //import {  RouterModule,  Routes} from '@angular/router'
 
@@ -99,7 +100,8 @@ export function provideSettings(storage: Storage) {
     GetBillingService,
     GetBase64ImageService,
     InAppBrowser,
-    Network 
+    Network,
+    GetOrdersProvider 
 
   ]
 })

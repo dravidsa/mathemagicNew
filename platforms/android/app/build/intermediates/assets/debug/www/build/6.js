@@ -7,7 +7,7 @@ webpackJsonp([6],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TestResultsPageModule", function() { return TestResultsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__test_results__ = __webpack_require__(397);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -44,7 +44,7 @@ var TestResultsPageModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestResultsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,7 +67,7 @@ var TestResultsPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.questions = navParams.get("questions");
-        console.log("got questions in results " + this.questions);
+        // console.log ( "got questions in results " + this.questions ) ; 
         this.calculateMarks();
     }
     TestResultsPage.prototype.logout = function () {
@@ -75,7 +75,7 @@ var TestResultsPage = /** @class */ (function () {
         this.navCtrl.setRoot('LoginPage');
     };
     TestResultsPage.prototype.gotoQuestion = function (questionNo) {
-        console.log(" reviewing question  in results " + questionNo);
+        // console.log( " reviewing question  in results " + questionNo); 
         this.navCtrl.setRoot('ShowQuizPage', { questionNo: questionNo, caller: 'results', questions: this.questions });
     };
     TestResultsPage.prototype.calculateMarks = function () {
@@ -89,13 +89,13 @@ var TestResultsPage = /** @class */ (function () {
             }
             this.outOfMarks = this.outOfMarks + Number.parseInt(this.questions[i].marks);
         }
-        console.log("correct questions = " + this.correctQuestions + " total marks " + this.totalMarks + "out of " + this.outOfMarks);
+        // console.log( "correct questions = " + this.correctQuestions+ " total marks " + this.totalMarks + "out of "+ this.outOfMarks) ; 
     };
     TestResultsPage.prototype.back = function () {
         this.navCtrl.setRoot('TabTestsPage');
     };
     TestResultsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TestResultsPage');
+        // console.log('ionViewDidLoad TestResultsPage');
     };
     TestResultsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({

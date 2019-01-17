@@ -21,7 +21,7 @@ export class TestSummaryPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   this.questions = navParams.get("questions") ; 
-  console.log( "got questions " + JSON.stringify(this.questions)) ; 
+  //console.log( "got questions " + JSON.stringify(this.questions)) ; 
 
   }
 
@@ -46,7 +46,7 @@ export class TestSummaryPage {
     this.navCtrl.setRoot('TestResultsPage', { questions : this.questions});
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TestSummaryPage');
+  //  console.log('ionViewDidLoad TestSummaryPage');
   }
 
 }

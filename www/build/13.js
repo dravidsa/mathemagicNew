@@ -6,9 +6,9 @@ webpackJsonp([13],{
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowQuizPageModule", function() { return ShowQuizPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_sanitizehtml_pipe_sanitizehtml_pipe__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_sanitizehtml_pipe_sanitizehtml_pipe__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__show_quiz__ = __webpack_require__(388);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -45,10 +45,10 @@ var ShowQuizPageModule = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowQuizPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(121);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -80,14 +80,14 @@ var ShowQuizPage = /** @class */ (function () {
         this.currentQuestionNo = 0;
         this.matchList = [];
         this.caller = navParams.get("caller");
-        console.log("called from " + this.caller);
+        // console.log ( "called from " + this.caller ) ; 
         if ((this.caller == 'summary') || (this.caller == 'results')) {
             this.currentQuestionNo = navParams.get("questionNo") - 1;
             this.questions = navParams.get("questions");
-            console.log("called from summary . got questions " + JSON.stringify(this.questions));
+            //  console.log ( "called from summary . got questions " + JSON.stringify(this.questions)) ; 
         }
         else {
-            console.log(" showing questions for quiz " + navParams.get('testid'));
+            // console.log ( " showing questions for quiz "  + navParams.get('testid')) ; 
             this.testid = navParams.get('testid');
             this.testName = navParams.get('testName');
         }
@@ -96,31 +96,30 @@ var ShowQuizPage = /** @class */ (function () {
         var _this = this;
         if ((this.caller != 'summary') && (this.caller != 'results')) {
             if (localStorage.getItem("quizid" + this.testid)) {
-                console.log(" getting JSON from local for " + this.testid + JSON.parse(localStorage.getItem("quizid" + this.testid)));
+                //console.log( " getting JSON from local for "  + this.testid  +JSON.parse(localStorage.getItem("quizid"+this.testid)) ) ; 
                 this.questions = JSON.parse(localStorage.getItem("quizid" + this.testid));
-                console.log("questions from local is " + this.questions[0].text);
+                // console.log( "questions from local is " + this.questions[0].text) ; 
             }
             else {
                 this.quizService.getQuestionsForQuiz(this.testid).subscribe(function (data) {
-                    console.log("got this data " + JSON.stringify(data));
+                    //console.log( "got this data " + JSON.stringify( data )) ; 
                     _this.questions = _this.quizService.questions;
                     ;
-                    console.log(" fininding base64 ");
+                    // console.log( " fininding base64 ") ; 
                     //this.transformQuestion(this.questions , this.getBase64Image);
                 });
             }
         }
         else {
-            console.log("chill....");
         }
     };
     ShowQuizPage.prototype.prevQuestion = function () {
         this.currentQuestionNo--;
-        console.log("showing question  " + this.currentQuestionNo);
+        //console.log( "showing question  "+ this.currentQuestionNo) ; 
     };
     ShowQuizPage.prototype.nextQuestion = function () {
         this.currentQuestionNo++;
-        console.log("showing question " + this.currentQuestionNo);
+        //console.log( "showing question "+ this.currentQuestionNo) ; 
     };
     ShowQuizPage.prototype.showConfirmAlert = function (option) {
         var _this = this;
@@ -175,18 +174,18 @@ var ShowQuizPage = /** @class */ (function () {
         var matchCount = 0;
         var gifoffset = 0;
         for (var i = 0; i < questions.length; i++) {
-            console.log("finding match in " + questions[i].text);
+            //console.log( "finding match in " + questions[i].text) ; 
             var imgURL;
             //console.log( questions[i].text.replace(/<img src=...*?.gif>/g,    function( match, offset ){   
             console.log(questions[i].text.replace(/<img src=...*?.gif..*>/g, function (match, offset) {
                 strMatch = match;
                 matchCount++;
-                console.log("match is  " + match + "url is " + offset);
+                //  console.log( "match is  " + match  + "url is " + offset) ;
                 gifoffset = strMatch.indexOf(".gif");
-                console.log("got offset for gif " + gifoffset + ">" + strMatch + "<" + match.length);
+                // console.log ( "got offset for gif " +  gifoffset   + ">" + strMatch  + "<" + match.length) ; 
                 imgURL = match.substring(9, gifoffset + 4);
                 //imgURL  = match.substring(9,match.length-1-offset );
-                console.log("get for " + i + "-" + imgURL);
+                //console.log( "get for " + i + "-" +  imgURL ) ;
                 ;
                 getImage.getBase64Image(imgURL).subscribe(function (data) {
                     serviceCounter++;
@@ -195,7 +194,7 @@ var ShowQuizPage = /** @class */ (function () {
                     ImageMap.set(data, getImage.base64Image);
                     //imageURLArr.push( imgURL + '-' + getImage.base64Image  ) ; 
                     if (serviceCounter == matchCount) {
-                        console.log("ImageMap is " + ImageMap.get(imgURL));
+                        // console.log( "ImageMap is " + ImageMap.get(imgURL) ) ; 
                         for (var i = 0; i < questions.length; i++) {
                             var replaceURL;
                             questions[i].text = questions[i].text.replace(/<img src=...*?.gif..*>/g, function (match, offset) {
@@ -206,13 +205,13 @@ var ShowQuizPage = /** @class */ (function () {
                                 return replaceURL;
                             });
                         }
-                        console.log("replaced question Arr  is " + JSON.stringify(questions));
+                        //console.log( "replaced question Arr  is " + JSON.stringify(questions) )  ; 
                     }
                 });
             }));
         }
         //console.log ( " match Array is " + ShowQuizPage.matchList) ; 
-        console.log(" imgURL arre is now " + imageURLArr.length + imageURLArr);
+        // console.log( " imgURL arre is now " + imageURLArr.length + imageURLArr   ); 
     };
     ShowQuizPage.prototype.toDataUrl = function (url, callback) {
         var xhr = new XMLHttpRequest();
@@ -231,30 +230,12 @@ var ShowQuizPage = /** @class */ (function () {
         localStorage.removeItem("loggedUser");
         this.navCtrl.setRoot('LoginPage');
     };
-    /*
-    public  replaceImage( match , url) {
-    
-    console.log( "match is  " + match  + "url is " + url) ;
-    
-    URL  = match.substring(9,match.length-1) ;
-    console.log ( "finding data url for " + URL );
-    //console.log( " this is good " + this.questions);
-    
-    ShowQuizPage.toDataUrl(URL , function(myBase64) {
-        console.log(myBase64); // myBase4 is the base64 string
-        
-        return myBase64 ;
-    });
-    
-    
-    }
-    */
     ShowQuizPage.prototype.flagQuestion = function () {
         this.questions[this.currentQuestionNo].isFlagged = !this.questions[this.currentQuestionNo].isFlagged;
-        console.log("value for flag   toggled ");
+        // console.log( "value for flag   toggled ") ; 
     };
     ShowQuizPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ShowQuizPage');
+        //  console.log('ionViewDidLoad ShowQuizPage');
     };
     ShowQuizPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({

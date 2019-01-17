@@ -7,7 +7,7 @@ webpackJsonp([9],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabServicesPageModule", function() { return TabServicesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_services__ = __webpack_require__(394);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -44,7 +44,7 @@ var TabServicesPageModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabServicesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -72,7 +72,7 @@ var TabServicesPage = /** @class */ (function () {
     };
     TabServicesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tab-services',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tab-services\tab-services.html"*/'<!--\n  Generated template for the TabServicesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Services</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="tabservices-content" padding>\nThis will be provided later. \n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tab-services\tab-services.html"*/,
+            selector: 'page-tab-services',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tab-services\tab-services.html"*/'<!--\n  Generated template for the TabServicesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Services</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="tabservices-content" padding>\n\n  \n\n    <ion-card>\n  \n      <ion-item>\n        \n        <h2>My Orders</h2>\n        <p> </p>\n      </ion-item>\n\n      <ion-grid> \n        <ion-row> \n         \n          <ion-col width-25>   \n              <img src="http://ipm-mathemagic.com/new/images/app/orders.jpg">                 \n                  \n          </ion-col>\n                          \n       <ion-col>\n        <p text-wrap>\n            You can see all orders you placed on ipm-mathemagic.com from this id\n        </p> \n        <BR/>               \n        <p>\n            <button ion-button color="secondary" (click)="viewOrders()" >View Orders</button>\n\n          </p>  \n\n        </ion-col>\n        <ion-item>\n        \n            <h2>My Hall Ticket</h2>\n            <p> </p>\n          </ion-item>\n    \n        </ion-row>\n      </ion-grid>\n      <ion-grid> \n          <ion-row> \n           \n            <ion-col width-25>   \n                <img src="http://ipm-mathemagic.com/new/images/app/orders.jpg">                 \n                    \n            </ion-col>\n                            \n         <ion-col>\n          <p text-wrap>\n              You can see your hall ticket here. ( comming soon.... )\n          </p>          \n              \n          </ion-col>\n  \n          </ion-row>\n        </ion-grid>\n\n        <ion-item>\n        \n            <h2>My Result</h2>\n            <p> </p>\n          </ion-item>\n\n          \n        <ion-grid> \n            <ion-row> \n             \n              <ion-col width-25>   \n                  <img src="http://ipm-mathemagic.com/new/images/app/results.jpg">                 \n                      \n              </ion-col>\n                              \n           <ion-col>\n            <p text-wrap>\n                You can see your result of IPM exam here ( comming soon.... )\n            </p>                  \n            </ion-col>\n    \n            </ion-row>\n          </ion-grid>\n\n\n  \n     \n   \n  \n    </ion-card>\n  \n\n\n\n\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tab-services\tab-services.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], TabServicesPage);

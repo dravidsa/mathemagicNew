@@ -7,7 +7,7 @@ webpackJsonp([10],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabProductsPageModule", function() { return TabProductsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_products__ = __webpack_require__(393);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -43,9 +43,9 @@ var TabProductsPageModule = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabProductsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_products_service_products_service__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_products_service_products_service__ = __webpack_require__(235);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -71,7 +71,7 @@ var TabProductsPage = /** @class */ (function () {
         this.navParams = navParams;
         this.productsService = productsService;
         this.productsService.getProducts().subscribe(function (data) {
-            console.log("got this data " + JSON.stringify(data));
+            //console.log( "got this data " + JSON.stringify( data )) ; 
             _this.products = _this.productsService.products;
             ;
         });
@@ -81,11 +81,11 @@ var TabProductsPage = /** @class */ (function () {
         this.navCtrl.setRoot('LoginPage');
     };
     TabProductsPage.prototype.buyProduct = function (productName, productId, productPrice, productImage) {
-        console.log("going to   buy" + productName);
+        // console.log( "going to   buy" + productName ) ; 
         this.navCtrl.setRoot('BuyProductPage', { productId: productId, productName: productName, productPrice: productPrice, img_src: productImage });
     };
     TabProductsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TabProductsPage');
+        // console.log('ionViewDidLoad TabProductsPage');
     };
     TabProductsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({

@@ -1,16 +1,16 @@
 webpackJsonp([30],{
 
-/***/ 122:
+/***/ 123:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(13);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__api_api__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mocks_providers_items__ = __webpack_require__(318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mocks_providers_items__ = __webpack_require__(319);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__mocks_providers_items__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings_settings__ = __webpack_require__(320);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings_settings__ = __webpack_require__(321);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__settings_settings__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_user__ = __webpack_require__(321);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_user__ = __webpack_require__(322);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3__user_user__["a"]; });
 
 
@@ -25,7 +25,7 @@ webpackJsonp([30],{
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Api; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -91,7 +91,7 @@ var Api = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 134:
+/***/ 135:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -104,133 +104,137 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 134;
+webpackEmptyAsyncContext.id = 135;
 
 /***/ }),
 
-/***/ 185:
+/***/ 186:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/buy-product/buy-product.module": [
-		371,
-		1
+		370,
+		33
 	],
 	"../pages/cards/cards.module": [
 		342,
-		29
+		62
 	],
 	"../pages/content/content.module": [
 		343,
-		28
+		61
 	],
 	"../pages/home/home.module": [
 		344,
-		27
+		60
 	],
 	"../pages/item-create/item-create.module": [
 		345,
-		26
+		59
 	],
 	"../pages/item-detail/item-detail.module": [
 		346,
-		25
+		58
 	],
 	"../pages/list-master/list-master.module": [
 		347,
-		24
+		57
 	],
 	"../pages/login/login.module": [
 		348,
-		23
+		56
 	],
 	"../pages/menu/menu.module": [
-		349,
-		22
+		350,
+		55
 	],
 	"../pages/payment/payment.module": [
-		350,
-		21
+		349,
+		54
 	],
 	"../pages/register/register.module": [
 		351,
-		20
+		53
 	],
 	"../pages/school-list/school-list.module": [
 		352,
-		19
+		52
 	],
 	"../pages/search/search.module": [
 		353,
-		18
+		51
 	],
 	"../pages/settings/settings.module": [
 		354,
-		17
+		50
 	],
 	"../pages/show-courses/show-courses.module": [
 		355,
-		16
+		49
 	],
 	"../pages/show-messages/show-messages.module": [
 		356,
-		15
+		48
 	],
 	"../pages/show-products/show-products.module": [
 		357,
-		14
+		47
 	],
 	"../pages/show-quiz/show-quiz.module": [
 		358,
-		13
+		46
 	],
 	"../pages/show-tests/show-tests.module": [
 		359,
-		12
+		45
 	],
 	"../pages/signup/signup.module": [
 		360,
-		0
+		32
 	],
 	"../pages/tab-home/tab-home.module": [
 		361,
-		11
+		44
 	],
 	"../pages/tab-products/tab-products.module": [
 		362,
-		10
+		43
 	],
 	"../pages/tab-services/tab-services.module": [
 		363,
-		9
+		42
 	],
 	"../pages/tab-tests/tab-tests.module": [
 		364,
-		8
+		41
 	],
 	"../pages/tabs/tabs.module": [
 		365,
-		7
+		40
 	],
 	"../pages/test-results/test-results.module": [
 		366,
-		6
+		39
 	],
 	"../pages/test-summary/test-summary.module": [
 		367,
-		5
+		38
 	],
 	"../pages/tests-list/tests-list.module": [
-		370,
-		4
+		371,
+		37
 	],
 	"../pages/tutorial/tutorial.module": [
 		368,
-		3
+		36
+	],
+	"../pages/view-orders/view-orders.module": [
+		404,
+		35
 	],
 	"../pages/welcome/welcome.module": [
 		369,
-		2
+		34
 	]
 };
 function webpackAsyncContext(req) {
@@ -244,12 +248,12 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 185;
+webpackAsyncContext.id = 186;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 225:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -262,7 +266,7 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_api__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__ = __webpack_require__(59);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -323,7 +327,7 @@ var AuthService = /** @class */ (function () {
                             localStorage.setItem("loggedUser", _this.currentUser.name);
                             localStorage.setItem("loggedUserId", _this.currentUser.id);
                             localStorage.setItem("loggedUserEmail", _this.currentUser.email);
-                            console.log(" set user in local " + _this.currentUser.name + "-" + _this.currentUser.id + "-" + _this.currentUser.email);
+                            //console.log( " set user in local " + this.currentUser.name + "-" + this.currentUser.id + "-"+ this.currentUser.email ) ; 
                             //console.log( "name " + data.username + "Mesg"  + data.Msg) ; 
                             observer.next("Login successful");
                         }
@@ -383,17 +387,16 @@ var AuthService = /** @class */ (function () {
     };
     AuthService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */]])
     ], AuthService);
     return AuthService;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=auth-service.js.map
 
 /***/ }),
 
-/***/ 226:
+/***/ 227:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -470,7 +473,7 @@ var CoursesService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 227:
+/***/ 228:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -521,7 +524,7 @@ var GetSchoolsService = /** @class */ (function () {
             myParams.append('username',username);
         let options = new RequestOptions({ headers: headers, params: myParams });
              */
-            console.log("in serivce : getting schools" + schoolName);
+            //console.log(  "in serivce : getting schools" + schoolName ); 
             // const requestOptions = new RequestOptions({ headers: headers} )
             _this.api.get("http://ipm-mathemagic.com/api/ipm_get_schools/?school_name=" + schoolName)
                 .subscribe(function (data) {
@@ -547,12 +550,12 @@ var GetSchoolsService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 228:
+/***/ 229:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetBase64ImageService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
@@ -629,7 +632,7 @@ var GetBase64ImageService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 229:
+/***/ 230:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -664,7 +667,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var QuizService = /** @class */ (function () {
     function QuizService(api) {
         this.api = api;
-        console.log('Hello QuizServiceProvider Provider');
+        // console.log('Hello QuizServiceProvider Provider');
     }
     QuizService.prototype.getQuestionsForQuiz = function (testid) {
         var _this = this;
@@ -680,7 +683,7 @@ var QuizService = /** @class */ (function () {
             myParams.append('username',username);
         let options = new RequestOptions({ headers: headers, params: myParams });
              */
-            console.log("getting courses for user" + testid);
+            //console.log(  "getting courses for user" + testid ); 
             // const requestOptions = new RequestOptions({ headers: headers} )
             _this.api.get("http://ipm-mathemagic.com/api/getQuestions/?quizid=" + testid)
                 .subscribe(function (data) {
@@ -706,7 +709,7 @@ var QuizService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 231:
+/***/ 232:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -747,7 +750,7 @@ var Items = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 232:
+/***/ 233:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -787,7 +790,7 @@ var SanitizeHtmlPipe = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 233:
+/***/ 234:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -827,19 +830,10 @@ var MessagesService = /** @class */ (function () {
     MessagesService.prototype.getMessages = function () {
         var _this = this;
         return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].create(function (observer) {
-            // At this point make a request to your backend to make a real check!
-            //console.log(  "getting courses for user" + username ); 
             var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Headers */]();
-            // headers.append("Accept", 'application/json');
             headers.append('Content-Type', 'application/json');
             headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
-            /*
-            let myParams = new URLSearchParams();
-            myParams.append('username',username);
-        let options = new RequestOptions({ headers: headers, params: myParams });
-             */
             console.log("getting messages");
-            // const requestOptions = new RequestOptions({ headers: headers} )
             _this.api.get("http://ipm-mathemagic.com/api/getMessages/")
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
@@ -855,16 +849,17 @@ var MessagesService = /** @class */ (function () {
     };
     MessagesService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */]) === "function" && _a || Object])
     ], MessagesService);
     return MessagesService;
+    var _a;
 }());
 
 //# sourceMappingURL=messages-service.js.map
 
 /***/ }),
 
-/***/ 234:
+/***/ 235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -899,7 +894,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ProductsService = /** @class */ (function () {
     function ProductsService(api) {
         this.api = api;
-        console.log('Hello ProductsServiceProvider Provider');
+        // console.log('Hello ProductsServiceProvider Provider');
     }
     ProductsService.prototype.getProducts = function () {
         var _this = this;
@@ -915,7 +910,7 @@ var ProductsService = /** @class */ (function () {
             myParams.append('username',username);
         let options = new RequestOptions({ headers: headers, params: myParams });
              */
-            console.log("getting messages");
+            //console.log(  "getting messages" ); 
             // const requestOptions = new RequestOptions({ headers: headers} )
             _this.api.post("http://ipm-mathemagic.com/api/ipm_get_products/", "", "")
                 .subscribe(function (data) {
@@ -938,84 +933,6 @@ var ProductsService = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=products-service.js.map
-
-/***/ }),
-
-/***/ 235:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestsService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_api__ = __webpack_require__(13);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/*
-  Generated class for the TestsServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var TestsService = /** @class */ (function () {
-    function TestsService(api) {
-        this.api = api;
-        console.log('Hello TestsServiceProvider Provider');
-    }
-    TestsService.prototype.getTestsForCourse = function (courseid) {
-        var _this = this;
-        console.log(" called me " + courseid);
-        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].create(function (observer) {
-            // At this point make a request to your backend to make a real check!
-            //console.log(  "getting courses for user" + username ); 
-            var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Headers */]();
-            // headers.append("Accept", 'application/json');
-            headers.append('Content-Type', 'application/json');
-            headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
-            /*
-            let myParams = new URLSearchParams();
-            myParams.append('username',username);
-        let options = new RequestOptions({ headers: headers, params: myParams });
-             */
-            console.log("getting tests  for courses" + courseid);
-            // const requestOptions = new RequestOptions({ headers: headers} )
-            _this.api.get("http://ipm-mathemagic.com/api/getTests/?courseid=" + courseid)
-                .subscribe(function (data) {
-                console.log(JSON.stringify(data));
-                _this.tests = data;
-                observer.next("got tests");
-                observer.complete();
-            }, function (error) {
-                console.log("got some error " + JSON.stringify(error));
-                observer.next("failed");
-                observer.complete();
-            });
-        });
-    };
-    TestsService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */]])
-    ], TestsService);
-    return TestsService;
-}());
-
-//# sourceMappingURL=tests-service.js.map
 
 /***/ }),
 
@@ -1134,7 +1051,7 @@ var GetBillingService = /** @class */ (function () {
             myParams.append('username',username);
         let options = new RequestOptions({ headers: headers, params: myParams });
              */
-            console.log("in serivce : getting address for user " + userName);
+            // console.log(  "in serivce : getting address for user " + userName ); 
             // const requestOptions = new RequestOptions({ headers: headers} )
             _this.api.get("http://ipm-mathemagic.com/api/getBilling/?username=" + userName)
                 .subscribe(function (data) {
@@ -1164,9 +1081,87 @@ var GetBillingService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_api__ = __webpack_require__(13);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/*
+  Generated class for the TestsServiceProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var TestsService = /** @class */ (function () {
+    function TestsService(api) {
+        this.api = api;
+        console.log('Hello TestsServiceProvider Provider');
+    }
+    TestsService.prototype.getTestsForCourse = function (courseid) {
+        var _this = this;
+        console.log(" called me " + courseid);
+        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].create(function (observer) {
+            // At this point make a request to your backend to make a real check!
+            //console.log(  "getting courses for user" + username ); 
+            var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Headers */]();
+            // headers.append("Accept", 'application/json');
+            headers.append('Content-Type', 'application/json');
+            headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
+            /*
+            let myParams = new URLSearchParams();
+            myParams.append('username',username);
+        let options = new RequestOptions({ headers: headers, params: myParams });
+             */
+            console.log("getting tests  for courses" + courseid);
+            // const requestOptions = new RequestOptions({ headers: headers} )
+            _this.api.get("http://ipm-mathemagic.com/api/getTests/?courseid=" + courseid)
+                .subscribe(function (data) {
+                console.log(JSON.stringify(data));
+                _this.tests = data;
+                observer.next("got tests");
+                observer.complete();
+            }, function (error) {
+                console.log("got some error " + JSON.stringify(error));
+                observer.next("failed");
+                observer.complete();
+            });
+        });
+    };
+    TestsService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */]])
+    ], TestsService);
+    return TestsService;
+}());
+
+//# sourceMappingURL=tests-service.js.map
+
+/***/ }),
+
+/***/ 240:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 
 
@@ -1177,39 +1172,40 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 252:
+/***/ 253:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export createTranslateLoader */
 /* unused harmony export provideSettings */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(138);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngx_translate_http_loader__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ionic_angular__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_items_items__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(340);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_auth_service_auth_service__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_quiz_service_quiz_service__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_tests_service_tests_service__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_products_service_products_service__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_messages_service_messages_service__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_courses_service_courses_service__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_sanitizehtml_pipe_sanitizehtml_pipe__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_get_schools_get_schools__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngx_translate_http_loader__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_items_items__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_auth_service_auth_service__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_quiz_service_quiz_service__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_tests_service_tests_service__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_products_service_products_service__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_messages_service_messages_service__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_courses_service_courses_service__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_sanitizehtml_pipe_sanitizehtml_pipe__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_get_schools_get_schools__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_save_order_save_order__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_get_billing_get_billing__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_get_base64_image_get_base64_image__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_get_base64_image_get_base64_image__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__node_modules_ionic_native_in_app_browser__ = __webpack_require__(238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_network__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_network__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_get_orders_get_orders__ = __webpack_require__(406);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1228,6 +1224,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 //import { Items } from '../mocks/providers/items';
+
 
 
 
@@ -1290,8 +1287,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/item-detail/item-detail.module#ItemDetailPageModule', name: 'ItemDetailPage', segment: 'item-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/school-list/school-list.module#SchoolListPageModule', name: 'SchoolListPage', segment: 'school-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
@@ -1311,8 +1308,9 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/test-summary/test-summary.module#TestSummaryPageModule', name: 'TestSummaryPage', segment: 'test-summary', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/buy-product/buy-product.module#BuyProductPageModule', name: 'BuyProductPage', segment: 'buy-product', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tests-list/tests-list.module#TestsListPageModule', name: 'TestsListPage', segment: 'tests-list', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/buy-product/buy-product.module#BuyProductPageModule', name: 'BuyProductPage', segment: 'buy-product', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/view-orders/view-orders.module#ViewOrdersPageModule', name: 'ViewOrdersPage', segment: 'view-orders', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
@@ -1344,7 +1342,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_22__providers_get_billing_get_billing__["a" /* GetBillingService */],
                 __WEBPACK_IMPORTED_MODULE_23__providers_get_base64_image_get_base64_image__["a" /* GetBase64ImageService */],
                 __WEBPACK_IMPORTED_MODULE_24__node_modules_ionic_native_in_app_browser__["a" /* InAppBrowser */],
-                __WEBPACK_IMPORTED_MODULE_25__ionic_native_network__["a" /* Network */]
+                __WEBPACK_IMPORTED_MODULE_25__ionic_native_network__["a" /* Network */],
+                __WEBPACK_IMPORTED_MODULE_26__providers_get_orders_get_orders__["a" /* GetOrdersProvider */]
             ]
         })
     ], AppModule);
@@ -1355,13 +1354,13 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 318:
+/***/ 319:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Items; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_item__ = __webpack_require__(319);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_item__ = __webpack_require__(320);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1457,7 +1456,7 @@ var Items = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 319:
+/***/ 320:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1486,13 +1485,13 @@ var Item = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 320:
+/***/ 321:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Settings; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(139);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1575,12 +1574,12 @@ var Settings = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 321:
+/***/ 322:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__ = __webpack_require__(322);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__ = __webpack_require__(323);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_api__ = __webpack_require__(13);
@@ -1678,18 +1677,18 @@ var User = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 340:
+/***/ 341:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers__ = __webpack_require__(123);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1819,21 +1818,87 @@ var MyApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             template: "<ion-menu [content]=\"content\">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Pages</ion-title>\n      </ion-toolbar>\n    </ion-header>\n\n    <ion-content>\n      <ion-list>\n        <button menuClose ion-item *ngFor=\"let p of pages\" (click)=\"openPage(p)\">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n  </ion-menu>\n  <ion-nav #content [root]=\"rootPage\"></ion-nav>"
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__providers__["c" /* Settings */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers__["c" /* Settings */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* Config */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* Config */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_6__providers__["c" /* Settings */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* Config */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=app.component.js.map
 
+/***/ }),
+
+/***/ 406:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetOrdersProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_api__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/*
+  Generated class for the GetOrdersProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var GetOrdersProvider = /** @class */ (function () {
+    function GetOrdersProvider(http, api) {
+        this.http = http;
+        this.api = api;
+        console.log('Hello GetOrdersProvider Provider');
+    }
+    GetOrdersProvider.prototype.getOrders = function (userid) {
+        var _this = this;
+        return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].create(function (observer) {
+            var headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
+            console.log("getting orders");
+            _this.api.get("http://ipm-mathemagic.com/api/ipm_my_orders/?userid=" + userid)
+                .subscribe(function (data) {
+                console.log(JSON.stringify(data));
+                _this.orders = data;
+                observer.next("got orders");
+                observer.complete();
+            }, function (error) {
+                console.log("got some error " + JSON.stringify(error));
+                observer.next("failed");
+                observer.complete();
+            });
+        });
+    };
+    GetOrdersProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__api_api__["a" /* Api */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__api_api__["a" /* Api */]) === "function" && _b || Object])
+    ], GetOrdersProvider);
+    return GetOrdersProvider;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=get-orders.js.map
+
 /***/ })
 
-},[239]);
+},[240]);
 //# sourceMappingURL=main.js.map
