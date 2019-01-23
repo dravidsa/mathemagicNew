@@ -24,6 +24,8 @@ questions : any ;
 getBase64Image  : any ;
 loading : Loading ; 
 downloadStatus : any ; 
+mode : any ;l
+
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams , public testsService:  TestsService , public quizService : QuizService  , public getImage : GetBase64ImageService, private loadingCtrl: LoadingController) {
@@ -31,16 +33,41 @@ downloadStatus : any ;
 
    this.getBase64Image =getImage ; 
 
+   var calledFrom = navParams.get("calledFrom") ; 
+   if ( calledFrom == 'services' ) {
+   //alert( "called from services ") ;
+   //alert("downloaded tests are " + localStorage.getItem("downloadedTests"));  
 
+   this.tests = JSON.parse(localStorage.getItem("TestsForUser")) ; 
+   this.mode = "downloaded" ; 
+
+   } 
+   else { 
    testsService.getTestsForCourse(navParams.get('courseid')).subscribe( data => { 
   // console.log( "got this data " + JSON.stringify( data )) ; 
    this.tests = testsService.tests; 
+   this.mode = "all" ; 
+   localStorage.setItem("TestsForUser", JSON.stringify( this.tests)) ; 
 
-   }); 
-
+    }); 
+  }
    //console.log( "got these tests for course" + JSON.stringify( this.tests)) ; 
   }
+  
+  public checkIfDownloaded( testid ) {
+  //console.log( " checking if downlaoded " + testid ) ; 
+  if (localStorage.getItem("downloadedTests") == null ) return false; 
 
+  var downloadedTests = localStorage.getItem("downloadedTests").split(",") ; 
+ 
+  for ( var i = 0  ; i < downloadedTests.length ; i ++ )  { 
+
+    if ( downloadedTests[i] == testid ) 
+      return true; 
+  }
+  return false; 
+
+  } 
   
   public  logout()  {
       localStorage.removeItem("loggedUser") ; 
@@ -99,6 +126,23 @@ downloadStatus : any ;
       
     }
 
+  public deleteTest( testid ) {
+  console.log ( "going to delete the test" + testid ) ; 
+
+  localStorage.removeItem("quiz"+testid) ; 
+  localStorage.removeItem("quiz"+testid+"status"); 
+  if  ( localStorage.getItem("downloadedTests")  != null ) { 
+  var downloadedTests = localStorage.getItem("downloadedTests").split(",") ; 
+  console.log( " tests arr is " + downloadedTests  + " index is "+ downloadedTests.indexOf(testid)) ; 
+  downloadedTests.splice( downloadedTests.indexOf(testid),1) ; 
+  console.log( "now the test arr is " +  downloadedTests.join() )
+  localStorage.setItem("downloadedTests", downloadedTests.join()) ; 
+  
+  }
+
+
+
+  }  
   public downloadTest( testid) { 
 
     //console.log( "downloading test " + testid ) ; 
@@ -251,14 +295,46 @@ downloadStatus : any ;
      }
     
  // console.log( " imgURL arre is now " + JSON.stringify(questions)   ); 
-  localStorage.setItem("quizid" + testid, JSON.stringify(questions) ); 
+  console.log( "length of quiz is " + JSON.stringify(questions).length) ; 
+  try { 
+  localStorage.setItem("quiz" + testid, JSON.stringify(questions) ); 
+  } catch (e )  { 
+
+    alert( "Eror while downloading the test . Short of local storage , delete some tests " ) ; 
+
+  }
+
   this.loading.dismissAll();
   //alert("donwload complete ") ; 
   var d = new Date();
   var n = d.toDateString(); 
-  this.downloadStatus  = "Test downloaded on device on " +  n ; 
+  this.downloadStatus  =   n ; 
   localStorage.setItem("quiz"+testid+"status" , this.downloadStatus) ; 
+  /*
+  console.log( "current value is " + JSON.stringify(this.tests[ testid]))  ; 
+  console.log( "index of the test is " + this.tests.findIndex(x => x.id== testid )) ;
+  */
+  this.tests[this.tests.findIndex(x => x.id== testid )].downloaded = "Y" ; 
+  var  downloadedTests = localStorage.getItem("downloadedTests");
+  if ( downloadedTests == null ) { downloadedTests = "" } ; 
+  downloadedTests = downloadedTests+ "," + testid ; 
+  localStorage.setItem( "downloadedTests" , downloadedTests ) ; 
 
+  //console.log ( "not tests are " + JSON.stringify(this.tests) ); 
+  /*
+  
+
+  if  (localStorage.getItem("downloadedTests")  == null )   {  
+  downloadedTests =""; } 
+  else { 
+  downloadedTests = localStorage.getItem("downloadedTests")  + JSON.stringify(this.tests);   } 
+
+  
+  console.log ( " downloaded tests are " + downloadedTests ) ; 
+
+
+  localStorage.setItem("downloadedTests" , this.tests) ; 
+     */
 
   //this.navCtrl.setRoot('TestsListPage') ; 
 

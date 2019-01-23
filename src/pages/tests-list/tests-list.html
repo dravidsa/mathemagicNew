@@ -24,8 +24,8 @@
     <div *ngIf="tests" >
 
     <div *ngFor="let test  of tests" > 
-        
-            <ion-card>                           
+            <div *ngIf="((mode=='downloaded')&&( checkIfDownloaded(test.id)== true )) || ( mode=='all') ">
+            <ion-card >                           
               <ion-card-content>
                    <ion-card-title>
                    {{test.name }}  
@@ -35,7 +35,8 @@
                   
                    
                         <button ion-button  color="secondary" (click)= "solveTest(test.id , test.name)">Solve</button>  
-                        <button ion-button  color="default" (click)= "downloadTest(test.id )">Download</button>  
+                        <button ion-button  *ngIf="mode == 'all'" color="default" (click)= "downloadTest(test.id )">Download</button>  
+                        <button ion-button  *ngIf="mode == 'downloaded'" color="danger" (click)= "deleteTest(test.id )">Delete</button>  
                         
                         <BR/> 
                         {{showDownloadStatus(test.id) }}
@@ -48,7 +49,7 @@
                 
               </ion-card>
 
-      
+            </div>
               </div> 
 
         </div>

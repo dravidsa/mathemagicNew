@@ -25,14 +25,14 @@
           <ion-avatar item-start>
             <img src={{img_src}} >
           </ion-avatar>
-          <h2>Product Selected : {{ productName }} </h2>
+          <h2 style="white-space: normal;" >Product Selected : {{ productName }} </h2>
           <p> <b>Price {{ productPrice}} </b></p>
           
         </ion-item>
       </ion-col>
       <ion-col>
           <ion-item>
-              <ion-label>Standard</ion-label>
+              <ion-label>Standard </ion-label>
               <ion-select [(ngModel)]="standard">
                 <ion-option value="2">2</ion-option>
                 <ion-option value="3">3</ion-option>
@@ -55,7 +55,8 @@
 
       </ion-card>
       <BR/>
-      <ion-card *ngIf="productName =='Supreme' || productName=='Elearning' || productName =='IPM 2019 Exam Enrollment'" > 
+     
+      <ion-card *ngIf="productName =='Supreme' || productName=='E-Learning' || productName =='IPM 2019 Exam Enrollment'" > 
           <ion-card-header>
             Student Details
             </ion-card-header>
@@ -132,7 +133,7 @@
               </ion-card> 
 
 
-              <ion-card  *ngIf="(productName =='Supreme' || productName=='Elearning' || productName =='IPM 2019 Exam Enrollment') && ( billingState !='MH')" > 
+              <ion-card  *ngIf="(productName =='Supreme' || productName=='E-Learning' || productName =='IPM 2019 Exam Enrollment') && ( billingState !='MH')" > 
                   <ion-card-header>
                    Out Of Maharashtra  Charges  
                     </ion-card-header>

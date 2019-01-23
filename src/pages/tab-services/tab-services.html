@@ -16,15 +16,47 @@
 <ion-content class="tabservices-content" padding>
 
   
-
-    <ion-card>
+  <ion-card>
+    <ion-item>
+      
+      <h2>Downloaded Tests</h2>
+      <p> </p>
+    </ion-item>
   
+
+    
+    <ion-grid> 
+      <ion-row> 
+       
+        <ion-col width-25>   
+            <img src="http://ipm-mathemagic.com/new/images/app/orders.jpg">                 
+                
+        </ion-col>
+                        
+     <ion-col>
+      <p text-wrap>
+          You can see all the tests you have downloaded earlier.
+      </p> 
+      <BR/>               
+      <p>
+          <button ion-button color="secondary" (click)="viewTests()" >View Tests</button>
+
+        </p>  
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+   
+  <ion-card>
       <ion-item>
         
         <h2>My Orders</h2>
         <p> </p>
       </ion-item>
+    
 
+      
       <ion-grid> 
         <ion-row> 
          
@@ -44,14 +76,17 @@
           </p>  
 
         </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-card>
         <ion-item>
         
             <h2>My Hall Ticket</h2>
             <p> </p>
           </ion-item>
     
-        </ion-row>
-      </ion-grid>
+     
       <ion-grid> 
           <ion-row> 
            
@@ -69,7 +104,8 @@
   
           </ion-row>
         </ion-grid>
-
+      </ion-card>
+      <ion-card>
         <ion-item>
         
             <h2>My Result</h2>
@@ -93,13 +129,13 @@
     
             </ion-row>
           </ion-grid>
-
+        </ion-card>
 
   
      
    
   
-    </ion-card>
+  
   
 
 

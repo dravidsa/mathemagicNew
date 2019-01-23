@@ -36,8 +36,12 @@ orders : any ;
       ; 
   
     });
-
+ 
+  }
+  public viewTests(){ 
+  this.navCtrl.setRoot('TestsListPage', { calledFrom : 'services' }   ) ; 
 
     
+
   } 
 }

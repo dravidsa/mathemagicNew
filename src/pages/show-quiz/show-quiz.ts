@@ -132,8 +132,8 @@ showConfirmAlert(option) {
           if ( option == "submit") {
             nextPage = "TestSummaryPage" 
           } else nextPage = "TestsListPage" ; 
-
-          this.navCtrl.setRoot(  nextPage , { questions : this.questions} );
+          var courseid = localStorage.getItem("currentCourse") ; 
+          this.navCtrl.setRoot(  nextPage , { courseid : courseid} );
 
           // Your Imagination should go here
         }

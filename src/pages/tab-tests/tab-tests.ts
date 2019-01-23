@@ -28,7 +28,7 @@ export class TabTestsPage {
       var userName = localStorage.getItem("loggedUser") ; 
 
       this.coursesService.getCoursesForUser(userName).subscribe( data => { 
-      //  console.log( "got this course data for logged in user " + JSON.stringify( data )) ; 
+      console.log( "got this course data for logged in user " + JSON.stringify( data )) ; 
         this.userCourses = coursesService.courses  ; 
         });
 
@@ -62,6 +62,7 @@ export class TabTestsPage {
   // console.log( " goging to  test " + courseid ) ; 
    this.navCtrl.push(TabTestsPage);
    this.navCtrl.setRoot('TestsListPage',{ 'courseid' : courseid } );
+   localStorage.setItem("currentCourse", courseid) ; 
 
 
   }

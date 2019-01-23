@@ -1,15 +1,14 @@
 webpackJsonp([24],{
 
-/***/ 347:
+/***/ 349:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListMasterPageModule", function() { return ListMasterPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__list_master__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(380);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,39 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var ListMasterPageModule = /** @class */ (function () {
-    function ListMasterPageModule() {
+var LoginPageModule = /** @class */ (function () {
+    function LoginPageModule() {
     }
-    ListMasterPageModule = __decorate([
+    LoginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */],
+                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */]),
-                __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
             ],
-            exports: [
-                __WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */]
-            ]
         })
-    ], ListMasterPageModule);
-    return ListMasterPageModule;
+    ], LoginPageModule);
+    return LoginPageModule;
 }());
 
-//# sourceMappingURL=list-master.module.js.map
+//# sourceMappingURL=login.module.js.map
 
 /***/ }),
 
-/***/ 377:
+/***/ 380:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListMasterPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_items_items__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_service_auth_service__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_courses_service_courses_service__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__ = __webpack_require__(60);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,57 +60,89 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ListMasterPage = /** @class */ (function () {
-    function ListMasterPage(navCtrl, items, modalCtrl) {
-        this.navCtrl = navCtrl;
-        this.items = items;
-        this.modalCtrl = modalCtrl;
-        console.log(" getting current items ");
-        // this.currentItems = this.items.query();
-    }
-    /**
-     * The view loaded, let's query our items for the list
-     */
-    ListMasterPage.prototype.ionViewDidLoad = function () {
-    };
-    /**
-     * Prompt the user to add a new item. This shows our ItemCreatePage in a
-     * modal and then adds the new item to our data source if the user created one.
-     */
-    ListMasterPage.prototype.addItem = function () {
+
+
+var LoginPage = /** @class */ (function () {
+    function LoginPage(nav, auth, network, courses, alertCtrl, loadingCtrl) {
         var _this = this;
-        var addModal = this.modalCtrl.create('ItemCreatePage');
-        addModal.onDidDismiss(function (item) {
-            if (item) {
-                _this.items.add(item);
+        this.nav = nav;
+        this.auth = auth;
+        this.network = network;
+        this.courses = courses;
+        this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        //registerCredentials = { username: 'sandra', password: 'sandeep123' };
+        this.registerCredentials = { username: '', password: '' };
+        if (localStorage.getItem("loggedUser") != null) {
+            this.showLoading();
+            console.log(" already logged in as " + localStorage.getItem("loggedUser"));
+            this.courses.getCoursesForUser(localStorage.getItem("loggedUser")).subscribe(function (data) {
+                console.log("got this data for courses for user logged in  " + JSON.stringify(data));
+                _this.nav.setRoot('MenuPage');
+            });
+            // this.nav.setRoot('MenuPage');
+        }
+        else
+            console.log(" not logged in ");
+    }
+    LoginPage.prototype.createAccount = function () {
+        this.nav.push('RegisterPage');
+    };
+    LoginPage.prototype.login = function () {
+        var _this = this;
+        if (this.network.type == 'none') {
+            alert("Not connected to internet, some features may not work ");
+            return;
+        }
+        console.log("got credentials " + JSON.stringify(this.registerCredentials));
+        this.showLoading();
+        this.auth.login(this.registerCredentials).subscribe(function (loginMessage) {
+            console.log("allowed is  " + loginMessage);
+            // next: value => console.log("next vvalue" + value  ) ; 
+            //console.log ( " back here allowed is" + allowed )
+            if (loginMessage == "Login successful") {
+                console.log("set logged in user as " + localStorage.getItem("loggedUser"));
+                //console.log( " calling courses") ; 
+                _this.courses.getCoursesForUser(_this.registerCredentials.username).subscribe(function (data) {
+                    console.log("got this data  " + JSON.stringify(data));
+                    _this.nav.setRoot('MenuPage');
+                });
+                _this.nav.setRoot('TabsHomePage');
             }
-        });
-        addModal.present();
-    };
-    /**
-     * Delete an item from the list of items.
-     */
-    ListMasterPage.prototype.deleteItem = function (item) {
-        this.items.delete(item);
-    };
-    /**
-     * Navigate to the detail page for this item.
-     */
-    ListMasterPage.prototype.openItem = function (item) {
-        this.navCtrl.push('ItemDetailPage', {
-            item: item
+            else {
+                console.log("failed ");
+                _this.showError("Access Denied");
+            }
+        }, function (error) {
+            _this.showError(error);
         });
     };
-    ListMasterPage = __decorate([
+    LoginPage.prototype.showLoading = function () {
+        this.loading = this.loadingCtrl.create({
+            content: 'Please wait...',
+            dismissOnPageChange: true
+        });
+        this.loading.present();
+    };
+    LoginPage.prototype.showError = function (text) {
+        this.loading.dismiss();
+        var alert = this.alertCtrl.create({
+            title: 'Invalid userid or Password. ',
+            subTitle: text,
+            buttons: ['OK']
+        });
+        alert.present(alert);
+    };
+    LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-list-master',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\list-master\list-master.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>XXXX{{ \'LIST_MASTER_TITLE\' | translate }}</ion-title>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="addItem()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-list>\n    <ion-item-sliding *ngFor="let item of currentItems">\n      <button ion-item (click)="openItem(item)">\n        <ion-avatar item-start>\n          <img [src]="item.profilePic" />\n        </ion-avatar>\n        <h2>{{item.name}}</h2>\n        <p>{{item.about}}</p>\n        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>\n      </button>\n\n      <ion-item-options>\n        <button ion-button color="danger" (click)="deleteItem(item)">\n          {{ \'DELETE_BUTTON\' | translate }}\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\list-master\list-master.html"*/
+            selector: 'page-login',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\login\login.html"*/'<ion-content class="login-content" padding>\n  <ion-row class="logo-row">\n    <ion-col></ion-col>\n    <ion-col width-67>\n      <img src="./icon.png"/>\n    </ion-col>\n    <ion-col></ion-col>\n  </ion-row>\n  <div class="login-box">\n    <form (ngSubmit)="login()" #registerForm="ngForm">\n      <ion-row>\n        <ion-col>\n          <ion-list inset>\n            \n            <ion-item>\n              <ion-input type="text" placeholder="Email" name="username" [(ngModel)]="registerCredentials.username" required></ion-input>\n            </ion-item>\n            \n            <ion-item>\n              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>\n            </ion-item>\n            \n          </ion-list>\n        </ion-col>\n      </ion-row>\n      \n\n      <ion-row>\n        <ion-col class="signup-col">\n          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>\n         \n        </ion-col>\n      </ion-row>\n      \n    </form>\n  </div>\n</ion-content>'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\login\login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_items_items__["a" /* Items */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
-    ], ListMasterPage);
-    return ListMasterPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */], __WEBPACK_IMPORTED_MODULE_3__providers_courses_service_courses_service__["a" /* CoursesService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
+    ], LoginPage);
+    return LoginPage;
 }());
 
-//# sourceMappingURL=list-master.js.map
+//# sourceMappingURL=login.js.map
 
 /***/ })
 

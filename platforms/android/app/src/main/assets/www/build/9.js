@@ -1,14 +1,14 @@
 webpackJsonp([9],{
 
-/***/ 363:
+/***/ 366:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabServicesPageModule", function() { return TabServicesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabTestsPageModule", function() { return TabTestsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_services__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_tests__ = __webpack_require__(398);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TabServicesPageModule = /** @class */ (function () {
-    function TabServicesPageModule() {
+var TabTestsPageModule = /** @class */ (function () {
+    function TabTestsPageModule() {
     }
-    TabServicesPageModule = __decorate([
+    TabTestsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__tab_services__["a" /* TabServicesPage */],
+                __WEBPACK_IMPORTED_MODULE_2__tab_tests__["a" /* TabTestsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tab_services__["a" /* TabServicesPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tab_tests__["a" /* TabTestsPage */]),
             ],
         })
-    ], TabServicesPageModule);
-    return TabServicesPageModule;
+    ], TabTestsPageModule);
+    return TabTestsPageModule;
 }());
 
-//# sourceMappingURL=tab-services.module.js.map
+//# sourceMappingURL=tab-tests.module.js.map
 
 /***/ }),
 
-/***/ 394:
+/***/ 398:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabServicesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabTestsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_courses_service_courses_service__ = __webpack_require__(227);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,30 +57,60 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+//import { RouterModule,Routes } from '@angular/router';
 /**
- * Generated class for the TabServicesPage page.
+ * Generated class for the TabTestsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var TabServicesPage = /** @class */ (function () {
-    function TabServicesPage(navCtrl, navParams) {
+var TabTestsPage = /** @class */ (function () {
+    function TabTestsPage(navCtrl, navParams, coursesService) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.coursesService = coursesService;
+        if (coursesService.courses == undefined) {
+            var userName = localStorage.getItem("loggedUser");
+            this.coursesService.getCoursesForUser(userName).subscribe(function (data) {
+                console.log("got this course data for logged in user " + JSON.stringify(data));
+                _this.userCourses = coursesService.courses;
+            });
+        }
+        else {
+            // console.log( " coursesfor  this  user are " + JSON.stringify(coursesService.courses ) ) ; 
+            this.userCourses = coursesService.courses;
+            //console.log( " coursesfor this user are " + JSON.stringify( CoursesService.courses) ) ; 
+        }
     }
-    TabServicesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TabServicesPage');
+    TabTestsPage_1 = TabTestsPage;
+    TabTestsPage.prototype.logout = function () {
+        localStorage.removeItem("loggedUser");
+        this.navCtrl.setRoot('LoginPage');
     };
-    TabServicesPage = __decorate([
+    TabTestsPage.prototype.goBack = function () {
+    };
+    TabTestsPage.prototype.goToTest = function (courseid) {
+        // console.log( " goging to  test " + courseid ) ; 
+        this.navCtrl.push(TabTestsPage_1);
+        this.navCtrl.setRoot('TestsListPage', { 'courseid': courseid });
+        localStorage.setItem("currentCourse", courseid);
+    };
+    TabTestsPage.prototype.ionViewDidLoad = function () {
+        // console.log('ionViewDidLoad TabTestsPage');
+    };
+    TabTestsPage = TabTestsPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tab-services',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tab-services\tab-services.html"*/'<!--\n  Generated template for the TabServicesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Services</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="tabservices-content" padding>\nThis will be provided later. \n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tab-services\tab-services.html"*/,
+            selector: 'page-tab-tests',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tab-tests\tab-tests.html"*/'<!--\n  Generated template for the TabTestsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="blue">\n      <ion-title>\n        My Tests\n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content class="tabtests-content" padding>\n\n    <ion-card *ngFor="let course of usercourses" (click)="test($event, course)">\n        <!--CONTENT HERE-->\n        </ion-card>\n\n        <button ion-item *ngFor="let course of userCourses" (click)="goToTest(course.id)">\n          {{course.name}}  </button>  \n\n\n   \n         \n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tab-tests\tab-tests.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
-    ], TabServicesPage);
-    return TabServicesPage;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_courses_service_courses_service__["a" /* CoursesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_courses_service_courses_service__["a" /* CoursesService */]) === "function" && _c || Object])
+    ], TabTestsPage);
+    return TabTestsPage;
+    var TabTestsPage_1, _a, _b, _c;
 }());
 
-//# sourceMappingURL=tab-services.js.map
+//# sourceMappingURL=tab-tests.js.map
 
 /***/ })
 

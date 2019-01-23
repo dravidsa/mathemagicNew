@@ -18,9 +18,12 @@ export class LoginPage {
 
     if (localStorage.getItem("loggedUser") != null  ) {
    
+      this.showLoading() ; 
+      
       console.log( " already logged in as " + localStorage.getItem("loggedUser")) ; 
       this.courses.getCoursesForUser( localStorage.getItem("loggedUser")).subscribe( data => { 
-        console.log( "got this data for courses for user logged in  " + JSON.stringify( data )) ; 
+        console.log( "got this data for courses for user logged in  " + JSON.stringify( data )) ;
+         
         this.nav.setRoot('MenuPage');
         });
 

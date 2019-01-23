@@ -240,7 +240,7 @@ export class BuyProductPage {
   ionViewWillEnter( ) {
     console.log('ionViewDidLoad BuyProductPage'); 
 
-    if ( (this.productName != 'IPM Book Set') &&   ( this.productName != 'Online Test') ) { 
+    if ( (this.productName != 'IPM Book Set') &&   ( this.productName != 'Online Tests') ) { 
     if ( this.refgetSchoolsService != undefined ) {
     this.schoolName  = this.refgetSchoolsService.selectedSchoolName ;
     if ( this.schoolName == undefined ) { 
@@ -269,7 +269,7 @@ export class BuyProductPage {
       return; 
     }
 
-      if ( ( this.productName == 'Supreme') || ( this.productName == 'IPM 2019 Exam Enrollment') || ( this.productName == 'Elearning'))
+      if ( ( this.productName == 'Supreme') || ( this.productName == 'IPM 2019 Exam Enrollment') || ( this.productName == 'E-Learning'))
       { 
           if (( this.studentName =='' ) || ( this.standard == '' ) || ( this.schoolName =='')) { 
            
