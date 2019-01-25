@@ -74,7 +74,7 @@ var TabTestsPage = /** @class */ (function () {
         if (coursesService.courses == undefined) {
             var userName = localStorage.getItem("loggedUser");
             this.coursesService.getCoursesForUser(userName).subscribe(function (data) {
-                console.log("got this course data for logged in user " + JSON.stringify(data));
+                //  console.log( "got this course data for logged in user " + JSON.stringify( data )) ; 
                 _this.userCourses = coursesService.courses;
             });
         }
@@ -102,12 +102,12 @@ var TabTestsPage = /** @class */ (function () {
     };
     TabTestsPage = TabTestsPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tab-tests',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tab-tests\tab-tests.html"*/'<!--\n  Generated template for the TabTestsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="blue">\n      <ion-title>\n        My Tests\n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content class="tabtests-content" padding>\n\n    <ion-card *ngFor="let course of usercourses" (click)="test($event, course)">\n        <!--CONTENT HERE-->\n        </ion-card>\n\n        <button ion-item *ngFor="let course of userCourses" (click)="goToTest(course.id)">\n          {{course.name}}  </button>  \n\n\n   \n         \n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tab-tests\tab-tests.html"*/
+            selector: 'page-tab-tests',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tab-tests\tab-tests.html"*/'<!--\n  Generated template for the TabTestsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="blue">\n      <ion-title>\n        My Tests\n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"> {{user}}</ion-icon>\n        </button>\n        <button menuToggle="left">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content class="tabtests-content" padding>\n\n    <ion-card *ngFor="let course of usercourses" (click)="test($event, course)">\n        <!--CONTENT HERE-->\n        </ion-card>\n\n        <button ion-item *ngFor="let course of userCourses" (click)="goToTest(course.id)">\n          {{course.name}}  </button>  \n\n\n   \n         \n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tab-tests\tab-tests.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_courses_service_courses_service__["a" /* CoursesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_courses_service_courses_service__["a" /* CoursesService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_courses_service_courses_service__["a" /* CoursesService */]])
     ], TabTestsPage);
     return TabTestsPage;
-    var TabTestsPage_1, _a, _b, _c;
+    var TabTestsPage_1;
 }());
 
 //# sourceMappingURL=tab-tests.js.map

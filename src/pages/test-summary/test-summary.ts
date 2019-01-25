@@ -17,11 +17,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TestSummaryPage {
 
-  questions : any ; 
+  questions : any ;
+  user : any;  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   this.questions = navParams.get("questions") ; 
-  //console.log( "got questions " + JSON.stringify(this.questions)) ; 
+  this.user = localStorage.getItem("loggedUser") ; 
+  console.log( "got questions " + JSON.stringify(this.questions)) ; 
 
   }
 

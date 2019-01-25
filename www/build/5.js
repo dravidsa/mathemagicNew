@@ -106,7 +106,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
  */
 var TestsListPage = /** @class */ (function () {
     function TestsListPage(navCtrl, navParams, testsService, quizService, getImage, loadingCtrl) {
-        // console.log( "showing tests for courseid  " + navParams.get('courseid'));
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -114,12 +113,16 @@ var TestsListPage = /** @class */ (function () {
         this.quizService = quizService;
         this.getImage = getImage;
         this.loadingCtrl = loadingCtrl;
+        // console.log( "showing tests for courseid  " + navParams.get('courseid'));
+        this.user = localStorage.getItem("loggedUser");
         this.getBase64Image = getImage;
         var calledFrom = navParams.get("calledFrom");
         if (calledFrom == 'services') {
             //alert( "called from services ") ;
             //alert("downloaded tests are " + localStorage.getItem("downloadedTests"));  
-            this.tests = JSON.parse(localStorage.getItem("TestsForUser"));
+            console.log("tests for user are " + localStorage.getItem("TestsForUser"));
+            if (localStorage.getItem("TestsForUser") != null)
+                this.tests = JSON.parse(localStorage.getItem("TestsForUser"));
             this.mode = "downloaded";
         }
         else {
@@ -161,7 +164,7 @@ var TestsListPage = /** @class */ (function () {
             return "this test is not downloaded on this device ";
         }
         else
-            return (localStorage.getItem("quiz" + testid + "status"));
+            return ("This test has been downloaded on" + localStorage.getItem("quiz" + testid + "status"));
     };
     TestsListPage.prototype.toDataUrl = function (url, callback) {
         console.log(" getting base for " + url);
@@ -201,14 +204,14 @@ var TestsListPage = /** @class */ (function () {
         }
     };
     TestsListPage.prototype.downloadTest = function (testid) {
-        //console.log( "downloading test " + testid ) ; 
         var _this = this;
+        //console.log( "downloading test " + testid ) ; 
+        this.showLoading();
         this.quizService.getQuestionsForQuiz(testid).subscribe(function (data) {
             //console.log( "got this data " + JSON.stringify( data )) ; 
             _this.questions = _this.quizService.questions;
             ;
             //alert("starting the donwload ...please wait  ") ; 
-            _this.showLoading();
             _this.transformQuestion(_this.questions, _this.getBase64Image, testid, _this.navCtrl, _this.loading);
             //alert(" Test download Complete ") ; 
         });
@@ -341,6 +344,8 @@ var TestsListPage = /** @class */ (function () {
                         }
                         catch (e) {
                             alert("Eror while downloading the test . Short of local storage , delete some tests ");
+                            this.loading.dismissAll();
+                            return [2 /*return*/];
                         }
                         this.loading.dismissAll();
                         d = new Date();
@@ -406,7 +411,7 @@ var TestsListPage = /** @class */ (function () {
     };
     TestsListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
-            selector: 'page-tests-list',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/'<!--\n  Generated template for the TestsListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="blue">\n      <ion-title>\n        Test List\n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-navbar>\n  </ion-header>\n\n\n\n\n<ion-content class="testlist-content" padding>                 \n    <div *ngIf="tests" >\n\n    <div *ngFor="let test  of tests" > \n            <div *ngIf="((mode==\'downloaded\')&&( checkIfDownloaded(test.id)== true )) || ( mode==\'all\') ">\n            <ion-card >                           \n              <ion-card-content>\n                   <ion-card-title>\n                   {{test.name }}  \n                    </ion-card-title>\n                   \n                                      \n                  \n                   \n                        <button ion-button  color="secondary" (click)= "solveTest(test.id , test.name)">Solve</button>  \n                        <button ion-button  *ngIf="mode == \'all\'" color="default" (click)= "downloadTest(test.id )">Download</button>  \n                        <button ion-button  *ngIf="mode == \'downloaded\'" color="danger" (click)= "deleteTest(test.id )">Delete</button>  \n                        \n                        <BR/> \n                        {{showDownloadStatus(test.id) }}\n                                    \n              \n\n                 \n              \n                </ion-card-content>\n                \n              </ion-card>\n\n            </div>\n              </div> \n\n        </div>\n        <button ion-button full=true color="danger" round (click)="goBack()"  >Back</button>\n\n</ion-content>\n\n\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/,
+            selector: 'page-tests-list',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/'<!--\n  Generated template for the TestsListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="blue">\n      <ion-title>\n        Test List\n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"> {{user}}</ion-icon>\n        </button>\n        <button menuToggle="left">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n      </ion-navbar>\n  </ion-header>\n\n\n\n\n<ion-content class="testlist-content" padding>                 \n    <div *ngIf="tests" >\n\n    <div *ngFor="let test  of tests" > \n            <div *ngIf="((mode==\'downloaded\')&&( checkIfDownloaded(test.id)== true )) || ( mode==\'all\') ">\n            <ion-card >                           \n              <ion-card-content>\n                   <ion-card-title>\n                   {{test.name }}  \n                    </ion-card-title>\n                   \n                                      \n                  \n                   \n                        <button ion-button  color="secondary" (click)= "solveTest(test.id , test.name)">Solve</button>  \n                        <button ion-button  *ngIf="mode == \'all\'" color="default" (click)= "downloadTest(test.id )">Download</button>  \n                        <button ion-button  *ngIf="mode == \'downloaded\'" color="danger" (click)= "deleteTest(test.id )">Delete</button>  \n                        \n                        <BR/> \n                        {{showDownloadStatus(test.id) }}\n                                    \n              \n\n                 \n              \n                </ion-card-content>\n                \n              </ion-card>\n\n            </div>\n              </div> \n\n        </div>\n        <button ion-button full=true color="danger" round (click)="goBack()"  >Back</button>\n\n</ion-content>\n\n\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__["a" /* TestsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__["a" /* TestsService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__["a" /* QuizService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__["a" /* QuizService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__["a" /* GetBase64ImageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__["a" /* GetBase64ImageService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object])
     ], TestsListPage);

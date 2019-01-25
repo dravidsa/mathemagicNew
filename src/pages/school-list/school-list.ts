@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GetSchoolsService } from '../../providers/get-schools/get-schools';
 
+import { FilterPipe } from './../../pipes/filter/filter';
+
 /**
  * Generated class for the SchoolListPage page.
  *
@@ -19,7 +21,7 @@ export class SchoolListPage {
 schools : any; 
 schoolName : any; 
 refGetSchoolService : GetSchoolsService  ; 
-
+schoolMessage : any; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, getSchoolsService : GetSchoolsService) {
     this.schoolName = navParams.get("schoolName"); 
@@ -28,6 +30,14 @@ this.refGetSchoolService = getSchoolsService ;
 
     getSchoolsService.getSchools(this.schoolName).subscribe( data => { 
       console.log( "got this data  " + JSON.stringify( data )) ; 
+      if ( data == "failed") { 
+        this.schoolMessage = "no schools found with this criteria" ; 
+
+        //alert("no schools found with this criteria") ; 
+        return; 
+
+      }
+      //this.schoolMessage = "showing schools matching the name " ; 
       this.schools = getSchoolsService.schools ; 
       });
 

@@ -8,7 +8,18 @@
 
   <ion-navbar>
     <ion-title>Services</ion-title>
-  </ion-navbar>
+  
+  <ion-buttons end>
+    <button ion-button (click)="logout()">
+      <ion-icon name="log-out"> {{user}}</ion-icon>
+    </button>
+    <button menuToggle="left">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  </ion-buttons>
+</ion-navbar>
+ 
+
 
 </ion-header>
 
@@ -39,7 +50,7 @@
       </p> 
       <BR/>               
       <p>
-          <button ion-button color="secondary" (click)="viewTests()" >View Tests</button>
+          <button ion-button color="secondary" (click)="viewTests()" >Downloaded Tests</button>
 
         </p>  
 

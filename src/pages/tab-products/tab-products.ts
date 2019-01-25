@@ -17,9 +17,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabProductsPage {
 products : any ; 
-
+user : any ; 
   constructor(public navCtrl: NavController, public navParams: NavParams, public productsService : ProductsService) {
-
+    this.user = localStorage.getItem("loggedUser") ; console.log( " got user " + this.user) ; 
     this.productsService.getProducts().subscribe( data => { 
       //console.log( "got this data " + JSON.stringify( data )) ; 
       this.products = this.productsService.products; 

@@ -21,9 +21,11 @@ import {  CoursesService} from '../../providers/courses-service/courses-service'
 export class TabTestsPage {
 
   public userCourses ; 
+  user : any ; 
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams , public coursesService : CoursesService  ) {
-
+this.user = localStorage.getItem("loggedUser") ; 
     if ( coursesService.courses == undefined )  {
       var userName = localStorage.getItem("loggedUser") ; 
 

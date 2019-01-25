@@ -21,9 +21,11 @@ import { GetOrdersProvider } from '../../providers/get-orders/get-orders';
 export class ViewOrdersPage {
   currentUserId : any; 
   orders : any ; 
+  user : any; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams , public getOrders : GetOrdersProvider) {
-    this.orders = navParams.get("orders") ; 
+    this.orders = navParams.get("orders") ; this.user = localStorage.getItem("loggedUser") ;
+    this.user = localStorage.getItem("loggedUser") ; 
     
  }
 

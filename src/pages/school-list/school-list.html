@@ -8,16 +8,24 @@
 
   <ion-navbar>
     <ion-title>schoolList</ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="logout()">
+          <ion-icon name="log-out"> {{user}}</ion-icon>
+        </button>
+        <button menuToggle="left">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="school-list-content" padding>
 
-
+{{schoolMessage}} <input [(ngModel)]="searchText" placeholder="search text goes here">   
     <div *ngIf="schools"> 
-        <button ion-item *ngFor="let school of schools" (click)="setSchool(school.school_code,school.school_name)" >
+        <button ion-item *ngFor="let school of schools | filterPipe searchText " (click)="setSchool(school.school_code,school.school_name)" >
 
             <ion-card>
                 

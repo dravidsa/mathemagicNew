@@ -18,10 +18,10 @@ questions : any ;
 totalMarks : number   ; 
 outOfMarks : number ; 
 correctQuestions : number ; 
-
+user : any ; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+    this.user = localStorage.getItem("loggedUser") ; 
   this.questions = navParams.get("questions") ; 
 
  // console.log ( "got questions in results " + this.questions ) ; 

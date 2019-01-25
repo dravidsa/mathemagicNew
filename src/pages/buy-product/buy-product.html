@@ -8,6 +8,15 @@
 
   <ion-navbar>
     <ion-title>Buy Products</ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="logout()">
+          <ion-icon name="log-out"> {{user}}</ion-icon>
+        </button>
+        <button menuToggle="left">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
@@ -64,7 +73,7 @@
         <ion-list  >
             <ion-item>
               <ion-label stacked>Student Name </ion-label>
-              <ion-input type="text" [(ngModel)]="studentName" ></ion-input>
+              <ion-input type="text" required=true [(ngModel)]="studentName" style="Border-style: inset" ></ion-input>
             </ion-item>
               <ion-item>
                     <ion-label stacked>Enter part of school Name and click search </ion-label>
@@ -182,8 +191,8 @@
 
                     </ion-card>
 
-
-              <p color="danger" >  {{errorMessage }} </p>  
+              <ion-label color="danger" align="center"> 
+              <p>  {{errorMessage }} </p>    </ion-label> 
               <p>
                   <button ion-button ion-button full=true color="primary" (click)="goForPayment()" >Go For Payment</button>
 

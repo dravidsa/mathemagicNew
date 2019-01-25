@@ -11,6 +11,7 @@ import { USE_DEFAULT_LANG } from '../../../node_modules/@ngx-translate/core';
 
 import { md5 } from './md5';
 import { Network } from '@ionic-native/network';
+import { ReturnStatement } from '@angular/compiler';
 
 /**
  * Generated class for the BuyProductPage page.
@@ -40,7 +41,7 @@ export class BuyProductPage {
  
   billingAddress ='' ; 
   billingCity ="" 
-  billingPincode =""; 
+  billingPincode : any ; 
   billingState = 428 
   billingPhone : any ; 
   errorMessage : any ; 
@@ -56,7 +57,8 @@ export class BuyProductPage {
   img_src : any ; 
   loading : Loading ; 
 
-
+  user: any ; 
+  
 
   schoolMatched  = false; 
  
@@ -168,6 +170,8 @@ export class BuyProductPage {
     this.productPrice =  navParams.get("productPrice");
     this.totalCharges = this.productPrice  ; 
     this.img_src = navParams.get("img_src") ; 
+    this.user = localStorage.getItem("loggedUser") ; console.log ( "got user as " + this.user);
+
    // alert( "net connection is " + this.network.type); 
     
     if ( this.network.type == 'none')  { 
@@ -269,6 +273,21 @@ export class BuyProductPage {
       return; 
     }
 
+    //alert( " billing phone -" + isNaN( this.billingPhone) + "-" + isNaN( this.billingPincode) ) ; 
+    if (  isNaN( this.billingPhone) ) { 
+
+      this.errorMessage = "Phone number must be numeric " ; 
+      return; 
+
+    }
+    if (  isNaN( this.billingPincode) ) { 
+
+      this.errorMessage = "Pincode must be numeric " ; 
+      return; 
+      
+    }
+
+
       if ( ( this.productName == 'Supreme') || ( this.productName == 'IPM 2019 Exam Enrollment') || ( this.productName == 'E-Learning'))
       { 
           if (( this.studentName =='' ) || ( this.standard == '' ) || ( this.schoolName =='')) { 
@@ -283,6 +302,7 @@ export class BuyProductPage {
             return; 
 
         }
+       
   }
 }
 

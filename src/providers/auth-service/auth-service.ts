@@ -9,12 +9,14 @@ export class User {
   name: string;
   email: string;
   id : string  ; 
+  testsValidTill : string ; 
 
  
-  constructor(name: string, email: string , id : string  ) {
+  constructor(name: string, email: string , id : string , testsValidTill :string  ) {
     this.name = name;
     this.email = email;
     this.id = id ; 
+    this.testsValidTill =  testsValidTill  ; 
   }
 }
  
@@ -61,11 +63,19 @@ export class AuthService {
          if ( data.Msg !="Login failed") { 
       //console.log( " username " + data.username + "email is "  + data.email)  ; 
       access = true; 
-      this.currentUser = new User(data.username , data.email , data.id  );
+      this.currentUser = new User(data.username , data.email , data.id  ,data.testsValidTill );
 
         localStorage.setItem("loggedUser",this.currentUser.name) ; 
         localStorage.setItem("loggedUserId",this.currentUser.id) ; 
         localStorage.setItem("loggedUserEmail",this.currentUser.email) ; 
+        localStorage.setItem("testsValidTill",this.currentUser.testsValidTill ) ; 
+        console.log( "tests are valid till " + this.currentUser.testsValidTill) ; 
+
+        if ( new Date(this.currentUser.testsValidTill) < new Date() )  {
+          console.log( "Downloaded tests are not valid anymore" ) ; 
+          localStorage.removeItem("downloadedTests") ; 
+
+        }
         //console.log( " set user in local " + this.currentUser.name + "-" + this.currentUser.id + "-"+ this.currentUser.email ) ; 
         
       //console.log( "name " + data.username + "Mesg"  + data.Msg) ; 

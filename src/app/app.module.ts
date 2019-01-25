@@ -13,7 +13,7 @@ import { Items } from '../providers/items/items';
 //import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
-
+//import { FilterPipe} from '../pipes/FilterPipe';
 
 import { AuthService } from '../providers/auth-service/auth-service';
 import { QuizService } from '../providers/quiz-service/quiz-service';
@@ -29,6 +29,7 @@ import { GetBase64ImageService } from '../providers/get-base64-image/get-base64-
 import { InAppBrowser } from '../../node_modules/@ionic-native/in-app-browser';
 import { Network } from '@ionic-native/network';
 import { GetOrdersProvider } from '../providers/get-orders/get-orders';
+import { FilterPipe } from './../pipes/filter/filter';
 
 //import {  RouterModule,  Routes} from '@angular/router'
 
@@ -59,7 +60,8 @@ export function provideSettings(storage: Storage) {
     
   ],
   imports: [
-    BrowserModule,
+  
+  BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -95,6 +97,7 @@ export function provideSettings(storage: Storage) {
     TestsService,
     CoursesService , 
     SanitizeHtmlPipe,
+    FilterPipe,
     GetSchoolsService,
     SaveOrderService,
     GetBillingService,

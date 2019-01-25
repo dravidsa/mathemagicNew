@@ -24,21 +24,25 @@ questions : any ;
 getBase64Image  : any ;
 loading : Loading ; 
 downloadStatus : any ; 
-mode : any ;l
+mode : any ;
+user : any ; 
 
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams , public testsService:  TestsService , public quizService : QuizService  , public getImage : GetBase64ImageService, private loadingCtrl: LoadingController) {
    // console.log( "showing tests for courseid  " + navParams.get('courseid'));
-
+   this.user = localStorage.getItem("loggedUser") ; 
    this.getBase64Image =getImage ; 
 
    var calledFrom = navParams.get("calledFrom") ; 
    if ( calledFrom == 'services' ) {
    //alert( "called from services ") ;
    //alert("downloaded tests are " + localStorage.getItem("downloadedTests"));  
-
+   console.log( "tests for user are " +localStorage.getItem("TestsForUser") ) ; 
+   if ( localStorage.getItem("TestsForUser") != null )
    this.tests = JSON.parse(localStorage.getItem("TestsForUser")) ; 
+   
+   
    this.mode = "downloaded" ; 
 
    } 
@@ -92,7 +96,7 @@ mode : any ;l
             return "this test is not downloaded on this device "  ; 
     }
     else 
-      return ( localStorage.getItem(  "quiz" + testid+ "status"  )) ; 
+      return ( "This test has been downloaded on"+ localStorage.getItem(  "quiz" + testid+ "status"  )) ; 
   }
  
   public   toDataUrl(url, callback) {
@@ -146,13 +150,14 @@ mode : any ;l
   public downloadTest( testid) { 
 
     //console.log( "downloading test " + testid ) ; 
+    this.showLoading() ; 
 
     this.quizService.getQuestionsForQuiz(testid).subscribe( data => { 
       //console.log( "got this data " + JSON.stringify( data )) ; 
       this.questions = this.quizService.questions; 
       ; 
       //alert("starting the donwload ...please wait  ") ; 
-      this.showLoading() ; 
+    
 
       this.transformQuestion(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading);
       //alert(" Test download Complete ") ; 
@@ -301,7 +306,9 @@ mode : any ;l
   } catch (e )  { 
 
     alert( "Eror while downloading the test . Short of local storage , delete some tests " ) ; 
-
+    
+    this.loading.dismissAll();
+    return; 
   }
 
   this.loading.dismissAll();

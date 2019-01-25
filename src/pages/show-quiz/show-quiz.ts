@@ -36,10 +36,11 @@ public caller : any ;
 public base64Image : any ; 
 public matchList = []; 
 
-
+user : any; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams , private platform: Platform,public alertCtrl: AlertController,public getBase64Image : GetBase64ImageService , public quizService : QuizService) {
-  
+    this.user = localStorage.getItem("loggedUser") ; 
+
     this.caller = navParams.get("caller") ; 
    // console.log ( "called from " + this.caller ) ; 
     if (( this.caller == 'summary') || (  this.caller == 'results')) {
@@ -64,6 +65,8 @@ ngOnInit() {
 
   if (( this.caller != 'summary') && (  this.caller != 'results')) { 
 
+   /*for removal of localstorage  
+      
     if ( localStorage.getItem("quizid"+this.testid)) {
       //console.log( " getting JSON from local for "  + this.testid  +JSON.parse(localStorage.getItem("quizid"+this.testid)) ) ; 
       this.questions = JSON.parse(localStorage.getItem("quizid"+this.testid) ); 
@@ -71,7 +74,8 @@ ngOnInit() {
     }
 
     else { 
-    
+    */
+
   this.quizService.getQuestionsForQuiz(this.testid).subscribe( data => { 
     //console.log( "got this data " + JSON.stringify( data )) ; 
     this.questions = this.quizService.questions; 
@@ -80,7 +84,7 @@ ngOnInit() {
     //this.transformQuestion(this.questions , this.getBase64Image);
 
         });
-    }
+   // } for removal of localstorage 
   } 
   else {  //console.log( "chill....") ;
  }
@@ -110,10 +114,15 @@ showConfirmAlert(option) {
   nextPage = "TestSummaryPage" ; 
 
   }
-  else 
+  if ( option == "back")
   {
   showMessage = "Are you sure to exit and go to back to test List? "
   nextPage = "TestsListPage" ; 
+  }
+  if ( option == "logout")
+  {
+  showMessage = "Are you sure that you want to logout of the app ? "
+  nextPage = "login" ; 
   }
   let confirmAlert = this.alertCtrl.create({
     title: 'Are you Sure?',
@@ -128,12 +137,17 @@ showConfirmAlert(option) {
       {
         text: 'Yes',
         handler: () => {
-          console.log('Agree clicked');
-          if ( option == "submit") {
+          console.log('Agree clicked'); 
+           if ( option == 'logout') {
+             this.logout(); 
+           }
+           if ( option == "submit") {
             nextPage = "TestSummaryPage" 
-          } else nextPage = "TestsListPage" ; 
+          } if ( option == 'back')
+          { nextPage = "TestsListPage" ; } 
           var courseid = localStorage.getItem("currentCourse") ; 
-          this.navCtrl.setRoot(  nextPage , { courseid : courseid} );
+          this.navCtrl.setRoot(  nextPage , { courseid : courseid , questions : this.questions } );
+          
 
           // Your Imagination should go here
         }

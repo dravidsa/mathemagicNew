@@ -25697,6 +25697,14 @@ page-buy-product .buyproducts-content ion-row {
   text-align: center;
 }
 
+page-buy-product .buyproducts-content ion-input {
+  background-color: lightyellow;
+  border-style: solid;
+  border-color: lightyellow;
+  border: 0px 4px 0px 4px;
+  padding: 1px 6px 1px 6px;
+}
+
 page-buy-product .buyproducts-content ion-item {
   border-radius: 30px !important;
   padding-left: 30px !important;
@@ -25877,6 +25885,70 @@ page-register .login-content .submit-btn {
   background: #51CFB1;
   border-radius: 30px !important;
   border: 1px solid #ffffff;
+}
+
+page-school-list .school-list-content {
+  background: #56CA96;
+}
+
+page-school-list .school-list-content .logo-row {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+page-school-list .school-list-content .login-box {
+  background: #399F8B;
+  padding: 20px 20px 0px 20px;
+  margin-top: 30px;
+}
+
+page-school-list .school-list-content img {
+  max-width: 50%;
+}
+
+page-school-list .school-list-content ion-row {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+page-school-list .school-list-content .ion-col {
+  font-size: 4em;
+}
+
+page-school-list .school-list-content ion-item {
+  border-radius: 30px !important;
+  padding-left: 30px !important;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  border: 1px solid #ffffff;
+  border-bottom: 0px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-school-list .school-list-content .signup-col {
+  margin: 0px 16px 0px 16px;
+  padding-bottom: 20px;
+}
+
+page-school-list .school-list-content .item-inner {
+  border-bottom-color: #ffffff !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-school-list .school-list-content .submit-btn {
+  background: #51CFB1;
+  border-radius: 30px !important;
+  border: 1px solid #ffffff;
+}
+
+page-school-list .school-list-content .register-btn {
+  color: #ffffff;
+  font-size: 0.8em;
 }
 
 page-show-quiz .showquiz-content {

@@ -17,8 +17,9 @@ import { GetOrdersProvider } from '../../providers/get-orders/get-orders';
 export class TabServicesPage {
 currentUserId : any ; 
 orders : any ; 
-
+user : any ; 
   constructor(public navCtrl: NavController, public navParams: NavParams , public getOrders : GetOrdersProvider) {
+    this.user = localStorage.getItem("loggedUser") ;
   }
 
   ionViewDidLoad() {
@@ -38,6 +39,15 @@ orders : any ;
     });
  
   }
+  public  logout()  {
+   
+  
+    localStorage.removeItem("loggedUser") ; 
+  
+    this.navCtrl.setRoot('LoginPage');
+  
+    }
+    
   public viewTests(){ 
   this.navCtrl.setRoot('TestsListPage', { calledFrom : 'services' }   ) ; 
 

@@ -75,6 +75,12 @@ var SchoolListPage = /** @class */ (function () {
         this.refGetSchoolService = getSchoolsService;
         getSchoolsService.getSchools(this.schoolName).subscribe(function (data) {
             console.log("got this data  " + JSON.stringify(data));
+            if (data == "failed") {
+                _this.schoolMessage = "no schools found with this criteria";
+                //alert("no schools found with this criteria") ; 
+                return;
+            }
+            //this.schoolMessage = "showing schools matching the name " ; 
             _this.schools = getSchoolsService.schools;
         });
     }
@@ -89,11 +95,12 @@ var SchoolListPage = /** @class */ (function () {
     };
     SchoolListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-school-list',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\school-list\school-list.html"*/'<!--\n  Generated template for the SchoolListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>schoolList</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n\n    <div *ngIf="schools"> \n        <button ion-item *ngFor="let school of schools" (click)="setSchool(school.school_code,school.school_name)" >\n\n            <ion-card>\n                \n                 \n                <ion-card-content>\n                   \n                  <ion-card-title style="white-space: normal;" >\n                   {{school.school_name}}  \n                    </ion-card-title>\n                  <p>\n                    {{school.school_address}}   \n                  </p>\n                  <p>\n                      {{school.school_city}} \n                    </p>\n\n                </ion-card-content>\n              </ion-card>\n          </button>\n        </div>\n\n\n\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\school-list\school-list.html"*/,
+            selector: 'page-school-list',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\school-list\school-list.html"*/'<!--\n  Generated template for the SchoolListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>schoolList</ion-title>\n    <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"> {{user}}</ion-icon>\n        </button>\n        <button menuToggle="left">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="school-list-content" padding>\n\n{{schoolMessage}} <input [(ngModel)]="searchText" placeholder="search text goes here">   \n    <div *ngIf="schools"> \n        <button ion-item *ngFor="let school of schools | filterPipe searchText " (click)="setSchool(school.school_code,school.school_name)" >\n\n            <ion-card>\n                \n                 \n                <ion-card-content>\n                   \n                  <ion-card-title style="white-space: normal;" >\n                   {{school.school_name}}  \n                    </ion-card-title>\n                  <p>\n                    {{school.school_address}}   \n                  </p>\n                  <p>\n                      {{school.school_city}} \n                    </p>\n\n                </ion-card-content>\n              </ion-card>\n          </button>\n        </div>\n\n\n\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\school-list\school-list.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_get_schools_get_schools__["a" /* GetSchoolsService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_get_schools_get_schools__["a" /* GetSchoolsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_get_schools_get_schools__["a" /* GetSchoolsService */]) === "function" && _c || Object])
     ], SchoolListPage);
     return SchoolListPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=school-list.js.map

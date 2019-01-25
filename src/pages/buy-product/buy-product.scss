@@ -13,12 +13,21 @@ page-buy-product {
           padding: 20px 20px 0px 20px;
           margin-top: 30px;
         }
-     
+      
+        
         ion-row {
            align-items: center;
            text-align: center;
          }
      
+         ion-input { 
+
+          background-color: lightyellow;
+border-style: solid; 
+border-color: lightyellow;
+border: 0px 4px 0px 4px;
+padding: 1px 6px 1px 6px;
+         }
          ion-item {
              border-radius: 30px !important;
              padding-left: 30px !important;

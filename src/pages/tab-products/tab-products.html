@@ -7,7 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>tab_products</ion-title>
+    <ion-title>Buy Products</ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="logout()">
+          <ion-icon name="log-out"> {{user}}</ion-icon>
+        </button>
+        <button menuToggle="left">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
@@ -24,37 +33,10 @@
 
 <ion-content padding>
 
-</ion-content>
-<ion-header>
-    <ion-navbar color="blue">
-      <ion-title>
-        Buy Products 
-      </ion-title>
-      <ion-buttons end>
-        <button ion-button (click)="logout()">
-          <ion-icon name="log-out"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
 
 
 <ion-content class="products-content" padding>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
         <ion-card-header>
     
         </ion-card-header>
