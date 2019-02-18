@@ -59,7 +59,7 @@ user : any ;
   }
   
   public checkIfDownloaded( testid ) {
-  //console.log( " checking if downlaoded " + testid ) ; 
+  console.log( " checking if downlaoded " + testid ) ; 
   if (localStorage.getItem("downloadedTests") == null ) return false; 
 
   var downloadedTests = localStorage.getItem("downloadedTests").split(",") ; 

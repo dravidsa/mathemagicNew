@@ -166,6 +166,7 @@ var ShowQuizPage = /** @class */ (function () {
                             nextPage = "TestsListPage";
                         }
                         var courseid = localStorage.getItem("currentCourse");
+                        console.log(" taking to summary page " + courseid);
                         _this.navCtrl.setRoot(nextPage, { courseid: courseid, questions: _this.questions });
                         // Your Imagination should go here
                     }

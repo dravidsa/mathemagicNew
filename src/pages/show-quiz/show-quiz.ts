@@ -124,6 +124,7 @@ showConfirmAlert(option) {
   showMessage = "Are you sure that you want to logout of the app ? "
   nextPage = "login" ; 
   }
+
   let confirmAlert = this.alertCtrl.create({
     title: 'Are you Sure?',
     message: showMessage ,
@@ -145,7 +146,10 @@ showConfirmAlert(option) {
             nextPage = "TestSummaryPage" 
           } if ( option == 'back')
           { nextPage = "TestsListPage" ; } 
+         
           var courseid = localStorage.getItem("currentCourse") ; 
+          console.log( " taking to summary page " + courseid ) ; 
+          
           this.navCtrl.setRoot(  nextPage , { courseid : courseid , questions : this.questions } );
           
 

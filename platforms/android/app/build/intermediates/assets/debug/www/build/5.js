@@ -120,6 +120,7 @@ var TestsListPage = /** @class */ (function () {
         if (calledFrom == 'services') {
             //alert( "called from services ") ;
             //alert("downloaded tests are " + localStorage.getItem("downloadedTests"));  
+            console.log("tests for user are " + localStorage.getItem("TestsForUser"));
             if (localStorage.getItem("TestsForUser") != null)
                 this.tests = JSON.parse(localStorage.getItem("TestsForUser"));
             this.mode = "downloaded";
@@ -135,7 +136,7 @@ var TestsListPage = /** @class */ (function () {
         //console.log( "got these tests for course" + JSON.stringify( this.tests)) ; 
     }
     TestsListPage.prototype.checkIfDownloaded = function (testid) {
-        //console.log( " checking if downlaoded " + testid ) ; 
+        console.log(" checking if downlaoded " + testid);
         if (localStorage.getItem("downloadedTests") == null)
             return false;
         var downloadedTests = localStorage.getItem("downloadedTests").split(",");

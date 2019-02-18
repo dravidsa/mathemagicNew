@@ -5,23 +5,23 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+    <ion-navbar color="blue">
+      <ion-title>
+        Services
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="logout()">
+          <ion-icon name="log-out"> {{user}}</ion-icon>
+        </button>
+        <button menuToggle="left">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
 
-  <ion-navbar>
-    <ion-title>Services</ion-title>
-  
-  <ion-buttons end>
-    <button ion-button (click)="logout()">
-      <ion-icon name="log-out"> {{user}}</ion-icon>
-    </button>
-    <button menuToggle="left">
-        <ion-icon name="menu"></ion-icon>
-      </button>
-  </ion-buttons>
-</ion-navbar>
+
  
-
-
-</ion-header>
 
 
 <ion-content class="tabservices-content" padding>

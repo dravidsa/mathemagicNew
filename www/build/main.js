@@ -116,24 +116,8 @@ var map = {
 		372,
 		1
 	],
-	"../pages/cards/cards.module": [
-		344,
-		30
-	],
-	"../pages/content/content.module": [
-		343,
-		29
-	],
 	"../pages/home/home.module": [
 		345,
-		28
-	],
-	"../pages/item-create/item-create.module": [
-		346,
-		27
-	],
-	"../pages/item-detail/item-detail.module": [
-		348,
 		26
 	],
 	"../pages/list-master/list-master.module": [
@@ -283,11 +267,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var User = /** @class */ (function () {
-    function User(name, email, id, testsValidTill) {
+    function User(name, email, id) {
         this.name = name;
         this.email = email;
         this.id = id;
-        this.testsValidTill = testsValidTill;
     }
     return User;
 }());
@@ -324,16 +307,10 @@ var AuthService = /** @class */ (function () {
                         if (data.Msg != "Login failed") {
                             //console.log( " username " + data.username + "email is "  + data.email)  ; 
                             access = true;
-                            _this.currentUser = new User(data.username, data.email, data.id, data.testsValidTill);
+                            _this.currentUser = new User(data.username, data.email, data.id);
                             localStorage.setItem("loggedUser", _this.currentUser.name);
                             localStorage.setItem("loggedUserId", _this.currentUser.id);
                             localStorage.setItem("loggedUserEmail", _this.currentUser.email);
-                            localStorage.setItem("testsValidTill", _this.currentUser.testsValidTill);
-                            console.log("tests are valid till " + _this.currentUser.testsValidTill);
-                            if (new Date(_this.currentUser.testsValidTill) < new Date()) {
-                                console.log("Downloaded tests are not valid anymore");
-                                localStorage.removeItem("downloadedTests");
-                            }
                             //console.log( " set user in local " + this.currentUser.name + "-" + this.currentUser.id + "-"+ this.currentUser.email ) ; 
                             //console.log( "name " + data.username + "Mesg"  + data.Msg) ; 
                             observer.next("Login successful");
@@ -394,10 +371,9 @@ var AuthService = /** @class */ (function () {
     };
     AuthService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */]])
     ], AuthService);
     return AuthService;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=auth-service.js.map
@@ -1279,7 +1255,6 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__node_modules_ionic_native_in_app_browser__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_network__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_get_orders_get_orders__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pipes_filter_filter__ = __webpack_require__(407);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1299,8 +1274,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 //import { Items } from '../mocks/providers/items';
 
-
-//import { FilterPipe} from '../pipes/FilterPipe';
 
 
 
@@ -1413,7 +1386,6 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_15__providers_tests_service_tests_service__["a" /* TestsService */],
                 __WEBPACK_IMPORTED_MODULE_18__providers_courses_service_courses_service__["a" /* CoursesService */],
                 __WEBPACK_IMPORTED_MODULE_19__components_sanitizehtml_pipe_sanitizehtml_pipe__["a" /* SanitizeHtmlPipe */],
-                __WEBPACK_IMPORTED_MODULE_27__pipes_filter_filter__["a" /* FilterPipe */],
                 __WEBPACK_IMPORTED_MODULE_20__providers_get_schools_get_schools__["a" /* GetSchoolsService */],
                 __WEBPACK_IMPORTED_MODULE_21__providers_save_order_save_order__["a" /* SaveOrderService */],
                 __WEBPACK_IMPORTED_MODULE_22__providers_get_billing_get_billing__["a" /* GetBillingService */],
@@ -1795,16 +1767,11 @@ var MyApp = /** @class */ (function () {
         this.rootPage = 'LoginPage';
         this.pages = [
             { title: 'Tutorial', component: 'TutorialPage' },
-            { title: 'Welcome', component: 'WelcomePage' },
-            { title: 'Tabs', component: 'TabsPage' },
-            { title: 'Cards', component: 'CardsPage' },
-            { title: 'Content', component: 'ContentPage' },
-            { title: 'Login', component: 'LoginPage' },
-            { title: 'Signup', component: 'SignupPage' },
-            { title: 'Master Detail', component: 'ListMasterPage' },
+            { title: 'Home', component: 'WelcomePage' },
+            { title: 'My Orders', component: 'LoginPage' },
             { title: 'Menu', component: 'MenuPage' },
-            { title: 'Settings', component: 'SettingsPage' },
-            { title: 'Search', component: 'SearchPage' }
+            { title: 'Downloaded Tests', component: 'SettingsPage' },
+            { title: 'Enroill for Exam ', component: 'SearchPage' }
         ];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
@@ -1895,64 +1862,19 @@ var MyApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */]) === "function" && _a || Object)
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            template: "<ion-menu [content]=\"content\">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Pages</ion-title>\n      </ion-toolbar>\n    </ion-header>\n\n    <ion-content>\n      <ion-list>\n        <button menuClose ion-item *ngFor=\"let p of pages\" (click)=\"openPage(p)\">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n  </ion-menu>\n  <ion-nav #content [root]=\"rootPage\"></ion-nav>"
+            template: "<ion-menu [content]=\"content\">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n\n    <ion-content>\n      <ion-list>\n        <button menuClose ion-item *ngFor=\"let p of pages\" (click)=\"openPage(p)\">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n  </ion-menu>\n  <ion-nav #content [root]=\"rootPage\"></ion-nav>"
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_6__providers__["c" /* Settings */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* Config */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__providers__["c" /* Settings */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers__["c" /* Settings */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* Config */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* Config */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _j || Object])
     ], MyApp);
     return MyApp;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 407:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FilterPipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-/**
- * Generated class for the FilterPipe pipe.
- *
- * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
- */
-var FilterPipe = /** @class */ (function () {
-    function FilterPipe() {
-    }
-    /**
-     * Takes a value and makes it lowercase.
-     */
-    FilterPipe.prototype.transform = function (items, searchText) {
-        if (!items)
-            return [];
-        if (!searchText)
-            return items;
-        searchText = searchText.toLowerCase();
-        return items.filter(function (it) {
-            return it.toLowerCase().includes(searchText);
-        });
-    };
-    FilterPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({
-            name: 'filterPipe',
-        })
-    ], FilterPipe);
-    return FilterPipe;
-}());
-
-//# sourceMappingURL=filter.js.map
 
 /***/ })
 
