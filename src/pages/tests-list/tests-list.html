@@ -24,6 +24,14 @@
 
 
 <ion-content class="testlist-content" padding>                 
+
+    <ion-card >                           
+        <ion-card-content>
+            <B> You can solve these tests without being online by clicking on "Solve" </B> <BR/>
+            By clicking on "Delete" , the test will be deleted from Device but you can still solve on Server from Tests tab.<BR/>
+
+          </ion-card-content> 
+          </ion-card> 
     <div *ngIf="tests" >
 
     <div *ngFor="let test  of tests" > 
@@ -42,7 +50,9 @@
                         <button ion-button  *ngIf="mode == 'downloaded'" color="danger" (click)= "deleteTest(test.id )">Delete</button>  
                         
                         <BR/> 
-                        {{showDownloadStatus(test.id) }}
+                        {{showDownloadStatus(test.id) }} <BR/>
+
+                        
                                     
               
 

@@ -1,15 +1,15 @@
 webpackJsonp([14],{
 
-/***/ 359:
+/***/ 356:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowQuizPageModule", function() { return ShowQuizPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_sanitizehtml_pipe_sanitizehtml_pipe__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_sanitizehtml_pipe_sanitizehtml_pipe__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__show_quiz__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__show_quiz__ = __webpack_require__(383);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -40,7 +40,7 @@ var ShowQuizPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 390:
+/***/ 383:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79,6 +79,7 @@ var ShowQuizPage = /** @class */ (function () {
         this.quizService = quizService;
         this.currentQuestionNo = 0;
         this.matchList = [];
+        this.user = localStorage.getItem("loggedUser");
         this.caller = navParams.get("caller");
         // console.log ( "called from " + this.caller ) ; 
         if ((this.caller == 'summary') || (this.caller == 'results')) {
@@ -95,20 +96,24 @@ var ShowQuizPage = /** @class */ (function () {
     ShowQuizPage.prototype.ngOnInit = function () {
         var _this = this;
         if ((this.caller != 'summary') && (this.caller != 'results')) {
-            if (localStorage.getItem("quizid" + this.testid)) {
-                //console.log( " getting JSON from local for "  + this.testid  +JSON.parse(localStorage.getItem("quizid"+this.testid)) ) ; 
-                this.questions = JSON.parse(localStorage.getItem("quizid" + this.testid));
-                // console.log( "questions from local is " + this.questions[0].text) ; 
-            }
-            else {
-                this.quizService.getQuestionsForQuiz(this.testid).subscribe(function (data) {
-                    //console.log( "got this data " + JSON.stringify( data )) ; 
-                    _this.questions = _this.quizService.questions;
-                    ;
-                    // console.log( " fininding base64 ") ; 
-                    //this.transformQuestion(this.questions , this.getBase64Image);
-                });
-            }
+            /*for removal of localstorage
+               
+             if ( localStorage.getItem("quizid"+this.testid)) {
+               //console.log( " getting JSON from local for "  + this.testid  +JSON.parse(localStorage.getItem("quizid"+this.testid)) ) ;
+               this.questions = JSON.parse(localStorage.getItem("quizid"+this.testid) );
+              // console.log( "questions from local is " + this.questions[0].text) ;
+             }
+         
+             else {
+             */
+            this.quizService.getQuestionsForQuiz(this.testid).subscribe(function (data) {
+                //console.log( "got this data " + JSON.stringify( data )) ; 
+                _this.questions = _this.quizService.questions;
+                ;
+                // console.log( " fininding base64 ") ; 
+                //this.transformQuestion(this.questions , this.getBase64Image);
+            });
+            // } for removal of localstorage 
         }
         else {
         }
@@ -129,9 +134,13 @@ var ShowQuizPage = /** @class */ (function () {
             showMessage = 'Are you sure you want to submit this test?';
             nextPage = "TestSummaryPage";
         }
-        else {
+        if (option == "back") {
             showMessage = "Are you sure to exit and go to back to test List? ";
             nextPage = "TestsListPage";
+        }
+        if (option == "logout") {
+            showMessage = "Are you sure that you want to logout of the app ? ";
+            nextPage = "login";
         }
         var confirmAlert = this.alertCtrl.create({
             title: 'Are you Sure?',
@@ -147,13 +156,18 @@ var ShowQuizPage = /** @class */ (function () {
                     text: 'Yes',
                     handler: function () {
                         console.log('Agree clicked');
+                        if (option == 'logout') {
+                            _this.logout();
+                        }
                         if (option == "submit") {
                             nextPage = "TestSummaryPage";
                         }
-                        else
+                        if (option == 'back') {
                             nextPage = "TestsListPage";
+                        }
                         var courseid = localStorage.getItem("currentCourse");
-                        _this.navCtrl.setRoot(nextPage, { courseid: courseid });
+                        console.log(" taking to summary page " + courseid);
+                        _this.navCtrl.setRoot(nextPage, { courseid: courseid, questions: _this.questions });
                         // Your Imagination should go here
                     }
                 }

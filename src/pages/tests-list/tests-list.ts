@@ -93,10 +93,10 @@ user : any ;
  
   public showDownloadStatus ( testid ) { 
     if  ( localStorage.getItem("quiz" + testid+ "status") == undefined ) { 
-            return "this test is not downloaded on this device "  ; 
+            return "This test has not been downloaded on this device "  ; 
     }
     else 
-      return ( "This test has been downloaded on"+ localStorage.getItem(  "quiz" + testid+ "status"  )) ; 
+      return ( "This test has been downloaded on - "+ localStorage.getItem(  "quiz" + testid+ "status"  )) ; 
   }
  
   public   toDataUrl(url, callback) {

@@ -1,6 +1,6 @@
 webpackJsonp([5],{
 
-/***/ 373:
+/***/ 370:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TestsListPageModule", function() { return TestsListPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tests_list__ = __webpack_require__(406);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tests_list__ = __webpack_require__(399);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,14 +38,14 @@ var TestsListPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 406:
+/***/ 399:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TestsListPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(121);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -413,10 +413,9 @@ var TestsListPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
             selector: 'page-tests-list',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/'<!--\n  Generated template for the TestsListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="blue">\n      <ion-title>\n        Test List\n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"> {{user}}</ion-icon>\n        </button>\n        <button menuToggle="left">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n      </ion-navbar>\n  </ion-header>\n\n\n\n\n<ion-content class="testlist-content" padding>                 \n    <div *ngIf="tests" >\n\n    <div *ngFor="let test  of tests" > \n            <div *ngIf="((mode==\'downloaded\')&&( checkIfDownloaded(test.id)== true )) || ( mode==\'all\') ">\n            <ion-card >                           \n              <ion-card-content>\n                   <ion-card-title>\n                   {{test.name }}  \n                    </ion-card-title>\n                   \n                                      \n                  \n                   \n                        <button ion-button  color="secondary" (click)= "solveTest(test.id , test.name)">Solve</button>  \n                        <button ion-button  *ngIf="mode == \'all\'" color="default" (click)= "downloadTest(test.id )">Download</button>  \n                        <button ion-button  *ngIf="mode == \'downloaded\'" color="danger" (click)= "deleteTest(test.id )">Delete</button>  \n                        \n                        <BR/> \n                        {{showDownloadStatus(test.id) }}\n                                    \n              \n\n                 \n              \n                </ion-card-content>\n                \n              </ion-card>\n\n            </div>\n              </div> \n\n        </div>\n        <button ion-button full=true color="danger" round (click)="goBack()"  >Back</button>\n\n</ion-content>\n\n\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__["a" /* TestsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__["a" /* TestsService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__["a" /* QuizService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__["a" /* QuizService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__["a" /* GetBase64ImageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__["a" /* GetBase64ImageService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__["a" /* TestsService */], __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__["a" /* QuizService */], __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__["a" /* GetBase64ImageService */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */]])
     ], TestsListPage);
     return TestsListPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=tests-list.js.map

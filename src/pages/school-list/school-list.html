@@ -23,9 +23,9 @@
 
 <ion-content class="school-list-content" padding>
 
-{{schoolMessage}} <input [(ngModel)]="searchText" placeholder="search text goes here">   
+
     <div *ngIf="schools"> 
-        <button ion-item *ngFor="let school of schools | filterPipe searchText " (click)="setSchool(school.school_code,school.school_name)" >
+        <button ion-item *ngFor="let school of schools " (click)="setSchool(school.school_code,school.school_name)" >
 
             <ion-card>
                 

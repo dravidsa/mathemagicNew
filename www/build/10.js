@@ -1,6 +1,6 @@
 webpackJsonp([10],{
 
-/***/ 363:
+/***/ 361:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabServicesPageModule", function() { return TabServicesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_services__ = __webpack_require__(395);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_services__ = __webpack_require__(389);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,14 +38,14 @@ var TabServicesPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 395:
+/***/ 389:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabServicesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_get_orders_get_orders__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_get_orders_get_orders__ = __webpack_require__(124);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -69,6 +69,7 @@ var TabServicesPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.getOrders = getOrders;
+        this.user = localStorage.getItem("loggedUser");
     }
     TabServicesPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad TabServicesPage');
@@ -82,6 +83,10 @@ var TabServicesPage = /** @class */ (function () {
             _this.navCtrl.setRoot('ViewOrdersPage', { 'orders': _this.orders });
             ;
         });
+    };
+    TabServicesPage.prototype.logout = function () {
+        localStorage.removeItem("loggedUser");
+        this.navCtrl.setRoot('LoginPage');
     };
     TabServicesPage.prototype.viewTests = function () {
         this.navCtrl.setRoot('TestsListPage', { calledFrom: 'services' });

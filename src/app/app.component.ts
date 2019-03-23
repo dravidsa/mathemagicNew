@@ -2,10 +2,14 @@ import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Config, Nav, Platform, AlertController } from 'ionic-angular';
+import { Config, Nav, Platform, AlertController, NavController } from 'ionic-angular';
 import { Network } from '@ionic-native/network';
 import { FirstRunPage } from '../pages';
 import { Settings } from '../providers';
+import { CommonModule } from '@angular/common';
+import {TabServicesPage} from '../pages/tab-services/tab-services' 
+import { GetOrdersProvider } from './../providers/get-orders/get-orders';
+ 
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -33,21 +37,23 @@ export class MyApp {
   //rootPage = FirstRunPage;
 
   @ViewChild(Nav) nav: Nav;
+  currentUserId  : any  ; 
+  orders : any ; 
+
+
 
   pages: any[] = [
-    { title: 'Tutorial', component: 'TutorialPage' },
-    { title: 'Home', component: 'WelcomePage' },
-   
-    { title: 'My Orders', component: 'LoginPage' },
   
-    { title: 'Menu', component: 'MenuPage' },
-    { title: 'Downloaded Tests', component: 'SettingsPage' },
-    { title: 'Enroill for Exam ', component: 'SearchPage' }
+    { title: 'Home', component: 'MenuPage' },
+    { title: 'My Orders', component: 'ViewOrdersPage' },
+    { title: 'My Tests', component: 'TestsListPage' },
+    { title: 'Enroll For Exam', component: 'TabProductsPage' },
+    { title: 'Log Out', component: 'LogoutPage' }
   ]
 
 
   
-  constructor(private translate: TranslateService, platform: Platform,     public network: Network  ,    public alertCtrl : AlertController ,settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private translate: TranslateService, platform: Platform ,  public network: Network  , public getOrders : GetOrdersProvider ,   public alertCtrl : AlertController ,settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -91,11 +97,7 @@ export class MyApp {
     this.initTranslate();
  
 
-
-
  
-
-    
 
 
 
@@ -168,7 +170,32 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+   // this.nav.setRoot(page.component);
+    console.log( "opening page"+ page.component) ; 
+
+
+   // this.tabservices.viewOrders() ; 
+
+   if ( page.component == "ViewOrdersPage") { 
+   this.currentUserId = localStorage.getItem("loggedUserId") ; 
+
+    this.getOrders.getOrders(this.currentUserId).subscribe( data => { 
+      //console.log( "got this data " + JSON.stringify( data )) ; 
+      this.orders = this.getOrders.orders ;  
+      this.nav.setRoot('ViewOrdersPage'  ,{ 'orders' : this.orders } ) ; 
+      }); 
+    }
+
+    else if ( page.component == "LogoutPage") {  
+      localStorage.removeItem("loggedUser") ; 
+      this.nav.setRoot('LoginPage');
+    }
+    else if ( page.component == "TestsListPage") {  
+      this.nav.setRoot('TestsListPage',{ 'courseid' : localStorage.getItem("currentCourse" ) });
+       }
+
+      else this.nav.setRoot(page.component) ; 
+
   }
 
   
