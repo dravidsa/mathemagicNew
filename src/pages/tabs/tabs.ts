@@ -14,9 +14,17 @@ export class TabsPage {
   tab4Root: any = 'TabServicesPage';
 
   myIndex: number;
+
+  user : any ; 
+ 
+
  
   constructor(navParams: NavParams) {
     // Set the active tab based on the passed index from menu.ts
+
+    this.user = localStorage.getItem("loggedUser") ; 
+    console.log ( "user in tabs is "  + this.user) ; 
+
     this.myIndex = navParams.data.tabIndex || 0;
   }
 }

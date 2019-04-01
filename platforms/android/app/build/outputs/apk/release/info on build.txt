@@ -1,0 +1,10 @@
+certificate file pass - sandeep123
+alias - mathemagic 
+
+keytool -genkey -v -keystore fox.keystore  -alias foxkeystore -keyalg RSA -keysize 2048 -validity 10000
+
+build --release android
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore mathemagic.keystore app-release-unsigned.apk mathemagic
+
+zipalign -v 4 app-release-unsigned.apk mathemagicnew.apk

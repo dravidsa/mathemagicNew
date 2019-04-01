@@ -29,6 +29,12 @@ this.user = localStorage.getItem("loggedUser") ;
     if ( coursesService.courses == undefined )  {
       var userName = localStorage.getItem("loggedUser") ; 
 
+    
+      if ( userName == null ) { console.log ( "null user go to loing ") ;
+        this.navCtrl.setRoot("LoginPage") ; 
+    }
+
+
       this.coursesService.getCoursesForUser(userName).subscribe( data => { 
       console.log( "got this course data for logged in user " + JSON.stringify( data )) ; 
         this.userCourses = coursesService.courses  ; 

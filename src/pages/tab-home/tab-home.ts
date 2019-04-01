@@ -33,6 +33,9 @@ export class TabsHomePage {
      // console.log( "got this  data  " + JSON.stringify( data )) ; 
       this.messages = this.messagesService.messages; 
       this.user = localStorage.getItem("loggedUser") ;  console.log( " User is " + this.user );
+      if ( this.user == null ) { console.log ( "null user go to loing ") ;
+        this.navCtrl.setRoot("LoginPage") ; 
+    }
       ; 
   
     });

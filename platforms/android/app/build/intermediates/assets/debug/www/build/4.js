@@ -1,15 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 366:
+/***/ 368:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TutorialPageModule", function() { return TutorialPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewOrdersPageModule", function() { return ViewOrdersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tutorial__ = __webpack_require__(394);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_orders__ = __webpack_require__(397);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,39 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var TutorialPageModule = /** @class */ (function () {
-    function TutorialPageModule() {
+var ViewOrdersPageModule = /** @class */ (function () {
+    function ViewOrdersPageModule() {
     }
-    TutorialPageModule = __decorate([
+    ViewOrdersPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__tutorial__["a" /* TutorialPage */],
+                __WEBPACK_IMPORTED_MODULE_2__view_orders__["a" /* ViewOrdersPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tutorial__["a" /* TutorialPage */]),
-                __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild()
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__view_orders__["a" /* ViewOrdersPage */]),
             ],
-            exports: [
-                __WEBPACK_IMPORTED_MODULE_2__tutorial__["a" /* TutorialPage */]
-            ]
         })
-    ], TutorialPageModule);
-    return TutorialPageModule;
+    ], ViewOrdersPageModule);
+    return ViewOrdersPageModule;
 }());
 
-//# sourceMappingURL=tutorial.module.js.map
+//# sourceMappingURL=view-orders.module.js.map
 
 /***/ }),
 
-/***/ 394:
+/***/ 397:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TutorialPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewOrdersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_get_orders_get_orders__ = __webpack_require__(124);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,69 +58,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var TutorialPage = /** @class */ (function () {
-    function TutorialPage(navCtrl, menu, translate, platform) {
-        var _this = this;
+/**
+ * Generated class for the ViewOrdersPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ViewOrdersPage = /** @class */ (function () {
+    function ViewOrdersPage(navCtrl, navParams, getOrders) {
         this.navCtrl = navCtrl;
-        this.menu = menu;
-        this.platform = platform;
-        this.showSkip = true;
-        this.dir = 'ltr';
-        this.dir = platform.dir();
-        translate.get(["TUTORIAL_SLIDE1_TITLE",
-            "TUTORIAL_SLIDE1_DESCRIPTION",
-            "TUTORIAL_SLIDE2_TITLE",
-            "TUTORIAL_SLIDE2_DESCRIPTION",
-            "TUTORIAL_SLIDE3_TITLE",
-            "TUTORIAL_SLIDE3_DESCRIPTION",
-        ]).subscribe(function (values) {
-            console.log('Loaded values', values);
-            _this.slides = [
-                {
-                    title: values.TUTORIAL_SLIDE1_TITLE,
-                    description: values.TUTORIAL_SLIDE1_DESCRIPTION,
-                    image: 'assets/img/ica-slidebox-img-1.png',
-                },
-                {
-                    title: values.TUTORIAL_SLIDE2_TITLE,
-                    description: values.TUTORIAL_SLIDE2_DESCRIPTION,
-                    image: 'assets/img/ica-slidebox-img-2.png',
-                },
-                {
-                    title: values.TUTORIAL_SLIDE3_TITLE,
-                    description: values.TUTORIAL_SLIDE3_DESCRIPTION,
-                    image: 'assets/img/ica-slidebox-img-3.png',
-                }
-            ];
-        });
+        this.navParams = navParams;
+        this.getOrders = getOrders;
+        this.orders = navParams.get("orders");
+        this.user = localStorage.getItem("loggedUser");
+        this.user = localStorage.getItem("loggedUser");
     }
-    TutorialPage.prototype.startApp = function () {
-        this.navCtrl.setRoot('WelcomePage', {}, {
-            animate: true,
-            direction: 'forward'
-        });
+    ViewOrdersPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ViewOrdersPage');
     };
-    TutorialPage.prototype.onSlideChangeStart = function (slider) {
-        this.showSkip = !slider.isEnd();
-    };
-    TutorialPage.prototype.ionViewDidEnter = function () {
-        // the root left menu should be disabled on the tutorial page
-        this.menu.enable(false);
-    };
-    TutorialPage.prototype.ionViewWillLeave = function () {
-        // enable the root left menu when leaving the tutorial page
-        this.menu.enable(true);
-    };
-    TutorialPage = __decorate([
+    ViewOrdersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tutorial',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tutorial\tutorial.html"*/'<ion-header no-shadow>\n  <ion-navbar>\n    <ion-buttons end *ngIf="showSkip">\n      <button ion-button (click)="startApp()" color="primary">{{ \'TUTORIAL_SKIP_BUTTON\' | translate}}</button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content no-bounce>\n  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">\n    <ion-slide *ngFor="let slide of slides">\n      <img [src]="slide.image" class="slide-image" />\n      <h2 class="slide-title" [innerHTML]="slide.title"></h2>\n      <p [innerHTML]="slide.description"></p>\n    </ion-slide>\n    <ion-slide>\n      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />\n      <h2 class="slide-title">{{ \'TUTORIAL_SLIDE4_TITLE\' | translate }}</h2>\n      <button ion-button icon-end large clear (click)="startApp()">\n        {{ \'TUTORIAL_CONTINUE_BUTTON\' | translate }}\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </ion-slide>\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tutorial\tutorial.html"*/
+            selector: 'page-view-orders',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\view-orders\view-orders.html"*/'<!--\n  Generated template for the ViewOrdersPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>My Orders</ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="logout()">\n        <ion-icon name="log-out"> {{user}}</ion-icon>\n      </button>\n      <button menuToggle="left">\n          <ion-icon name="menu"></ion-icon>\n        </button>\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class=vieworders-content padding>\n\n  \n    <ion-grid>\n        <ion-row>\n          <ion-col>\n            <ion-item>\n           Order #\n          </ion-item>\n          </ion-col>\n          <ion-col>\n              <ion-item>\n            Status\n          </ion-item>\n          </ion-col>\n         \n        </ion-row>\n      </ion-grid>\n\n      <ion-list>\n          <button ion-item *ngFor="let order of orders">\n          <ion-row>\n          <ion-col>\n              <ion-item>\n              {{ order.ipm_orderId }}\n              </ion-item>\n          </ion-col>\n          \n          <ion-col *ngIf="order.status == \'Pending\'" ion-text color="primary">\n              <ion-item>\n              <p> Pending </p>            \n              </ion-item> </ion-col>\n\n          <ion-col *ngIf="order.status == \'Confirmed\' "  ion-text color="danger" >\n              <ion-item>\n              <p> Confirmed </p>\n          </ion-item></ion-col>\n        \n        \n          \n        \n        </ion-row>\n        \n          </button>\n\n        </ion-list> \n\n\n\n\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\view-orders\view-orders.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */], __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */]])
-    ], TutorialPage);
-    return TutorialPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_get_orders_get_orders__["a" /* GetOrdersProvider */]])
+    ], ViewOrdersPage);
+    return ViewOrdersPage;
 }());
 
-//# sourceMappingURL=tutorial.js.map
+//# sourceMappingURL=view-orders.js.map
 
 /***/ })
 

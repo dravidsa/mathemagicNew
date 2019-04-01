@@ -65,6 +65,14 @@ module.exports = [
     "clobbers": [
       "Connection"
     ]
+  },
+  {
+    "id": "cordova-plugin-app-version.AppVersionPlugin",
+    "file": "plugins/cordova-plugin-app-version/www/AppVersionPlugin.js",
+    "pluginId": "cordova-plugin-app-version",
+    "clobbers": [
+      "cordova.getAppVersion"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -77,7 +85,8 @@ module.exports.metadata =
   "cordova-plugin-ionic-webview": "2.2.3",
   "cordova-plugin-ionic-keyboard": "2.1.3",
   "cordova-plugin-inappbrowser": "3.0.0",
-  "cordova-plugin-network-information": "2.0.1"
+  "cordova-plugin-network-information": "2.0.1",
+  "cordova-plugin-app-version": "0.1.9"
 };
 // BOTTOM OF METADATA
 });

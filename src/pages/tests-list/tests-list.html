@@ -27,9 +27,10 @@
 
     <ion-card >                           
         <ion-card-content>
+            <div *ngIf="(mode=='downloaded')" >
             <B> You can solve these tests without being online by clicking on "Solve" </B> <BR/>
             By clicking on "Delete" , the test will be deleted from Device but you can still solve on Server from Tests tab.<BR/>
-
+          </div>
           </ion-card-content> 
           </ion-card> 
     <div *ngIf="tests" >

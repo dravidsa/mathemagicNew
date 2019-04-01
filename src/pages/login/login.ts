@@ -4,6 +4,8 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 import { CoursesService } from '../../providers/courses-service/courses-service';
 import { Network } from '@ionic-native/network';
  
+
+ 
 import { MenuController } from 'ionic-angular';
 
 @IonicPage()
@@ -13,15 +15,17 @@ import { MenuController } from 'ionic-angular';
 })
 export class LoginPage {
   loading: Loading;
-  
+  appVersionCode : any  ; 
  
 
   //registerCredentials = { username: 'sandra', password: 'sandeep123' };
   registerCredentials = { username: '', password: '' };
  
 
-  constructor(private nav: NavController, private auth: AuthService, public network : Network   , menu : MenuController ,  private courses : CoursesService , private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(private nav: NavController, private auth: AuthService, public network : Network   , menu : MenuController ,    private courses : CoursesService , private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
 
+   
+    
     menu.enable(false, 'leftMenu');
 
     if (localStorage.getItem("loggedUser") != null  ) {

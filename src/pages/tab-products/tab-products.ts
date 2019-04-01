@@ -20,6 +20,12 @@ products : any ;
 user : any ; 
   constructor(public navCtrl: NavController, public navParams: NavParams, public productsService : ProductsService) {
     this.user = localStorage.getItem("loggedUser") ; console.log( " got user " + this.user) ; 
+   
+    if ( this.user == null ) { console.log ( "null user go to loing ") ;
+      this.navCtrl.setRoot("LoginPage") ; 
+  }
+
+
     this.productsService.getProducts().subscribe( data => { 
       //console.log( "got this data " + JSON.stringify( data )) ; 
       this.products = this.productsService.products; 

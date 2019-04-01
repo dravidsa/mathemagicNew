@@ -91,7 +91,73 @@ var Api = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 135:
+/***/ 124:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetOrdersProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_api__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/*
+  Generated class for the GetOrdersProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var GetOrdersProvider = /** @class */ (function () {
+    function GetOrdersProvider(http, api) {
+        this.http = http;
+        this.api = api;
+        console.log('Hello GetOrdersProvider Provider');
+    }
+    GetOrdersProvider.prototype.getOrders = function (userid) {
+        var _this = this;
+        return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].create(function (observer) {
+            var headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
+            console.log("getting orders");
+            _this.api.get("http://ipm-mathemagic.com/api/ipm_my_orders/?userid=" + userid)
+                .subscribe(function (data) {
+                console.log(JSON.stringify(data));
+                _this.orders = data;
+                observer.next("got orders");
+                observer.complete();
+            }, function (error) {
+                console.log("got some error " + JSON.stringify(error));
+                observer.next("failed");
+                observer.complete();
+            });
+        });
+    };
+    GetOrdersProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__api_api__["a" /* Api */]])
+    ], GetOrdersProvider);
+    return GetOrdersProvider;
+}());
+
+//# sourceMappingURL=get-orders.js.map
+
+/***/ }),
+
+/***/ 136:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -104,11 +170,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 135;
+webpackEmptyAsyncContext.id = 136;
 
 /***/ }),
 
-/***/ 186:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -126,51 +192,51 @@ var map = {
 	],
 	"../pages/login/login.module": [
 		346,
-		24
+		2
 	],
 	"../pages/menu/menu.module": [
+		348,
+		24
+	],
+	"../pages/payment/payment.module": [
 		347,
 		23
 	],
-	"../pages/payment/payment.module": [
-		348,
-		22
-	],
 	"../pages/register/register.module": [
 		350,
-		21
+		22
 	],
 	"../pages/school-list/school-list.module": [
 		349,
-		20
+		21
 	],
 	"../pages/search/search.module": [
 		352,
-		19
+		20
 	],
 	"../pages/settings/settings.module": [
 		351,
-		18
+		19
 	],
 	"../pages/show-courses/show-courses.module": [
 		353,
-		17
+		18
 	],
 	"../pages/show-messages/show-messages.module": [
 		354,
-		16
+		17
 	],
 	"../pages/show-products/show-products.module": [
 		355,
-		15
+		16
 	],
 	"../pages/show-quiz/show-quiz.module": [
 		356,
-		14
+		15
 	],
 	"../pages/show-tests/show-tests.module": [
 		357,
-		13
+		14
 	],
 	"../pages/signup/signup.module": [
 		358,
@@ -178,47 +244,47 @@ var map = {
 	],
 	"../pages/tab-home/tab-home.module": [
 		359,
-		12
+		13
 	],
 	"../pages/tab-products/tab-products.module": [
 		361,
-		11
+		12
 	],
 	"../pages/tab-services/tab-services.module": [
 		360,
-		10
+		11
 	],
 	"../pages/tab-tests/tab-tests.module": [
 		362,
-		9
+		10
 	],
 	"../pages/tabs/tabs.module": [
 		363,
-		8
+		9
 	],
 	"../pages/test-results/test-results.module": [
+		364,
+		8
+	],
+	"../pages/test-summary/test-summary.module": [
 		365,
 		7
 	],
-	"../pages/test-summary/test-summary.module": [
-		364,
-		6
-	],
 	"../pages/tests-list/tests-list.module": [
 		370,
-		5
+		6
 	],
 	"../pages/tutorial/tutorial.module": [
 		366,
-		4
+		5
 	],
 	"../pages/view-orders/view-orders.module": [
 		368,
-		3
+		4
 	],
 	"../pages/welcome/welcome.module": [
 		367,
-		2
+		3
 	]
 };
 function webpackAsyncContext(req) {
@@ -232,12 +298,12 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 186;
+webpackAsyncContext.id = 187;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 226:
+/***/ 227:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -387,7 +453,7 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 227:
+/***/ 228:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -464,7 +530,7 @@ var CoursesService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 228:
+/***/ 229:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -541,7 +607,7 @@ var GetSchoolsService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 229:
+/***/ 230:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -623,7 +689,7 @@ var GetBase64ImageService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 230:
+/***/ 231:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -697,72 +763,6 @@ var QuizService = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=quiz-service.js.map
-
-/***/ }),
-
-/***/ 231:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GetOrdersProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_api__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/*
-  Generated class for the GetOrdersProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var GetOrdersProvider = /** @class */ (function () {
-    function GetOrdersProvider(http, api) {
-        this.http = http;
-        this.api = api;
-        console.log('Hello GetOrdersProvider Provider');
-    }
-    GetOrdersProvider.prototype.getOrders = function (userid) {
-        var _this = this;
-        return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].create(function (observer) {
-            var headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
-            console.log("getting orders");
-            _this.api.get("http://ipm-mathemagic.com/api/ipm_my_orders/?userid=" + userid)
-                .subscribe(function (data) {
-                console.log(JSON.stringify(data));
-                _this.orders = data;
-                observer.next("got orders");
-                observer.complete();
-            }, function (error) {
-                console.log("got some error " + JSON.stringify(error));
-                observer.next("failed");
-                observer.complete();
-            });
-        });
-    };
-    GetOrdersProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__api_api__["a" /* Api */]])
-    ], GetOrdersProvider);
-    return GetOrdersProvider;
-}());
-
-//# sourceMappingURL=get-orders.js.map
 
 /***/ }),
 
@@ -1239,29 +1239,29 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(138);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngx_translate_http_loader__ = __webpack_require__(296);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_items_items__ = __webpack_require__(232);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(342);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_auth_service_auth_service__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_quiz_service_quiz_service__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_auth_service_auth_service__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_quiz_service_quiz_service__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_tests_service_tests_service__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_products_service_products_service__ = __webpack_require__(235);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_messages_service_messages_service__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_courses_service_courses_service__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_courses_service_courses_service__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_sanitizehtml_pipe_sanitizehtml_pipe__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_get_schools_get_schools__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_get_schools_get_schools__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_save_order_save_order__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_get_billing_get_billing__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_get_base64_image_get_base64_image__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_get_base64_image_get_base64_image__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__node_modules_ionic_native_in_app_browser__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_network__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_get_orders_get_orders__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_get_orders_get_orders__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pipes_filter_filter__ = __webpack_require__(343);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1342,8 +1342,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/school-list/school-list.module#SchoolListPageModule', name: 'SchoolListPage', segment: 'school-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
@@ -1359,8 +1359,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/tab-products/tab-products.module#TabProductsPageModule', name: 'TabProductsPage', segment: 'tab-products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-tests/tab-tests.module#TabTestsPageModule', name: 'TabTestsPage', segment: 'tab-tests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/test-summary/test-summary.module#TestSummaryPageModule', name: 'TestSummaryPage', segment: 'test-summary', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/test-results/test-results.module#TestResultsPageModule', name: 'TestResultsPage', segment: 'test-results', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/test-summary/test-summary.module#TestSummaryPageModule', name: 'TestSummaryPage', segment: 'test-summary', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/view-orders/view-orders.module#ViewOrdersPageModule', name: 'ViewOrdersPage', segment: 'view-orders', priority: 'low', defaultHistory: [] },
@@ -1547,7 +1547,7 @@ var Item = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Settings; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(140);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1739,13 +1739,13 @@ var User = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_get_orders_get_orders__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_get_orders_get_orders__ = __webpack_require__(124);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1870,6 +1870,13 @@ var MyApp = /** @class */ (function () {
         // we wouldn't want the back button to show in this scenario
         // this.nav.setRoot(page.component);
         console.log("opening page" + page.component);
+        this.user = localStorage.getItem("loggedUser");
+        console.log(" in open page user is >" + this.user + "<");
+        if (this.user == null) {
+            console.log("user is null  going to Login ");
+            this.nav.setRoot("LoginPage");
+            return;
+        }
         // this.tabservices.viewOrders() ; 
         if (page.component == "ViewOrdersPage") {
             this.currentUserId = localStorage.getItem("loggedUserId");
@@ -1891,16 +1898,15 @@ var MyApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             template: "<ion-menu [content]=\"content\">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n\n    <ion-content>\n      <ion-list>\n        <button menuClose ion-item *ngFor=\"let p of pages\" (click)=\"openPage(p)\">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n\n  </ion-menu>\n  <ion-nav #content [root]=\"rootPage\"></ion-nav>"
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7__providers_get_orders_get_orders__["a" /* GetOrdersProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_get_orders_get_orders__["a" /* GetOrdersProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__providers__["c" /* Settings */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers__["c" /* Settings */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* Config */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* Config */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _k || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["m" /* Platform */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_network__["a" /* Network */], __WEBPACK_IMPORTED_MODULE_7__providers_get_orders_get_orders__["a" /* GetOrdersProvider */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_6__providers__["c" /* Settings */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* Config */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
 //# sourceMappingURL=app.component.js.map

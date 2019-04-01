@@ -20,6 +20,11 @@ orders : any ;
 user : any ; 
   constructor(public navCtrl: NavController, public navParams: NavParams , public getOrders : GetOrdersProvider) {
     this.user = localStorage.getItem("loggedUser") ;
+
+    
+      if ( this.user == null ) { console.log ( "null user go to loing ") ;
+        this.navCtrl.setRoot("LoginPage") ; 
+    }
   }
 
   ionViewDidLoad() {

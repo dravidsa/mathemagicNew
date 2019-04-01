@@ -39,6 +39,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   currentUserId  : any  ; 
   orders : any ; 
+  user : any ; 
+
 
 
 
@@ -172,6 +174,19 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
    // this.nav.setRoot(page.component);
     console.log( "opening page"+ page.component) ; 
+
+
+    this.user = localStorage.getItem("loggedUser") ; 
+    console.log( " in open page user is >"+ this.user+"<") ; 
+
+    if ( this.user == null ){
+
+      console.log( "user is null  going to Login ") ;
+      this.nav.setRoot("LoginPage"); 
+      return; 
+
+    }
+ 
 
 
    // this.tabservices.viewOrders() ; 
