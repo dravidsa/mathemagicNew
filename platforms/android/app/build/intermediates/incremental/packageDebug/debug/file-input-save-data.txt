@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Apr 01 15:39:30 IST 2019
+#Mon May 27 21:00:13 IST 2019
 14.set=ASSET
 180.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\assets\\fonts\\roboto-medium.ttf
 118.set=ASSET

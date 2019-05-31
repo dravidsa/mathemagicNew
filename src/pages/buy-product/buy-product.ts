@@ -242,9 +242,9 @@ export class BuyProductPage {
 
   }
   ionViewWillEnter( ) {
-    console.log('ionViewDidLoad BuyProductPage'); 
-
-    if ( (this.productName != 'IPM Book Set') &&   ( this.productName != 'Online Tests') ) { 
+    console.log('ionViewDidLoad BuyProductPage product is-' + this.productName +"-" ); 
+    
+    if ( (this.productName != 'IPM Book Set') &&   ( this.productName != 'Online Tests') &&   ( this.productName != 'Mega Final Online Tests')   ) { 
     if ( this.refgetSchoolsService != undefined ) {
     this.schoolName  = this.refgetSchoolsService.selectedSchoolName ;
     if ( this.schoolName == undefined ) { 

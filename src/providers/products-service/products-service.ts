@@ -39,7 +39,7 @@ products : any ;
 //console.log(  "getting messages" ); 
 
 // const requestOptions = new RequestOptions({ headers: headers} )
-this.api.post("http://ipm-mathemagic.com/api/ipm_get_products/","","") 
+this.api.post("http://ipm-mathemagic.com/newlearning/api/ipm_get_products/","","") 
   .subscribe(data => { 
     console.log(JSON.stringify(data));  
     this.products = data ; 

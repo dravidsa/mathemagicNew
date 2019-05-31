@@ -5,10 +5,10 @@ webpackJsonp([11],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabServicesPageModule", function() { return TabServicesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabProductsPageModule", function() { return TabProductsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_services__ = __webpack_require__(389);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tab_products__ = __webpack_require__(388);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TabServicesPageModule = /** @class */ (function () {
-    function TabServicesPageModule() {
+var TabProductsPageModule = /** @class */ (function () {
+    function TabProductsPageModule() {
     }
-    TabServicesPageModule = __decorate([
+    TabProductsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__tab_services__["a" /* TabServicesPage */],
+                __WEBPACK_IMPORTED_MODULE_2__tab_products__["a" /* TabProductsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tab_services__["a" /* TabServicesPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tab_products__["a" /* TabProductsPage */]),
             ],
         })
-    ], TabServicesPageModule);
-    return TabServicesPageModule;
+    ], TabProductsPageModule);
+    return TabProductsPageModule;
 }());
 
-//# sourceMappingURL=tab-services.module.js.map
+//# sourceMappingURL=tab-products.module.js.map
 
 /***/ }),
 
-/***/ 389:
+/***/ 388:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabServicesPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_get_orders_get_orders__ = __webpack_require__(124);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabProductsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_products_service_products_service__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,52 +59,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the TabServicesPage page.
+ * Generated class for the TabProductsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var TabServicesPage = /** @class */ (function () {
-    function TabServicesPage(navCtrl, navParams, getOrders) {
+var TabProductsPage = /** @class */ (function () {
+    function TabProductsPage(navCtrl, navParams, productsService) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.getOrders = getOrders;
+        this.productsService = productsService;
         this.user = localStorage.getItem("loggedUser");
+        console.log(" got user " + this.user);
         if (this.user == null) {
             console.log("null user go to loing ");
             this.navCtrl.setRoot("LoginPage");
         }
-    }
-    TabServicesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TabServicesPage');
-    };
-    TabServicesPage.prototype.viewOrders = function () {
-        var _this = this;
-        this.currentUserId = localStorage.getItem("loggedUserId");
-        this.getOrders.getOrders(this.currentUserId).subscribe(function (data) {
+        this.productsService.getProducts().subscribe(function (data) {
             //console.log( "got this data " + JSON.stringify( data )) ; 
-            _this.orders = _this.getOrders.orders;
-            _this.navCtrl.setRoot('ViewOrdersPage', { 'orders': _this.orders });
+            _this.products = _this.productsService.products;
             ;
         });
-    };
-    TabServicesPage.prototype.logout = function () {
+    }
+    TabProductsPage.prototype.logout = function () {
         localStorage.removeItem("loggedUser");
         this.navCtrl.setRoot('LoginPage');
     };
-    TabServicesPage.prototype.viewTests = function () {
-        this.navCtrl.setRoot('TestsListPage', { calledFrom: 'services' });
+    TabProductsPage.prototype.buyProduct = function (productName, productId, productPrice, productImage) {
+        // console.log( "going to   buy" + productName ) ; 
+        this.navCtrl.setRoot('BuyProductPage', { productId: productId, productName: productName, productPrice: productPrice, img_src: productImage });
     };
-    TabServicesPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-tab-services',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tab-services\tab-services.html"*/'<!--\n  Generated template for the TabServicesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="blue">\n      <ion-title>\n        Services\n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"> {{user}}</ion-icon>\n        </button>\n        <button menuToggle="left">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n    </ion-navbar>\n  </ion-header>\n\n\n \n\n\n<ion-content class="tabservices-content" padding>\n\n  \n  <ion-card>\n    <ion-item>\n      \n      <h2>Downloaded Tests</h2>\n      <p> </p>\n    </ion-item>\n  \n\n    \n    <ion-grid> \n      <ion-row> \n       \n        <ion-col width-25>   \n            <img src="http://ipm-mathemagic.com/new/images/app/orders.jpg">                 \n                \n        </ion-col>\n                        \n     <ion-col>\n      <p text-wrap>\n          You can see all the tests you have downloaded earlier.\n      </p> \n      <BR/>               \n      <p>\n          <button ion-button color="secondary" (click)="viewTests()" >Downloaded Tests</button>\n\n        </p>  \n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-card>\n   \n  <ion-card>\n      <ion-item>\n        \n        <h2>My Orders</h2>\n        <p> </p>\n      </ion-item>\n    \n\n      \n      <ion-grid> \n        <ion-row> \n         \n          <ion-col width-25>   \n              <img src="http://ipm-mathemagic.com/new/images/app/orders.jpg">                 \n                  \n          </ion-col>\n                          \n       <ion-col>\n        <p text-wrap>\n            You can see all orders you placed on ipm-mathemagic.com from this id\n        </p> \n        <BR/>               \n        <p>\n            <button ion-button color="secondary" (click)="viewOrders()" >View Orders</button>\n\n          </p>  \n\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-card>\n  <ion-card>\n        <ion-item>\n        \n            <h2>My Hall Ticket</h2>\n            <p> </p>\n          </ion-item>\n    \n     \n      <ion-grid> \n          <ion-row> \n           \n            <ion-col width-25>   \n                <img src="http://ipm-mathemagic.com/new/images/app/orders.jpg">                 \n                    \n            </ion-col>\n                            \n         <ion-col>\n          <p text-wrap>\n              You can see your hall ticket here. ( comming soon.... )\n          </p>          \n              \n          </ion-col>\n  \n          </ion-row>\n        </ion-grid>\n      </ion-card>\n      <ion-card>\n        <ion-item>\n        \n            <h2>My Result</h2>\n            <p> </p>\n          </ion-item>\n\n          \n        <ion-grid> \n            <ion-row> \n             \n              <ion-col width-25>   \n                  <img src="http://ipm-mathemagic.com/new/images/app/results.jpg">                 \n                      \n              </ion-col>\n                              \n           <ion-col>\n            <p text-wrap>\n                You can see your result of IPM exam here ( comming soon.... )\n            </p>                  \n            </ion-col>\n    \n            </ion-row>\n          </ion-grid>\n        </ion-card>\n\n  \n     \n   \n  \n  \n  \n\n\n\n\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tab-services\tab-services.html"*/,
+    TabProductsPage.prototype.ionViewDidLoad = function () {
+        // console.log('ionViewDidLoad TabProductsPage');
+    };
+    TabProductsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+            selector: 'page-tab-products',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tab-products\tab-products.html"*/'<!--\n  Generated template for the TabProductsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Buy Products</ion-title>\n    <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"> {{user}}</ion-icon>\n        </button>\n        <button menuToggle="left">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n<style>\n\n.img{ \n\n  max-width: 55% ; \n\n}\n\n\n</style>\n\n<ion-content padding>\n\n\n\n<ion-content class="products-content" padding>\n\n        <ion-card-header>\n    \n        </ion-card-header>\n\n        <font size= 6> \n\n        <div *ngIf="products"> \n        <button ion-item *ngFor="let product of products" (click)="buyProduct(product.product_name,product.product_id,product.price,product.img_src)" >\n\n            <ion-card>\n                \n                 \n                <ion-card-content>\n                   \n                  <ion-card-title>\n                    <p style="white-space: normal;"><B> {{product.product_name}}  </B> </p> \n                    </ion-card-title>\n                    <ion-grid> \n                    <ion-row> \n                      \n                      <ion-col width-55>\n\n                         \n                              <img src={{product.img_src}} />\n                           \n                    </ion-col>\n                  \n                  \n                   <ion-col>\n                    <p text-wrap>\n                    {{product.product_desc}}   \n                  </p>\n\n                  <p>\n                      <b>Price : Rs.{{product.price}}   </b>\n                    </p>\n                    <p>\n                        <button ion-button color="secondary" (click)="buyProduct()" >Buy This</button>\n\n                      </p>\n                    </ion-col>\n\n                    </ion-row>\n                  </ion-grid>\n                </ion-card-content>\n              </ion-card>\n          </button>\n        </div>\n\n\n\n</font>\n          \n          \n   \n\n    \n</ion-content>'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tab-products\tab-products.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_get_orders_get_orders__["a" /* GetOrdersProvider */]])
-    ], TabServicesPage);
-    return TabServicesPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_0__providers_products_service_products_service__["a" /* ProductsService */]])
+    ], TabProductsPage);
+    return TabProductsPage;
 }());
 
-//# sourceMappingURL=tab-services.js.map
+//# sourceMappingURL=tab-products.js.map
 
 /***/ })
 

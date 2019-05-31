@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Apr 01 15:58:35 IST 2019
+#Mon May 27 20:46:06 IST 2019
 14.set=ASSET
 180.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\cordova.js
 118.set=ASSET
@@ -7,7 +7,7 @@
 2.set=ASSET
 164.set=ANDROID_RESOURCE
 26.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\assets\\i18n\\zh-cmn-Hans.json
-78.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\res\\drawable-hdpi-v4\\ic_action_next_item.png
+78.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\AndroidManifest.xml
 21.set=ASSET
 53.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\assets\\img\\appicon.png
 107.base=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release
@@ -565,7 +565,7 @@ count=204
 50.set=ASSET
 25.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\assets\\fonts\\roboto-light.ttf
 154.set=ASSET
-77.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\AndroidManifest.xml
+77.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\res\\drawable-hdpi-v4\\ic_action_next_item.png
 11.set=ASSET
 52.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\assets\\i18n\\da.json
 106.base=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release

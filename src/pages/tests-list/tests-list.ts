@@ -102,7 +102,9 @@ user : any ;
   public   toDataUrl(url, callback) {
     console.log( " getting base for " + url)  ; 
       var xhr = new XMLHttpRequest();
+    
       xhr.onload = function() {
+        
           var reader = new FileReader();
           reader.onloadend = function() {
               callback(reader.result);
@@ -111,6 +113,7 @@ user : any ;
       };
       xhr.open('GET', url);
       xhr.responseType = 'blob';
+      xhr.setRequestHeader("Access-Control-Allow-Origin","*") ; 
       xhr.send();
     }
 
@@ -190,6 +193,7 @@ user : any ;
         //console.log( "matches are " + matches.length + matches[0]  ) ; 
         strMatch = matches[0] ; 
         gifoffset = strMatch.indexOf( ".gif") ; 
+        //imgURL  = strMatch.substring(9,gifoffset + 4 ).replace("http:/", "https:/");
         imgURL  = strMatch.substring(9,gifoffset + 4 );
         console.log( "Image is " + imgURL) ;  
         console.log ( "waiting " ) ; 
@@ -214,8 +218,10 @@ user : any ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
           gifoffset = strMatch.indexOf( ".gif") ; 
-          imgURL  = strMatch.substring(9,gifoffset + 4 );
-         // console.log( "Image is " + imgURL) ;  
+          //imgURL  = strMatch.substring(9,gifoffset + 4 ).replace("http:/", "https:/");;
+         //
+         imgURL  = strMatch.substring(9,gifoffset + 4 );;
+         console.log( "Image is " + imgURL) ;  
          // console.log ( "waiting " ) ; 
           base64data  = await this.getData(imgURL) ; 
           text= text.replace (matches[0], base64data);
@@ -239,7 +245,7 @@ user : any ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
           gifoffset = strMatch.indexOf( ".gif") ; 
-          imgURL  = strMatch.substring(9,gifoffset + 4 );
+          imgURL  = strMatch.substring(9,gifoffset + 4 );;
          // console.log( "Image is " + imgURL) ;  
           //console.log ( "waiting " ) ; 
           base64data  = await this.getData(imgURL) ; 
@@ -263,7 +269,7 @@ user : any ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
           gifoffset = strMatch.indexOf( ".gif") ; 
-          imgURL  = strMatch.substring(9,gifoffset + 4 );
+          imgURL  = strMatch.substring(9,gifoffset + 4 ) ;;
          // console.log( "Image is " + imgURL) ;  
          // console.log ( "waiting " ) ; 
           base64data  = await this.getData(imgURL) ; 
@@ -285,7 +291,7 @@ user : any ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
           gifoffset = strMatch.indexOf( ".gif") ; 
-          imgURL  = strMatch.substring(9,gifoffset + 4 );
+          imgURL  = strMatch.substring(9,gifoffset + 4 );;
          //console.log( "Image is " + imgURL) ;  
           //console.log ( "waiting " ) ; 
           base64data  = await this.getData(imgURL) ; 

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ionicframework.mathemagicnew"
     android:hardwareAccelerated="true"
-    android:versionCode="80005"
-    android:versionName="8.0.5" >
+    android:versionCode="80006"
+    android:versionName="8.0.6" >
 
     <uses-sdk
         android:minSdkVersion="16"

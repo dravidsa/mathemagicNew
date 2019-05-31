@@ -10,7 +10,7 @@ export class Items {
 
   query(params?: any) {
     console.log( "in items for params " + params );
-   return this.api.get('http://ipm-mathemagic.com/api/ipm_get_products/', params);
+   return this.api.get('https://ipm-mathemagic.com/api/ipm_get_products/', params);
   }
 
   add(item: Item) {

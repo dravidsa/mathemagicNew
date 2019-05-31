@@ -39,7 +39,7 @@ billingData  : any;
 // console.log(  "in serivce : getting address for user " + userName ); 
 
 // const requestOptions = new RequestOptions({ headers: headers} )
-this.api.get("http://ipm-mathemagic.com/api/getBilling/?username=" + userName) 
+this.api.get("http://ipm-mathemagic.com/newlearning/api/getBilling/?username=" + userName) 
   .subscribe(data => { 
     console.log(JSON.stringify(data));  
     this.billingData = data ; 

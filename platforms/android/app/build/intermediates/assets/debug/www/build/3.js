@@ -5,11 +5,10 @@ webpackJsonp([3],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WelcomePageModule", function() { return WelcomePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewOrdersPageModule", function() { return ViewOrdersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__welcome__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_orders__ = __webpack_require__(395);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,38 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var WelcomePageModule = /** @class */ (function () {
-    function WelcomePageModule() {
+var ViewOrdersPageModule = /** @class */ (function () {
+    function ViewOrdersPageModule() {
     }
-    WelcomePageModule = __decorate([
+    ViewOrdersPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__welcome__["a" /* WelcomePage */],
+                __WEBPACK_IMPORTED_MODULE_2__view_orders__["a" /* ViewOrdersPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__welcome__["a" /* WelcomePage */]),
-                __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__view_orders__["a" /* ViewOrdersPage */]),
             ],
-            exports: [
-                __WEBPACK_IMPORTED_MODULE_3__welcome__["a" /* WelcomePage */]
-            ]
         })
-    ], WelcomePageModule);
-    return WelcomePageModule;
+    ], ViewOrdersPageModule);
+    return ViewOrdersPageModule;
 }());
 
-//# sourceMappingURL=welcome.module.js.map
+//# sourceMappingURL=view-orders.module.js.map
 
 /***/ }),
 
-/***/ 396:
+/***/ 395:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WelcomePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewOrdersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_get_orders_get_orders__ = __webpack_require__(124);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,32 +57,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
- * The Welcome Page is a splash page that quickly describes the app,
- * and then directs the user to create an account or log in.
- * If you'd like to immediately put the user onto a login/signup page,
- * we recommend not using the Welcome page.
-*/
-var WelcomePage = /** @class */ (function () {
-    function WelcomePage(navCtrl) {
+ * Generated class for the ViewOrdersPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ViewOrdersPage = /** @class */ (function () {
+    function ViewOrdersPage(navCtrl, navParams, getOrders) {
         this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.getOrders = getOrders;
+        this.orders = navParams.get("orders");
+        this.user = localStorage.getItem("loggedUser");
+        this.user = localStorage.getItem("loggedUser");
     }
-    WelcomePage.prototype.login = function () {
-        this.navCtrl.push('LoginPage');
+    ViewOrdersPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ViewOrdersPage');
     };
-    WelcomePage.prototype.signup = function () {
-        this.navCtrl.push('SignupPage');
-    };
-    WelcomePage = __decorate([
+    ViewOrdersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-welcome',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\welcome\welcome.html"*/'<ion-content scroll="false">\n  <div class="splash-bg"></div>\n  <div class="splash-info">\n    <div class="splash-logo"></div>\n    <div class="splash-intro">\n      {{ \'WELCOME_INTRO\' | translate }}\n    </div>\n  </div>\n  <div padding>\n    <button ion-button block (click)="signup()">{{ \'SIGNUP\' | translate }}</button>\n    <button ion-button block (click)="login()" class="login">{{ \'LOGIN\' | translate }}</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\welcome\welcome.html"*/
+            selector: 'page-view-orders',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\view-orders\view-orders.html"*/'<!--\n  Generated template for the ViewOrdersPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>My Orders</ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="logout()">\n        <ion-icon name="log-out"> {{user}}</ion-icon>\n      </button>\n      <button menuToggle="left">\n          <ion-icon name="menu"></ion-icon>\n        </button>\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class=vieworders-content padding>\n\n  \n    <ion-grid>\n        <ion-row>\n          <ion-col>\n            <ion-item>\n           Order #\n          </ion-item>\n          </ion-col>\n          <ion-col>\n              <ion-item>\n            Status\n          </ion-item>\n          </ion-col>\n         \n        </ion-row>\n      </ion-grid>\n\n      <ion-list>\n          <button ion-item *ngFor="let order of orders">\n          <ion-row>\n          <ion-col>\n              <ion-item>\n              {{ order.ipm_orderId }}\n              </ion-item>\n          </ion-col>\n          \n          <ion-col *ngIf="order.status == \'Pending\'" ion-text color="primary">\n              <ion-item>\n              <p> Pending </p>            \n              </ion-item> </ion-col>\n\n          <ion-col *ngIf="order.status == \'Confirmed\' "  ion-text color="danger" >\n              <ion-item>\n              <p> Confirmed </p>\n          </ion-item></ion-col>\n        \n        \n          \n        \n        </ion-row>\n        \n          </button>\n\n        </ion-list> \n\n\n\n\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\view-orders\view-orders.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */]])
-    ], WelcomePage);
-    return WelcomePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_get_orders_get_orders__["a" /* GetOrdersProvider */]])
+    ], ViewOrdersPage);
+    return ViewOrdersPage;
 }());
 
-//# sourceMappingURL=welcome.js.map
+//# sourceMappingURL=view-orders.js.map
 
 /***/ })
 

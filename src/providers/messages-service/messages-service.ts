@@ -33,7 +33,7 @@ messages : any;
   
 
       console.log(  "getting messages" ); 
-   this.api.get("http://ipm-mathemagic.com/api/getMessages/") 
+   this.api.get("http://ipm-mathemagic.com/newlearning/api/getMessages/") 
   .subscribe(data => { 
     console.log(JSON.stringify(data));  
     this.messages = data ; 

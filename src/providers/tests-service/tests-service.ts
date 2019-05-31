@@ -38,7 +38,7 @@ export class TestsService{
 console.log(  "getting tests  for courses" + courseid ); 
 
 // const requestOptions = new RequestOptions({ headers: headers} )
-this.api.get("http://ipm-mathemagic.com/api/getTests/?courseid="+courseid) 
+this.api.get("http://ipm-mathemagic.com/newlearning/api/getTests/?courseid="+courseid) 
   .subscribe(data => { 
     console.log(JSON.stringify(data));  
     this.tests = data ; 

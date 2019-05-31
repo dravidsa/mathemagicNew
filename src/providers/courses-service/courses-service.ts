@@ -38,7 +38,7 @@ export class CoursesService{
   console.log(  "getting courses for user" + username ); 
   
   // const requestOptions = new RequestOptions({ headers: headers} )
-  this.api.get("http://ipm-mathemagic.com/api/getCourses/?username="+username) 
+  this.api.get("http://ipm-mathemagic.com/newlearning/api/getCourses/?username="+username) 
     .subscribe(data => { 
       console.log(JSON.stringify(data));  
       this.courses = data ; 

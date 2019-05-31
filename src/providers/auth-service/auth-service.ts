@@ -55,7 +55,7 @@ export class AuthService {
 
   const requestOptions = new RequestOptions({ headers: headers} )
   let access ; 
-  this.api.post("http://ipm-mathemagic.com/api/userlogin/", postData, requestOptions) 
+  this.api.post("http://ipm-mathemagic.com/newlearning/api/userlogin/", postData, requestOptions) 
     .subscribe( ( data :any ) =>  { 
       console.log("user obj  is " + JSON.stringify(data));  console.log( " login message " + data.Msg) ; 
 

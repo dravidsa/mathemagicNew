@@ -7,7 +7,7 @@ import { ResponseType } from '../../../node_modules/@angular/http';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://ipm-mathemagic.com/api/';
+  url: string = 'https://ipm-mathemagic.com/newlearning/api/';
 
   constructor(public http: HttpClient) {
     console.log( 'in constructor of api ') ; 

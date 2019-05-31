@@ -1,14 +1,14 @@
 webpackJsonp([16],{
 
-/***/ 355:
+/***/ 354:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowProductsPageModule", function() { return ShowProductsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowMessagesPageModule", function() { return ShowMessagesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__show_products__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__show_messages__ = __webpack_require__(381);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ShowProductsPageModule = /** @class */ (function () {
-    function ShowProductsPageModule() {
+var ShowMessagesPageModule = /** @class */ (function () {
+    function ShowMessagesPageModule() {
     }
-    ShowProductsPageModule = __decorate([
+    ShowMessagesPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__show_products__["a" /* ShowProductsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__show_messages__["a" /* ShowMessagesPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__show_products__["a" /* ShowProductsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__show_messages__["a" /* ShowMessagesPage */]),
             ],
         })
-    ], ShowProductsPageModule);
-    return ShowProductsPageModule;
+    ], ShowMessagesPageModule);
+    return ShowMessagesPageModule;
 }());
 
-//# sourceMappingURL=show-products.module.js.map
+//# sourceMappingURL=show-messages.module.js.map
 
 /***/ }),
 
-/***/ 383:
+/***/ 381:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowProductsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowMessagesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(121);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,29 +57,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the ShowProductsPage page.
+ * Generated class for the ShowMessagesPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var ShowProductsPage = /** @class */ (function () {
-    function ShowProductsPage(navCtrl, navParams) {
+var ShowMessagesPage = /** @class */ (function () {
+    function ShowMessagesPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    ShowProductsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ShowProductsPage');
+    ShowMessagesPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ShowMessagesPage');
     };
-    ShowProductsPage = __decorate([
+    ShowMessagesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-show-products',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\show-products\show-products.html"*/'<!--\n  Generated template for the ShowProductsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>showProducts</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\show-products\show-products.html"*/,
+            selector: 'page-show-messages',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\show-messages\show-messages.html"*/'<!--\n  Generated template for the ShowMessagesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>showMessages</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\show-messages\show-messages.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
-    ], ShowProductsPage);
-    return ShowProductsPage;
+    ], ShowMessagesPage);
+    return ShowMessagesPage;
 }());
 
-//# sourceMappingURL=show-products.js.map
+//# sourceMappingURL=show-messages.js.map
 
 /***/ })
 

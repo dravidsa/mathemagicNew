@@ -27,6 +27,7 @@ export class GetBase64ImageService{
         // At this point make a request to your backend to make a real check!
         //console.log(  "getting courses for user" + username ); 
         var headers = new Headers();
+        headers.append("Access-Control-Allow-Origin","*") ; 
        // headers.append("Accept", 'application/json');
         headers.append('Content-Type',  'application/json' );
         //headers.append('Response-Type', 'Blob') ; 

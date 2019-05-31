@@ -24,7 +24,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Api = /** @class */ (function () {
     function Api(http) {
         this.http = http;
-        this.url = 'http://ipm-mathemagic.com/api/';
+        this.url = 'https://ipm-mathemagic.com/newlearning/api/';
         console.log('in constructor of api ');
     }
     Api.prototype.get = function (endpoint, params, reqOpts) {
@@ -192,51 +192,51 @@ var map = {
 	],
 	"../pages/login/login.module": [
 		346,
-		2
-	],
-	"../pages/menu/menu.module": [
-		348,
 		24
 	],
-	"../pages/payment/payment.module": [
+	"../pages/menu/menu.module": [
 		347,
 		23
 	],
-	"../pages/register/register.module": [
-		350,
+	"../pages/payment/payment.module": [
+		348,
 		22
 	],
-	"../pages/school-list/school-list.module": [
+	"../pages/register/register.module": [
 		349,
 		21
 	],
+	"../pages/school-list/school-list.module": [
+		350,
+		20
+	],
 	"../pages/search/search.module": [
 		352,
-		20
+		19
 	],
 	"../pages/settings/settings.module": [
 		351,
-		19
+		18
 	],
 	"../pages/show-courses/show-courses.module": [
 		353,
-		18
+		17
 	],
 	"../pages/show-messages/show-messages.module": [
 		354,
-		17
+		16
 	],
 	"../pages/show-products/show-products.module": [
 		355,
-		16
+		15
 	],
 	"../pages/show-quiz/show-quiz.module": [
 		356,
-		15
+		14
 	],
 	"../pages/show-tests/show-tests.module": [
 		357,
-		14
+		13
 	],
 	"../pages/signup/signup.module": [
 		358,
@@ -244,47 +244,47 @@ var map = {
 	],
 	"../pages/tab-home/tab-home.module": [
 		359,
-		13
-	],
-	"../pages/tab-products/tab-products.module": [
-		361,
 		12
 	],
-	"../pages/tab-services/tab-services.module": [
+	"../pages/tab-products/tab-products.module": [
 		360,
 		11
 	],
-	"../pages/tab-tests/tab-tests.module": [
-		362,
+	"../pages/tab-services/tab-services.module": [
+		361,
 		10
 	],
-	"../pages/tabs/tabs.module": [
+	"../pages/tab-tests/tab-tests.module": [
 		363,
 		9
 	],
-	"../pages/test-results/test-results.module": [
-		364,
+	"../pages/tabs/tabs.module": [
+		362,
 		8
 	],
-	"../pages/test-summary/test-summary.module": [
+	"../pages/test-results/test-results.module": [
 		365,
 		7
 	],
+	"../pages/test-summary/test-summary.module": [
+		364,
+		6
+	],
 	"../pages/tests-list/tests-list.module": [
 		370,
-		6
+		5
 	],
 	"../pages/tutorial/tutorial.module": [
 		366,
-		5
-	],
-	"../pages/view-orders/view-orders.module": [
-		368,
 		4
 	],
-	"../pages/welcome/welcome.module": [
+	"../pages/view-orders/view-orders.module": [
 		367,
 		3
+	],
+	"../pages/welcome/welcome.module": [
+		368,
+		2
 	]
 };
 function webpackAsyncContext(req) {
@@ -366,7 +366,7 @@ var AuthService = /** @class */ (function () {
                 var postData = credentials;
                 var requestOptions = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* RequestOptions */]({ headers: headers });
                 var access;
-                _this.api.post("http://ipm-mathemagic.com/api/userlogin/", postData, requestOptions)
+                _this.api.post("http://ipm-mathemagic.com/newlearning/api/userlogin/", postData, requestOptions)
                     .subscribe(function (data) {
                     console.log("user obj  is " + JSON.stringify(data));
                     console.log(" login message " + data.Msg);
@@ -506,7 +506,7 @@ var CoursesService = /** @class */ (function () {
              */
             console.log("getting courses for user" + username);
             // const requestOptions = new RequestOptions({ headers: headers} )
-            _this.api.get("http://ipm-mathemagic.com/api/getCourses/?username=" + username)
+            _this.api.get("http://ipm-mathemagic.com/newlearning/api/getCourses/?username=" + username)
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 _this.courses = data;
@@ -742,7 +742,7 @@ var QuizService = /** @class */ (function () {
              */
             //console.log(  "getting courses for user" + testid ); 
             // const requestOptions = new RequestOptions({ headers: headers} )
-            _this.api.get("http://ipm-mathemagic.com/api/getQuestions/?quizid=" + testid)
+            _this.api.get("http://ipm-mathemagic.com/newlearning/api/getQuestions/?quizid=" + testid)
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 _this.questions = data;
@@ -790,7 +790,7 @@ var Items = /** @class */ (function () {
     }
     Items.prototype.query = function (params) {
         console.log("in items for params " + params);
-        return this.api.get('http://ipm-mathemagic.com/api/ipm_get_products/', params);
+        return this.api.get('https://ipm-mathemagic.com/api/ipm_get_products/', params);
     };
     Items.prototype.add = function (item) {
     };
@@ -891,7 +891,7 @@ var MessagesService = /** @class */ (function () {
             headers.append('Content-Type', 'application/json');
             headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
             console.log("getting messages");
-            _this.api.get("http://ipm-mathemagic.com/api/getMessages/")
+            _this.api.get("http://ipm-mathemagic.com/newlearning/api/getMessages/")
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 _this.messages = data;
@@ -968,7 +968,7 @@ var ProductsService = /** @class */ (function () {
              */
             //console.log(  "getting messages" ); 
             // const requestOptions = new RequestOptions({ headers: headers} )
-            _this.api.post("http://ipm-mathemagic.com/api/ipm_get_products/", "", "")
+            _this.api.post("http://ipm-mathemagic.com/newlearning/api/ipm_get_products/", "", "")
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 _this.products = data;
@@ -1187,7 +1187,7 @@ var TestsService = /** @class */ (function () {
              */
             console.log("getting tests  for courses" + courseid);
             // const requestOptions = new RequestOptions({ headers: headers} )
-            _this.api.get("http://ipm-mathemagic.com/api/getTests/?courseid=" + courseid)
+            _this.api.get("http://ipm-mathemagic.com/newlearning/api/getTests/?courseid=" + courseid)
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 _this.tests = data;
@@ -1342,10 +1342,10 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/school-list/school-list.module#SchoolListPageModule', name: 'SchoolListPage', segment: 'school-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/school-list/school-list.module#SchoolListPageModule', name: 'SchoolListPage', segment: 'school-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-courses/show-courses.module#ShowCoursesPageModule', name: 'ShowCoursesPage', segment: 'show-courses', priority: 'low', defaultHistory: [] },
@@ -1355,15 +1355,15 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/show-tests/show-tests.module#ShowTestsPageModule', name: 'ShowTestsPage', segment: 'show-tests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-home/tab-home.module#TabsHomePageModule', name: 'TabsHomePage', segment: 'tab-home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tab-services/tab-services.module#TabServicesPageModule', name: 'TabServicesPage', segment: 'tab-services', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-products/tab-products.module#TabProductsPageModule', name: 'TabProductsPage', segment: 'tab-products', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tab-tests/tab-tests.module#TabTestsPageModule', name: 'TabTestsPage', segment: 'tab-tests', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tab-services/tab-services.module#TabServicesPageModule', name: 'TabServicesPage', segment: 'tab-services', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/test-results/test-results.module#TestResultsPageModule', name: 'TestResultsPage', segment: 'test-results', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tab-tests/tab-tests.module#TabTestsPageModule', name: 'TabTestsPage', segment: 'tab-tests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/test-summary/test-summary.module#TestSummaryPageModule', name: 'TestSummaryPage', segment: 'test-summary', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/test-results/test-results.module#TestResultsPageModule', name: 'TestResultsPage', segment: 'test-results', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/view-orders/view-orders.module#ViewOrdersPageModule', name: 'ViewOrdersPage', segment: 'view-orders', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/buy-product/buy-product.module#BuyProductPageModule', name: 'BuyProductPage', segment: 'buy-product', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tests-list/tests-list.module#TestsListPageModule', name: 'TestsListPage', segment: 'tests-list', priority: 'low', defaultHistory: [] }
                     ]

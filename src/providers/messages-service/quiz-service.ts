@@ -40,7 +40,7 @@ export class QuizService {
 console.log(  "getting courses for user" + testid ); 
 
 // const requestOptions = new RequestOptions({ headers: headers} )
-this.api.get("http://ipm-mathemagic.com/api/getQuestions/?quizid="+testid) 
+this.api.get("http://ipm-mathemagic.com/newlearning/api/getQuestions/?quizid="+testid) 
   .subscribe(data => { 
     console.log(JSON.stringify(data));  
     this.questions = data ; 
