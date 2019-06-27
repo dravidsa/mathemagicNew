@@ -44,7 +44,7 @@
         <font size= 6> 
 
         <div *ngIf="products"> 
-        <button ion-item *ngFor="let product of products" (click)="buyProduct(product.product_name,product.product_id,product.price,product.img_src)" >
+        <button ion-item *ngFor="let product of products" (click)="buyProduct(product.product_name,product.product_id,product.price,product.img_src, product.product_status )" >
 
             <ion-card>
                 
@@ -74,7 +74,8 @@
                       <b>Price : Rs.{{product.price}}   </b>
                     </p>
                     <p>
-                        <button ion-button color="secondary" (click)="buyProduct()" >Buy This</button>
+                        <button *ngIf="product.product_status != 'Confirmed'" disabled  ion-button color="secondary" (click)="buyProduct()" >Buy This</button>
+                        <button *ngIf="product.product_status == 'Confirmed'"  ion-button color="secondary" (click)="buyProduct()" >Buy This</button>
 
                       </p>
                     </ion-col>

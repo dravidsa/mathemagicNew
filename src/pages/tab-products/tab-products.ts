@@ -47,10 +47,10 @@ user : any ;
     }
     
 
-  public  buyProduct( productName , productId, productPrice , productImage   ) { 
+  public  buyProduct( productName , productId, productPrice , productImage  , productStatus  ) { 
 
   // console.log( "going to   buy" + productName ) ; 
-
+  if ( productStatus == 'Confirmed')
    this.navCtrl.setRoot('BuyProductPage' , { productId : productId , productName : productName, productPrice : productPrice , img_src : productImage  });
 
 

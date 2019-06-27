@@ -31,6 +31,11 @@
             <B> You can solve these tests without being online by clicking on "Solve" </B> <BR/>
             By clicking on "Delete" , the test will be deleted from Device but you can still solve on Server from Tests tab.<BR/>
           </div>
+
+          <div *ngIf="(mode!='downloaded')" >
+            <B> The downloaded tests can be accessed from Services->Downloaded tests . The downloaded test are valid till {{testsValidTill}}  </B>  <BR/>
+          </div>
+
           </ion-card-content> 
           </ion-card> 
     <div *ngIf="tests" >

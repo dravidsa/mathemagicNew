@@ -116,6 +116,7 @@ var TestsListPage = /** @class */ (function () {
         // console.log( "showing tests for courseid  " + navParams.get('courseid'));
         this.user = localStorage.getItem("loggedUser");
         this.getBase64Image = getImage;
+        this.testsValidTill = localStorage.getItem("testsValidTill");
         var calledFrom = navParams.get("calledFrom");
         if (calledFrom == 'services') {
             //alert( "called from services ") ;
@@ -178,7 +179,7 @@ var TestsListPage = /** @class */ (function () {
         };
         xhr.open('GET', url);
         xhr.responseType = 'blob';
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        // xhr.setRequestHeader("Access-Control-Allow-Origin","'http://localhost:8100'") ; 
         xhr.send();
     };
     TestsListPage.prototype.getData = function (url) {
@@ -213,13 +214,14 @@ var TestsListPage = /** @class */ (function () {
             _this.questions = _this.quizService.questions;
             ;
             //alert("starting the donwload ...please wait  ") ; 
-            _this.transformQuestion(_this.questions, _this.getBase64Image, testid, _this.navCtrl, _this.loading);
+            _this.transformQuestion(_this.questions, _this.getBase64Image, testid, _this.navCtrl, _this.loading, "jpg");
+            _this.transformQuestion(_this.questions, _this.getBase64Image, testid, _this.navCtrl, _this.loading, "gif");
             //alert(" Test download Complete ") ; 
         });
     };
-    TestsListPage.prototype.transformQuestion = function (questions, getImage, testid, nav, loading) {
+    TestsListPage.prototype.transformQuestion = function (questions, getImage, testid, nav, loading, fileType) {
         return __awaiter(this, void 0, void 0, function () {
-            var ImageMap, imageURLArr, serviceCounter, matchCount, strMatch, imgURL, gifoffset, base64data, i, text, matches, matches, matches, matches, matches, d, n, downloadedTests;
+            var ImageMap, imageURLArr, serviceCounter, matchCount, strMatch, imgURL, gifoffset, base64data, i, text, myReg, matches, matches, matches, matches, matches, d, n, downloadedTests;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -232,16 +234,19 @@ var TestsListPage = /** @class */ (function () {
                         i = 0;
                         _a.label = 1;
                     case 1:
-                        if (!(i < questions.length)) return [3 /*break*/, 15];
-                        text = questions[i].text;
-                        if (!text.match(/<img src=...*?.gif[ ]*...*/g)) return [3 /*break*/, 3];
-                        matches = text.match(/<img src=...*?.gif[ ]*...*/g).toString().split(',');
-                        //console.log( "matches are " + matches.length + matches[0]  ) ; 
+                        if (!(i < questions.length)) return [3 /*break*/, 14];
+                        text = questions[i].text.replace(/\"\" width=\"75%...*class=\"img-responsive\"/g, "");
+                        myReg = new RegExp("<img src=...*." + fileType, "g");
+                        console.log("looking for Regex " + myReg);
+                        if (!text.match(myReg)) return [3 /*break*/, 3];
+                        console.log("got match for" + fileType);
+                        matches = text.match(myReg).toString().split(',');
+                        console.log("matches are " + matches.length + ">" + matches[0] + "<");
                         strMatch = matches[0];
-                        gifoffset = strMatch.indexOf(".gif");
+                        gifoffset = strMatch.indexOf("." + fileType);
                         //imgURL  = strMatch.substring(9,gifoffset + 4 ).replace("http:/", "https:/");
                         imgURL = strMatch.substring(9, gifoffset + 4);
-                        console.log("Image is " + imgURL);
+                        console.log("Image is-" + imgURL + "-");
                         console.log("waiting ");
                         return [4 /*yield*/, this.getData(imgURL)];
                     case 2:
@@ -253,11 +258,12 @@ var TestsListPage = /** @class */ (function () {
                         return [3 /*break*/, 3];
                     case 3:
                         text = questions[i].ans1.replace('\'', '');
-                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 5];
-                        matches = text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',');
+                        if (!text.match(myReg)) return [3 /*break*/, 5];
+                        matches = text.match(myReg).toString().split(',');
                         //console.log( "matches are " + matches.length + matches[0]  ) ; 
                         strMatch = matches[0];
-                        gifoffset = strMatch.indexOf(".gif");
+                        //gifoffset = strMatch.indexOf( ".gif") ; 
+                        gifoffset = strMatch.indexOf("." + fileType);
                         //imgURL  = strMatch.substring(9,gifoffset + 4 ).replace("http:/", "https:/");;
                         //
                         imgURL = strMatch.substring(9, gifoffset + 4);
@@ -271,22 +277,20 @@ var TestsListPage = /** @class */ (function () {
                         //console.log( " replaced img with " + text ) ; 
                         //return text;
                         questions[i].ans1 = text;
-                        return [3 /*break*/, 6];
+                        return [3 /*break*/, 5];
                     case 5:
-                        ;
-                        _a.label = 6;
-                    case 6:
                         text = questions[i].ans2.replace('\'', '');
                         ;
-                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 8];
-                        matches = text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',');
+                        if (!text.match(myReg)) return [3 /*break*/, 7];
+                        matches = text.match(myReg).toString().split(',');
                         //console.log( "matches are " + matches.length + matches[0]  ) ; 
                         strMatch = matches[0];
-                        gifoffset = strMatch.indexOf(".gif");
+                        //gifoffset = strMatch.indexOf( ".gif") ; 
+                        gifoffset = strMatch.indexOf("." + fileType);
                         imgURL = strMatch.substring(9, gifoffset + 4);
                         ;
                         return [4 /*yield*/, this.getData(imgURL)];
-                    case 7:
+                    case 6:
                         // console.log( "Image is " + imgURL) ;  
                         //console.log ( "waiting " ) ; 
                         base64data = _a.sent();
@@ -294,22 +298,23 @@ var TestsListPage = /** @class */ (function () {
                         //console.log( " replaced img with " + text ) ; 
                         //return text;
                         questions[i].ans2 = text;
-                        return [3 /*break*/, 9];
-                    case 8:
+                        return [3 /*break*/, 8];
+                    case 7:
                         ;
-                        _a.label = 9;
-                    case 9:
+                        _a.label = 8;
+                    case 8:
                         text = questions[i].ans3.replace('\'', '');
                         ;
-                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 11];
-                        matches = text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',');
+                        if (!text.match(myReg)) return [3 /*break*/, 10];
+                        matches = text.match(myReg).toString().split(',');
                         //console.log( "matches are " + matches.length + matches[0]  ) ; 
                         strMatch = matches[0];
-                        gifoffset = strMatch.indexOf(".gif");
+                        //gifoffset = strMatch.indexOf( ".gif") ; 
+                        gifoffset = strMatch.indexOf("." + fileType);
                         imgURL = strMatch.substring(9, gifoffset + 4);
                         ;
                         return [4 /*yield*/, this.getData(imgURL)];
-                    case 10:
+                    case 9:
                         // console.log( "Image is " + imgURL) ;  
                         // console.log ( "waiting " ) ; 
                         base64data = _a.sent();
@@ -317,19 +322,20 @@ var TestsListPage = /** @class */ (function () {
                         // console.log( " replaced img with " + text ) ; 
                         //return text;
                         questions[i].ans3 = text;
-                        return [3 /*break*/, 11];
-                    case 11:
+                        return [3 /*break*/, 10];
+                    case 10:
                         text = questions[i].ans4.replace('\'', '');
                         ;
-                        if (!text.match(/<img src=...*?.gif[ ]*...*\/>/g)) return [3 /*break*/, 13];
-                        matches = text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',');
+                        if (!text.match(myReg)) return [3 /*break*/, 12];
+                        matches = text.match(myReg).toString().split(',');
                         //console.log( "matches are " + matches.length + matches[0]  ) ; 
                         strMatch = matches[0];
-                        gifoffset = strMatch.indexOf(".gif");
+                        //gifoffset = strMatch.indexOf( ".gif") ; 
+                        gifoffset = strMatch.indexOf("." + fileType);
                         imgURL = strMatch.substring(9, gifoffset + 4);
                         ;
                         return [4 /*yield*/, this.getData(imgURL)];
-                    case 12:
+                    case 11:
                         //console.log( "Image is " + imgURL) ;  
                         //console.log ( "waiting " ) ; 
                         base64data = _a.sent();
@@ -337,14 +343,14 @@ var TestsListPage = /** @class */ (function () {
                         console.log(" replaced img with " + text);
                         //return text;
                         questions[i].ans4 = text;
-                        return [3 /*break*/, 14];
-                    case 13:
+                        return [3 /*break*/, 13];
+                    case 12:
                         ;
-                        _a.label = 14;
-                    case 14:
+                        _a.label = 13;
+                    case 13:
                         i++;
                         return [3 /*break*/, 1];
-                    case 15:
+                    case 14:
                         // console.log( " imgURL arre is now " + JSON.stringify(questions)   ); 
                         console.log("length of quiz is " + JSON.stringify(questions).length);
                         try {
@@ -419,11 +425,12 @@ var TestsListPage = /** @class */ (function () {
     };
     TestsListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
-            selector: 'page-tests-list',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/'<!--\n  Generated template for the TestsListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="blue">\n      <ion-title>\n        Test List\n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"> {{user}}</ion-icon>\n        </button>\n        <button menuToggle="left">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n      </ion-navbar>\n  </ion-header>\n\n\n\n\n<ion-content class="testlist-content" padding>                 \n\n    <ion-card >                           \n        <ion-card-content>\n            <div *ngIf="(mode==\'downloaded\')" >\n            <B> You can solve these tests without being online by clicking on "Solve" </B> <BR/>\n            By clicking on "Delete" , the test will be deleted from Device but you can still solve on Server from Tests tab.<BR/>\n          </div>\n          </ion-card-content> \n          </ion-card> \n    <div *ngIf="tests" >\n\n    <div *ngFor="let test  of tests" > \n            <div *ngIf="((mode==\'downloaded\')&&( checkIfDownloaded(test.id)== true )) || ( mode==\'all\') ">\n            <ion-card >                           \n              <ion-card-content>\n                   <ion-card-title>\n                   {{test.name }}  \n                    </ion-card-title>\n                   \n                                      \n                  \n                   \n                        <button ion-button  color="secondary" (click)= "solveTest(test.id , test.name)">Solve</button>  \n                        <button ion-button  *ngIf="mode == \'all\'" color="default" (click)= "downloadTest(test.id )">Download</button>  \n                        <button ion-button  *ngIf="mode == \'downloaded\'" color="danger" (click)= "deleteTest(test.id )">Delete</button>  \n                        \n                        <BR/> \n                        {{showDownloadStatus(test.id) }} <BR/>\n\n                        \n                                    \n              \n\n                 \n              \n                </ion-card-content>\n                \n              </ion-card>\n\n            </div>\n              </div> \n\n        </div>\n        <button ion-button full=true color="danger" round (click)="goBack()"  >Back</button>\n\n</ion-content>\n\n\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/,
+            selector: 'page-tests-list',template:/*ion-inline-start:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/'<!--\n  Generated template for the TestsListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="blue">\n      <ion-title>\n        Test List\n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="logout()">\n          <ion-icon name="log-out"> {{user}}</ion-icon>\n        </button>\n        <button menuToggle="left">\n            <ion-icon name="menu"></ion-icon>\n          </button>\n      </ion-buttons>\n      </ion-navbar>\n  </ion-header>\n\n\n\n\n<ion-content class="testlist-content" padding>                 \n\n    <ion-card >                           \n        <ion-card-content>\n            <div *ngIf="(mode==\'downloaded\')" >\n            <B> You can solve these tests without being online by clicking on "Solve" </B> <BR/>\n            By clicking on "Delete" , the test will be deleted from Device but you can still solve on Server from Tests tab.<BR/>\n          </div>\n\n          <div *ngIf="(mode!=\'downloaded\')" >\n            <B> The downloaded tests can be accessed from Services->Downloaded tests . The downloaded test are valid till {{testsValidTill}}  </B>  <BR/>\n          </div>\n\n          </ion-card-content> \n          </ion-card> \n    <div *ngIf="tests" >\n\n    <div *ngFor="let test  of tests" > \n            <div *ngIf="((mode==\'downloaded\')&&( checkIfDownloaded(test.id)== true )) || ( mode==\'all\') ">\n            <ion-card >                           \n              <ion-card-content>\n                   <ion-card-title>\n                   {{test.name }}  \n                    </ion-card-title>\n                   \n                                      \n                  \n                   \n                        <button ion-button  color="secondary" (click)= "solveTest(test.id , test.name)">Solve</button>  \n                        <button ion-button  *ngIf="mode == \'all\'" color="default" (click)= "downloadTest(test.id )">Download</button>  \n                        <button ion-button  *ngIf="mode == \'downloaded\'" color="danger" (click)= "deleteTest(test.id )">Delete</button>  \n                        \n                        <BR/> \n                        {{showDownloadStatus(test.id) }} <BR/>\n\n                        \n                                    \n              \n\n                 \n              \n                </ion-card-content>\n                \n              </ion-card>\n\n            </div>\n              </div> \n\n        </div>\n        <button ion-button full=true color="danger" round (click)="goBack()"  >Back</button>\n\n</ion-content>\n\n\n'/*ion-inline-end:"C:\sandeep\apps\mathemagicNew\src\pages\tests-list\tests-list.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__["a" /* TestsService */], __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__["a" /* QuizService */], __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__["a" /* GetBase64ImageService */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__["a" /* TestsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_tests_service_tests_service__["a" /* TestsService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__["a" /* QuizService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_quiz_service_quiz_service__["a" /* QuizService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__["a" /* GetBase64ImageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_get_base64_image_get_base64_image__["a" /* GetBase64ImageService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object])
     ], TestsListPage);
     return TestsListPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=tests-list.js.map

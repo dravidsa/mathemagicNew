@@ -27,9 +27,9 @@ export class GetBase64ImageService{
         // At this point make a request to your backend to make a real check!
         //console.log(  "getting courses for user" + username ); 
         var headers = new Headers();
-        headers.append("Access-Control-Allow-Origin","*") ; 
-       // headers.append("Accept", 'application/json');
-        headers.append('Content-Type',  'application/json' );
+        headers.append("Access-Control-Allow-Origin","'*'") ; 
+        headers.append("Accept", 'application/json');
+       // headers.append('Content-Type',  'application/json' );
         //headers.append('Response-Type', 'Blob') ; 
         headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
         /*
@@ -43,7 +43,7 @@ export class GetBase64ImageService{
   //params.append ( 'responseType ' , 'blob' ) ; 
 
    const requestOptions = new RequestOptions({ headers: headers}  ) 
-  this.api.get("http://ipm-mathemagic.com/api/getBase64Image/?img_url="+ img_url,null ,  {responseType : 'text'}  ) 
+  this.api.get("http://ipm-mathemagic.com/newlearning/api/getBase64Image1/?img_url="+ img_url,null ,  {responseType : 'text'}  ) 
     .subscribe(data => { 
       //console.log(JSON.stringify(data));  
       this.base64Image = data ; 

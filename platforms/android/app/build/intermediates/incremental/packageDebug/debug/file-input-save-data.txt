@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon May 27 21:00:13 IST 2019
+#Mon Jun 24 13:26:47 IST 2019
 14.set=ASSET
 180.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\assets\\fonts\\roboto-medium.ttf
 118.set=ASSET
@@ -531,7 +531,7 @@ count=204
 84.base=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 63.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\assets\\i18n\\sl.json
 138.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\assets\\img\\speakers\\rabbit.jpg
-113.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\drawable-mdpi-v4\\ic_action_previous_item.png
+113.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\drawable-land-xxxhdpi-v4\\screen.png
 29.set=ASSET
 90.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\build\\vendor.js.map
 165.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\assets\\i18n\\zh-cmn-Hans.json
@@ -584,7 +584,7 @@ count=204
 60.base=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_
 139.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\build\\26.js.map
 176.set=ANDROID_RESOURCE
-114.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\drawable-land-xxxhdpi-v4\\screen.png
+114.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\debug\\resources-debug.ap_\\res\\drawable-mdpi-v4\\ic_action_previous_item.png
 39.set=ASSET
 91.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\build\\5.js.map
 166.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\assets\\fonts\\ionicons.scss

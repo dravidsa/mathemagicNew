@@ -133,7 +133,7 @@ var GetOrdersProvider = /** @class */ (function () {
             headers.append('Content-Type', 'application/json');
             headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
             console.log("getting orders");
-            _this.api.get("http://ipm-mathemagic.com/api/ipm_my_orders/?userid=" + userid)
+            _this.api.get("http://ipm-mathemagic.com/newlearning/api/ipm_my_orders/?userid=" + userid)
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 _this.orders = data;
@@ -211,11 +211,11 @@ var map = {
 		20
 	],
 	"../pages/search/search.module": [
-		352,
+		351,
 		19
 	],
 	"../pages/settings/settings.module": [
-		351,
+		352,
 		18
 	],
 	"../pages/show-courses/show-courses.module": [
@@ -255,19 +255,19 @@ var map = {
 		10
 	],
 	"../pages/tab-tests/tab-tests.module": [
-		363,
+		362,
 		9
 	],
 	"../pages/tabs/tabs.module": [
-		362,
+		363,
 		8
 	],
 	"../pages/test-results/test-results.module": [
-		365,
+		364,
 		7
 	],
 	"../pages/test-summary/test-summary.module": [
-		364,
+		365,
 		6
 	],
 	"../pages/tests-list/tests-list.module": [
@@ -652,8 +652,9 @@ var GetBase64ImageService = /** @class */ (function () {
             // At this point make a request to your backend to make a real check!
             //console.log(  "getting courses for user" + username ); 
             var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Headers */]();
-            // headers.append("Accept", 'application/json');
-            headers.append('Content-Type', 'application/json');
+            headers.append("Access-Control-Allow-Origin", "'*'");
+            headers.append("Accept", 'application/json');
+            // headers.append('Content-Type',  'application/json' );
             //headers.append('Response-Type', 'Blob') ; 
             headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
             /*
@@ -665,7 +666,7 @@ var GetBase64ImageService = /** @class */ (function () {
             var params = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpParams */]();
             //params.append ( 'responseType ' , 'blob' ) ; 
             var requestOptions = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* RequestOptions */]({ headers: headers });
-            _this.api.get("http://ipm-mathemagic.com/api/getBase64Image/?img_url=" + img_url, null, { responseType: 'text' })
+            _this.api.get("http://ipm-mathemagic.com/newlearning/api/getBase64Image1/?img_url=" + img_url, null, { responseType: 'text' })
                 .subscribe(function (data) {
                 //console.log(JSON.stringify(data));  
                 _this.base64Image = data;
@@ -1032,7 +1033,7 @@ var SaveOrderService = /** @class */ (function () {
             headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT');
             var requestOptions = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* RequestOptions */]({ headers: headers });
             var access;
-            _this.api.post("http://ipm-mathemagic.com/api/ipm_save_order/", orderData, requestOptions)
+            _this.api.post("http://ipm-mathemagic.com/newlearning/api/ipm_save_order/", orderData, requestOptions)
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 //console.log( "name " + data.username + "Mesg"  + data.Msg) ; 
@@ -1109,7 +1110,7 @@ var GetBillingService = /** @class */ (function () {
              */
             // console.log(  "in serivce : getting address for user " + userName ); 
             // const requestOptions = new RequestOptions({ headers: headers} )
-            _this.api.get("http://ipm-mathemagic.com/api/getBilling/?username=" + userName)
+            _this.api.get("http://ipm-mathemagic.com/newlearning/api/getBilling/?username=" + userName)
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 _this.billingData = data;
@@ -1346,8 +1347,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/school-list/school-list.module#SchoolListPageModule', name: 'SchoolListPage', segment: 'school-list', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-courses/show-courses.module#ShowCoursesPageModule', name: 'ShowCoursesPage', segment: 'show-courses', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-messages/show-messages.module#ShowMessagesPageModule', name: 'ShowMessagesPage', segment: 'show-messages', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-products/show-products.module#ShowProductsPageModule', name: 'ShowProductsPage', segment: 'show-products', priority: 'low', defaultHistory: [] },
@@ -1357,10 +1358,10 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/tab-home/tab-home.module#TabsHomePageModule', name: 'TabsHomePage', segment: 'tab-home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-products/tab-products.module#TabProductsPageModule', name: 'TabProductsPage', segment: 'tab-products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-services/tab-services.module#TabServicesPageModule', name: 'TabServicesPage', segment: 'tab-services', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-tests/tab-tests.module#TabTestsPageModule', name: 'TabTestsPage', segment: 'tab-tests', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/test-summary/test-summary.module#TestSummaryPageModule', name: 'TestSummaryPage', segment: 'test-summary', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/test-results/test-results.module#TestResultsPageModule', name: 'TestResultsPage', segment: 'test-results', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/test-summary/test-summary.module#TestSummaryPageModule', name: 'TestSummaryPage', segment: 'test-summary', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/view-orders/view-orders.module#ViewOrdersPageModule', name: 'ViewOrdersPage', segment: 'view-orders', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },

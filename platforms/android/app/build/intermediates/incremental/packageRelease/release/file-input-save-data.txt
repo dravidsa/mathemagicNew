@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon May 27 20:46:06 IST 2019
+#Mon Jun 24 17:56:32 IST 2019
 14.set=ASSET
 180.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\cordova.js
 118.set=ASSET
@@ -7,7 +7,7 @@
 2.set=ASSET
 164.set=ANDROID_RESOURCE
 26.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\assets\\i18n\\zh-cmn-Hans.json
-78.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\AndroidManifest.xml
+78.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\res\\drawable-hdpi-v4\\ic_action_next_item.png
 21.set=ASSET
 53.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\assets\\img\\appicon.png
 107.base=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release
@@ -270,7 +270,7 @@
 64.set=ASSET
 185.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\build\\main.css.map
 6.set=ASSET
-160.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\res\\mipmap-xhdpi-v4\\icon.png
+160.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\res\\drawable-land-xhdpi-v4\\screen.png
 168.set=ASSET
 25.set=ASSET
 129.set=ANDROID_RESOURCE
@@ -318,7 +318,7 @@
 107.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\assets\\img\\ica-slidebox-img-3.png
 28.set=ASSET
 80.base=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release
-159.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\res\\drawable-land-xhdpi-v4\\screen.png
+159.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\res\\mipmap-xhdpi-v4\\icon.png
 134.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\build\\0.js.map
 74.set=ASSET
 186.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\res\\drawable-mdpi-v4\\ic_action_next_item.png
@@ -565,7 +565,7 @@ count=204
 50.set=ASSET
 25.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\assets\\fonts\\roboto-light.ttf
 154.set=ASSET
-77.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\res\\drawable-hdpi-v4\\ic_action_next_item.png
+77.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\res\\release\\resources-release.ap_\\AndroidManifest.xml
 11.set=ASSET
 52.file=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release\\www\\assets\\i18n\\da.json
 106.base=C\:\\sandeep\\apps\\mathemagicNew\\platforms\\android\\app\\build\\intermediates\\assets\\release

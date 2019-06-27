@@ -26,6 +26,8 @@ loading : Loading ;
 downloadStatus : any ; 
 mode : any ;
 user : any ; 
+testsValidTill : any ; 
+
 
 
 
@@ -33,6 +35,7 @@ user : any ;
    // console.log( "showing tests for courseid  " + navParams.get('courseid'));
    this.user = localStorage.getItem("loggedUser") ; 
    this.getBase64Image =getImage ; 
+   this.testsValidTill = localStorage.getItem("testsValidTill") ; 
 
    var calledFrom = navParams.get("calledFrom") ; 
    if ( calledFrom == 'services' ) {
@@ -113,7 +116,7 @@ user : any ;
       };
       xhr.open('GET', url);
       xhr.responseType = 'blob';
-      xhr.setRequestHeader("Access-Control-Allow-Origin","*") ; 
+     // xhr.setRequestHeader("Access-Control-Allow-Origin","'http://localhost:8100'") ; 
       xhr.send();
     }
 
@@ -162,7 +165,9 @@ user : any ;
       //alert("starting the donwload ...please wait  ") ; 
     
 
-      this.transformQuestion(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading);
+      
+      this.transformQuestion(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading , "jpg");
+      this.transformQuestion(this.questions , this.getBase64Image , testid , this.navCtrl , this.loading , "gif");
       //alert(" Test download Complete ") ; 
     
       
@@ -170,7 +175,7 @@ user : any ;
 
   }
 
-  public  async   transformQuestion(questions , getImage : GetBase64ImageService , testid , nav , loading  ) { 
+  public  async   transformQuestion(questions , getImage : GetBase64ImageService , testid , nav , loading  , fileType  ) { 
 
     let ImageMap : Map< string , string> = new Map<string, string>  () ; 
     let imageURLArr = [] ; 
@@ -182,20 +187,29 @@ user : any ;
     var gifoffset = 0 ; 
     var base64data  ; 
 
+
     for ( var i = 0 ; i < questions.length ; i++ ) { 
-      var text = questions[i].text  ; 
+      var text = questions[i].text.replace(/\"\" width=\"75%...*class=\"img-responsive\"/g , "")  ; 
       // console.log( " looking in " + text ) ; 
        //if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
-        if  ( text.match(/<img src=...*?.gif[ ]*...*/g))  { 
-      
+        //if  ( text.match(/<img src=...*?.gif[ ]*...*/g))  { 
+
+          let myReg = new RegExp("<img src=...*."+ fileType,"g" ) ; 
+          console.log( "looking for Regex " + myReg ) ; 
+          //if  ( text.match(/<img src=...*.jpg/g))  { 
+          if  ( text.match(myReg) )   { 
+        console.log( "got match for" + fileType ) ; 
      //   console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
-        var matches =  text.match(/<img src=...*?.gif[ ]*...*/g).toString().split(',') ;
-        //console.log( "matches are " + matches.length + matches[0]  ) ; 
+        //var matches =  text.match(/<img src=...*?.gif[ ]*...*/g).toString().split(',') ;
+        //var matches =  text.match(/<img src=...*.jpg/g).toString().split(',') ;
+        var matches =  text.match(myReg).toString().split(',') ;
+        
+        console.log( "matches are " + matches.length +">"+  matches[0] +"<"   ) ; 
         strMatch = matches[0] ; 
-        gifoffset = strMatch.indexOf( ".gif") ; 
+        gifoffset = strMatch.indexOf( "."+fileType) ; 
         //imgURL  = strMatch.substring(9,gifoffset + 4 ).replace("http:/", "https:/");
         imgURL  = strMatch.substring(9,gifoffset + 4 );
-        console.log( "Image is " + imgURL) ;  
+        console.log( "Image is-" + imgURL +"-" ) ;  
         console.log ( "waiting " ) ; 
         base64data  = await this.getData(imgURL) ; 
         text= text.replace (matches[0], base64data);
@@ -206,18 +220,18 @@ user : any ;
             }
             else { //console.log( "no image in questions no "+ i ) ; 
            }
-  
       
-
        text = questions[i].ans1.replace('\'','')  ; 
-
-        if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
+       if  ( text.match(myReg))  { 
+        //if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
         
          // console.log( " find match in q ans1 "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
-          var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
+          //var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
+          var matches =  text.match(myReg).toString().split(',') ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
-          gifoffset = strMatch.indexOf( ".gif") ; 
+          //gifoffset = strMatch.indexOf( ".gif") ; 
+          gifoffset = strMatch.indexOf( "."+fileType) ; 
           //imgURL  = strMatch.substring(9,gifoffset + 4 ).replace("http:/", "https:/");;
          //
          imgURL  = strMatch.substring(9,gifoffset + 4 );;
@@ -228,23 +242,23 @@ user : any ;
           //console.log( " replaced img with " + text ) ; 
           //return text;
           questions[i].ans1 = text ; 
-  
-              }
+                }
               else { //console.log( "no image in questions no  for ans1 "+ i ) ;
-               ;  }
-    
+               }
         
-
 
          text = questions[i].ans2.replace('\'','')  ;   ; 
         //if  ( text.match(/<img src=...*?.gif[ ]*\/>/g))  { 
-        if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
+        if  ( text.match(myReg) ) { 
+          //if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
         
          // console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
-          var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
+          //var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
+          var matches =  text.match(myReg).toString().split(',') ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
-          gifoffset = strMatch.indexOf( ".gif") ; 
+          //gifoffset = strMatch.indexOf( ".gif") ; 
+          gifoffset = strMatch.indexOf( "."+fileType) ; 
           imgURL  = strMatch.substring(9,gifoffset + 4 );;
          // console.log( "Image is " + imgURL) ;  
           //console.log ( "waiting " ) ; 
@@ -257,18 +271,19 @@ user : any ;
               }
               else { //console.log( "no image in questions no  for ans2 "+ i ) ;
                ;  }
-    
-        
-
+          
          text = questions[i].ans3.replace('\'','')  ;   ; 
 
-        if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
+        //if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
+          if  ( text.match(myReg))  { 
         
          // console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
-          var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
+          //var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
+          var matches =  text.match(myReg).toString().split(',') ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
-          gifoffset = strMatch.indexOf( ".gif") ; 
+          //gifoffset = strMatch.indexOf( ".gif") ; 
+          gifoffset = strMatch.indexOf( "."+fileType) ;
           imgURL  = strMatch.substring(9,gifoffset + 4 ) ;;
          // console.log( "Image is " + imgURL) ;  
          // console.log ( "waiting " ) ; 
@@ -284,13 +299,16 @@ user : any ;
     
        text = questions[i].ans4.replace('\'','')  ;   ; 
 
-        if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
+        //if  ( text.match(/<img src=...*?.gif[ ]*...*\/>/g))  { 
+          if  ( text.match(myReg))  { 
         
           //console.log( " find match in q "  + i+ text.match(/<img src=...*?.gif[ ]*/g) + "XXX"  ) ; 
-          var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
+          //var matches =  text.match(/<img src=...*?.gif[ ]*...*\/>/g).toString().split(',') ;
+          var matches =  text.match(myReg).toString().split(',') ;
           //console.log( "matches are " + matches.length + matches[0]  ) ; 
           strMatch = matches[0] ; 
-          gifoffset = strMatch.indexOf( ".gif") ; 
+          //gifoffset = strMatch.indexOf( ".gif") ; 
+          gifoffset = strMatch.indexOf( "."+fileType) ;
           imgURL  = strMatch.substring(9,gifoffset + 4 );;
          //console.log( "Image is " + imgURL) ;  
           //console.log ( "waiting " ) ; 

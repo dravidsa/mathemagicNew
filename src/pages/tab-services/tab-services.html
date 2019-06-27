@@ -45,14 +45,27 @@
         </ion-col>
                         
      <ion-col>
-      <p text-wrap>
+      <p text-wrap *ngIf="downloadedValid == true">
           You can see all the tests you have downloaded earlier.
       </p> 
       <BR/>               
       <p>
-          <button ion-button color="secondary" (click)="viewTests()" >Downloaded Tests</button>
-
+ 
+       
+          <button  *ngIf="downloadedValid == true "    ion-button color="secondary" (click)="viewTests()" >Downloaded Tests</button>
+          
         </p>  
+        <p text-wrap *ngIf="downloadedValid == false">
+            Your downloaded tests have expired . 
+        </p> 
+        <BR/>               
+        <p>
+  
+         
+            <button  *ngIf="downloadedValid == false" disabled   ion-button color="secondary" (click)="viewTests()" >Downloaded Tests</button>
+            
+          </p>  
+
 
       </ion-col>
     </ion-row>

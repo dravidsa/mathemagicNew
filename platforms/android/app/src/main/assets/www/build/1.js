@@ -255,8 +255,8 @@ var BuyProductPage = /** @class */ (function () {
         console.log('ionViewDidLoad BuyProductPage');
     };
     BuyProductPage.prototype.ionViewWillEnter = function () {
-        console.log('ionViewDidLoad BuyProductPage');
-        if ((this.productName != 'IPM Book Set') && (this.productName != 'Online Tests')) {
+        console.log('ionViewDidLoad BuyProductPage product is-' + this.productName + "-");
+        if ((this.productName != 'IPM Book Set') && (this.productName != 'Online Tests') && (this.productName != 'Mega Final Online Tests')) {
             if (this.refgetSchoolsService != undefined) {
                 this.schoolName = this.refgetSchoolsService.selectedSchoolName;
                 if (this.schoolName == undefined) {
@@ -317,6 +317,7 @@ var BuyProductPage = /** @class */ (function () {
                     _this.errorMessage = "Error in Saving Order Information ";
                     return;
                 }
+                console.log("showing EBS page ");
                 _this.showEBS();
                 _this.loading.dismissAll();
                 _this.navCtrl.setRoot('MenuPage');
@@ -389,7 +390,7 @@ var BuyProductPage = /** @class */ (function () {
         //orderData.amount=100; 
         //order_no = 123456 ; 
         var ref;
-        var URL = "http://ipm-mathemagic.com/new/payment.php?&order_no=" + this.orderNo;
+        var URL = "http://ipm-mathemagic.com/site/payment.php?&order_no=" + this.orderNo;
         //var URL = "http://ipm-mathemagic.com/new/payment.html?amount="+ this.totalCharges+"&order_no=" + this.orderNo + "&name="+this.billingName+"&address="+this.billingAddress+"&city=" +this.billingCity+"&postal_code="+this.billingPincode +"&email="+this.email +"&phone="+this.billingPhone ; 
         console.log("opening URL  " + URL);
         ref = window.open(URL, '_self ', "location=no");

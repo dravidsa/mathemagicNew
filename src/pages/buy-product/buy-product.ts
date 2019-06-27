@@ -322,7 +322,7 @@ this.showLoading() ;
                               this.errorMessage = "Error in Saving Order Information " ; 
                               return ; 
                             }
-                         
+                            console.log( "showing EBS page ")  ; 
                             this.showEBS() ; 
                             this.loading.dismissAll();
                             this.navCtrl.setRoot('MenuPage') ; 
@@ -407,7 +407,7 @@ secure_hash : sec_hash
 	//order_no = 123456 ; 
   var ref : any ; 
  
-  var URL = "http://ipm-mathemagic.com/new/payment.php?&order_no=" + this.orderNo  ; 
+  var URL = "http://ipm-mathemagic.com/site/payment.php?&order_no=" + this.orderNo  ; 
   //var URL = "http://ipm-mathemagic.com/new/payment.html?amount="+ this.totalCharges+"&order_no=" + this.orderNo + "&name="+this.billingName+"&address="+this.billingAddress+"&city=" +this.billingCity+"&postal_code="+this.billingPincode +"&email="+this.email +"&phone="+this.billingPhone ; 
 
   console.log( "opening URL  " + URL ) ; 

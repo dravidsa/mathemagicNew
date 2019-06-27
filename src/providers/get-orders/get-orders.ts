@@ -30,7 +30,7 @@ orders : any ;
 
 
     console.log(  "getting orders" ); 
- this.api.get("http://ipm-mathemagic.com/api/ipm_my_orders/?userid=" +userid )  
+ this.api.get("http://ipm-mathemagic.com/newlearning/api/ipm_my_orders/?userid=" +userid )  
 .subscribe(data => { 
   console.log(JSON.stringify(data));  
   this.orders = data ; 

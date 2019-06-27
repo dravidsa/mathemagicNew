@@ -25,7 +25,7 @@ export class SaveOrderService {
        
   const requestOptions = new RequestOptions({ headers: headers} )
   let access ; 
-  this.api.post("http://ipm-mathemagic.com/api/ipm_save_order/", orderData, requestOptions) 
+  this.api.post("http://ipm-mathemagic.com/newlearning/api/ipm_save_order/", orderData, requestOptions) 
     .subscribe(data => { 
       console.log(JSON.stringify(data));  
       
