@@ -18,6 +18,8 @@ export class GetSchoolsService {
 schools : any; 
 public selectedSchoolId : any; 
 public selectedSchoolName : any ; 
+public selectedSchoolState : any ; 
+
 
   constructor(public api: Api) {
     console.log('Hello GetSchoolsProvider Provider');
@@ -40,7 +42,7 @@ public selectedSchoolName : any ;
 //console.log(  "in serivce : getting schools" + schoolName ); 
 
 // const requestOptions = new RequestOptions({ headers: headers} )
-this.api.get("http://ipm-mathemagic.com/api/ipm_get_schools/?school_name=" + schoolName) 
+this.api.get("http://ipm-mathemagic.com/newlearning/api/ipm_get_schools/?school_name=" + schoolName) 
   .subscribe(data => { 
     console.log(JSON.stringify(data));  
     this.schools = data ; 

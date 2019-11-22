@@ -20,6 +20,7 @@ import { FilterPipe } from './../../pipes/filter/filter';
 export class SchoolListPage {
 schools : any; 
 schoolName : any; 
+schoolState : any; 
 refGetSchoolService : GetSchoolsService  ; 
 schoolMessage : any; 
 
@@ -42,10 +43,13 @@ this.refGetSchoolService = getSchoolsService ;
       });
 
   }
- public setSchool( id , schoolName ) { 
+ public setSchool( id , schoolName , schoolState  ) { 
  this.refGetSchoolService.selectedSchoolId = id ; 
  this.refGetSchoolService.selectedSchoolName = schoolName ; 
+ this.refGetSchoolService.selectedSchoolState = schoolState ; 
+
  console.log ( "setting selected schhool name to " + schoolName ); 
+  
  
  
 

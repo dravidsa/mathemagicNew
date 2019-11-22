@@ -195,19 +195,19 @@ var map = {
 		24
 	],
 	"../pages/menu/menu.module": [
-		347,
+		348,
 		23
 	],
 	"../pages/payment/payment.module": [
-		348,
+		347,
 		22
 	],
 	"../pages/register/register.module": [
-		349,
+		350,
 		21
 	],
 	"../pages/school-list/school-list.module": [
-		350,
+		349,
 		20
 	],
 	"../pages/search/search.module": [
@@ -231,11 +231,11 @@ var map = {
 		15
 	],
 	"../pages/show-quiz/show-quiz.module": [
-		356,
+		357,
 		14
 	],
 	"../pages/show-tests/show-tests.module": [
-		357,
+		356,
 		13
 	],
 	"../pages/signup/signup.module": [
@@ -583,7 +583,7 @@ var GetSchoolsService = /** @class */ (function () {
              */
             //console.log(  "in serivce : getting schools" + schoolName ); 
             // const requestOptions = new RequestOptions({ headers: headers} )
-            _this.api.get("http://ipm-mathemagic.com/api/ipm_get_schools/?school_name=" + schoolName)
+            _this.api.get("http://ipm-mathemagic.com/newlearning/api/ipm_get_schools/?school_name=" + schoolName)
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 _this.schools = data;
@@ -1300,6 +1300,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+//import { IonicImageLoader } from 'ionic-image-loader';
 //import {  RouterModule,  Routes} from '@angular/router'
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -1343,17 +1344,17 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/school-list/school-list.module#SchoolListPageModule', name: 'SchoolListPage', segment: 'school-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-courses/show-courses.module#ShowCoursesPageModule', name: 'ShowCoursesPage', segment: 'show-courses', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-messages/show-messages.module#ShowMessagesPageModule', name: 'ShowMessagesPage', segment: 'show-messages', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-products/show-products.module#ShowProductsPageModule', name: 'ShowProductsPage', segment: 'show-products', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/show-quiz/show-quiz.module#ShowQuizPageModule', name: 'ShowQuizPage', segment: 'show-quiz', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-tests/show-tests.module#ShowTestsPageModule', name: 'ShowTestsPage', segment: 'show-tests', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/show-quiz/show-quiz.module#ShowQuizPageModule', name: 'ShowQuizPage', segment: 'show-quiz', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-home/tab-home.module#TabsHomePageModule', name: 'TabsHomePage', segment: 'tab-home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-products/tab-products.module#TabProductsPageModule', name: 'TabProductsPage', segment: 'tab-products', priority: 'low', defaultHistory: [] },

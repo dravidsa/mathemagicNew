@@ -34,6 +34,8 @@ export class BuyProductPage {
   public schoolName =""; 
   public schoolCode = 0 ; 
   refgetSchoolsService : GetSchoolsService ; 
+  public schoolState : any ; 
+
 
   studentName ="" ; 
   standard = ""; 
@@ -168,6 +170,7 @@ export class BuyProductPage {
     this.productId =  navParams.get("productId");
     this.productName =  navParams.get("productName");
     this.productPrice =  navParams.get("productPrice");
+    this.schoolName =""; 
     this.totalCharges = this.productPrice  ; 
     this.img_src = navParams.get("img_src") ; 
     this.user = localStorage.getItem("loggedUser") ; console.log ( "got user as " + this.user);
@@ -234,11 +237,14 @@ export class BuyProductPage {
     
     }); 
     */
+   if ( this.schoolName == undefined )  { console.log( "school name is not given "); this.schoolName = "" } ; 
+
    this.navCtrl.push('SchoolListPage', { schoolName : this.schoolName} );
 
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BuyProductPage'); 
+    console.log('loading the paga again '); 
+    //this.schoolName = "";  
 
   }
   ionViewWillEnter( ) {
@@ -247,6 +253,15 @@ export class BuyProductPage {
     if ( (this.productName != 'IPM Book Set') &&   ( this.productName != 'Online Tests') &&   ( this.productName != 'Mega Final Online Tests')   ) { 
     if ( this.refgetSchoolsService != undefined ) {
     this.schoolName  = this.refgetSchoolsService.selectedSchoolName ;
+    this.schoolState = this.refgetSchoolsService.selectedSchoolState ;
+
+    if ( this.schoolState != 'Maharashtra') 
+     { 
+
+      this.outOfMHCharges = 200 ; 
+      this.totalCharges = Number.parseInt(this.productPrice) + this.shippingCharges  + this.outOfMHCharges  ; 
+      console.log( "this will be 200 extra") ; 
+     }
     if ( this.schoolName == undefined ) { 
 
       this.errorMessage = "Did not  find your school Name , cant continue " ; 
@@ -261,6 +276,7 @@ export class BuyProductPage {
     console.log ( "lets see  if we enter this  "+ this.schoolName + "code is " + this.schoolCode) ; 
     
     } 
+    else { this.schoolName = "";  console.log( "entering view again ") ;  } 
     //console.log ( "coming for the 1st time ");
   } 
   else { console.log( "no need of  school name ") ; }
@@ -288,7 +304,7 @@ export class BuyProductPage {
     }
 
 
-      if ( ( this.productName == 'Supreme') || ( this.productName == 'IPM 2019 Exam Enrollment') || ( this.productName == 'E-Learning'))
+      if ( ( this.productName == 'Supreme') || ( this.productName == 'IPM Exam Enrollment') || ( this.productName == 'E-Learning'))
       { 
           if (( this.studentName =='' ) || ( this.standard == '' ) || ( this.schoolName =='')) { 
            
@@ -303,6 +319,12 @@ export class BuyProductPage {
 
         }
        
+  }
+
+  if ( this.schoolState != 'Maharashtra')  {
+      this.outOfMHCharges = 200 ; 
+      this.totalCharges = Number.parseInt(this.productPrice) + this.shippingCharges  + this.outOfMHCharges  ;
+
   }
 }
 
@@ -499,7 +521,10 @@ secure_hash : sec_hash
 
 ngOnInit() { 
 
-  
+  this.schoolName = ""; 
+
 
 }
+
+
 }

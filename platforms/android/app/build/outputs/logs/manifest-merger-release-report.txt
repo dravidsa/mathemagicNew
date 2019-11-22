@@ -1,13 +1,13 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-15:12
-INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-15:12
-INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-15:12
-INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-15:12
+ADDED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-16:12
 MERGED from [:CordovaLib] C:\sandeep\apps\mathemagicNew\platforms\android\CordovaLib\build\intermediates\manifests\full\release\AndroidManifest.xml:20:1-27:12
-INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-15:12
-INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-15:12
-INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-15:12
+INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-16:12
+INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:1-16:12
 	package
 		ADDED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:2:102-144
 		INJECTED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml
@@ -90,3 +90,7 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:14:5-79
 	android:name
 		ADDED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:14:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:15:5-81
+	android:name
+		ADDED from C:\sandeep\apps\mathemagicNew\platforms\android\app\src\main\AndroidManifest.xml:15:22-78

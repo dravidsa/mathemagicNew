@@ -4872,6 +4872,10 @@ textarea::-webkit-input-placeholder {
   padding-left: 2px;
 }
 
+textarea::-moz-placeholder {
+  padding-left: 2px;
+}
+
 textarea::-ms-input-placeholder {
   padding-left: 2px;
 }
@@ -25972,7 +25976,7 @@ page-tab-home .home-content ion-row {
 page-tab-home .home-content ion-item {
   border-radius: 30px !important;
   padding-left: 30px !important;
-  font-size: 0.9em;
+  font-size: 1.2em;
   margin-bottom: 10px;
   border: 1px solid #ffffff;
   border-bottom: 0px !important;

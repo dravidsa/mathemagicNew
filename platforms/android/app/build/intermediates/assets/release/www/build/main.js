@@ -191,11 +191,11 @@ var map = {
 		25
 	],
 	"../pages/login/login.module": [
-		346,
+		347,
 		24
 	],
 	"../pages/menu/menu.module": [
-		347,
+		346,
 		23
 	],
 	"../pages/payment/payment.module": [
@@ -219,11 +219,11 @@ var map = {
 		18
 	],
 	"../pages/show-courses/show-courses.module": [
-		353,
+		354,
 		17
 	],
 	"../pages/show-messages/show-messages.module": [
-		354,
+		353,
 		16
 	],
 	"../pages/show-products/show-products.module": [
@@ -583,7 +583,7 @@ var GetSchoolsService = /** @class */ (function () {
              */
             //console.log(  "in serivce : getting schools" + schoolName ); 
             // const requestOptions = new RequestOptions({ headers: headers} )
-            _this.api.get("http://ipm-mathemagic.com/api/ipm_get_schools/?school_name=" + schoolName)
+            _this.api.get("http://ipm-mathemagic.com/newlearning/api/ipm_get_schools/?school_name=" + schoolName)
                 .subscribe(function (data) {
                 console.log(JSON.stringify(data));
                 _this.schools = data;
@@ -598,9 +598,10 @@ var GetSchoolsService = /** @class */ (function () {
     };
     GetSchoolsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__api_api__["a" /* Api */]) === "function" && _a || Object])
     ], GetSchoolsService);
     return GetSchoolsService;
+    var _a;
 }());
 
 //# sourceMappingURL=get-schools.js.map
@@ -1300,6 +1301,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+//import { IonicImageLoader } from 'ionic-image-loader';
 //import {  RouterModule,  Routes} from '@angular/router'
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -1342,15 +1344,15 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/school-list/school-list.module#SchoolListPageModule', name: 'SchoolListPage', segment: 'school-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/show-courses/show-courses.module#ShowCoursesPageModule', name: 'ShowCoursesPage', segment: 'show-courses', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-messages/show-messages.module#ShowMessagesPageModule', name: 'ShowMessagesPage', segment: 'show-messages', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/show-courses/show-courses.module#ShowCoursesPageModule', name: 'ShowCoursesPage', segment: 'show-courses', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-products/show-products.module#ShowProductsPageModule', name: 'ShowProductsPage', segment: 'show-products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-quiz/show-quiz.module#ShowQuizPageModule', name: 'ShowQuizPage', segment: 'show-quiz', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-tests/show-tests.module#ShowTestsPageModule', name: 'ShowTestsPage', segment: 'show-tests', priority: 'low', defaultHistory: [] },

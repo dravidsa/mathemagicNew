@@ -2,6 +2,7 @@ import { SanitizeHtmlPipe } from './../../components/sanitizehtml-pipe/sanitizeh
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ShowQuizPage } from './show-quiz';
+//import { IonicImageLoader } from 'ionic-image-loader';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { ShowQuizPage } from './show-quiz';
   ],
   imports: [
     IonicPageModule.forChild(ShowQuizPage),
+   
   ],
 })
 export class ShowQuizPageModule {}

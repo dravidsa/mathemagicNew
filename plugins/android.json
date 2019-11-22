@@ -31,6 +31,9 @@
     },
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "io.ionic.mathemagic"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.ionicframework.mathemagicnew"
     }
   },
   "dependent_plugins": {}

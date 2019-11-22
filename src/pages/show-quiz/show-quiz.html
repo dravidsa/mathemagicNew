@@ -29,8 +29,8 @@
         <p align="center" ><B><U> {{testName}}</U> </B> </p>  
 
     <ion-list *ngIf="questions">
-       
-           
+   
+     
          <B>Question No : {{ questions[currentQuestionNo].question_no}}</B>   <div *ngIf="questions[currentQuestionNo].userSelection!=questions[currentQuestionNo].correct && caller =='results'" ion-text color="danger"  > <ion-icon name="close"></ion-icon></div>  <div *ngIf="questions[currentQuestionNo].userSelection==questions[currentQuestionNo].correct && caller =='results' " ion-text color="secondary" ><ion-icon name="checkbox-outline"></ion-icon></div>
           <BR/> 
 

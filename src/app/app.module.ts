@@ -30,6 +30,7 @@ import { InAppBrowser } from '../../node_modules/@ionic-native/in-app-browser';
 import { Network } from '@ionic-native/network';
 import { GetOrdersProvider } from '../providers/get-orders/get-orders';
 import { FilterPipe } from './../pipes/filter/filter';
+//import { IonicImageLoader } from 'ionic-image-loader';
 
 //import {  RouterModule,  Routes} from '@angular/router'
 

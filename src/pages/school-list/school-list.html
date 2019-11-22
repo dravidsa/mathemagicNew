@@ -25,7 +25,7 @@
 
 
     <div *ngIf="schools"> 
-        <button ion-item *ngFor="let school of schools " (click)="setSchool(school.school_code,school.school_name)" >
+        <button ion-item *ngFor="let school of schools " (click)="setSchool(school.school_code,school.school_name, school.school_state )" >
 
             <ion-card>
                 
@@ -39,7 +39,7 @@
                     {{school.school_address}}   
                   </p>
                   <p>
-                      {{school.school_city}} 
+                      {{school.school_city}} , {{school.school_state}}
                     </p>
 
                 </ion-card-content>
