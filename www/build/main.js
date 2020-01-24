@@ -207,23 +207,23 @@ var map = {
 		21
 	],
 	"../pages/school-list/school-list.module": [
-		351,
+		350,
 		20
 	],
 	"../pages/search/search.module": [
-		350,
+		351,
 		19
 	],
 	"../pages/settings/settings.module": [
-		352,
+		354,
 		18
 	],
 	"../pages/show-courses/show-courses.module": [
-		353,
+		352,
 		17
 	],
 	"../pages/show-messages/show-messages.module": [
-		354,
+		353,
 		16
 	],
 	"../pages/show-products/show-products.module": [
@@ -255,11 +255,11 @@ var map = {
 		10
 	],
 	"../pages/tab-tests/tab-tests.module": [
-		363,
+		362,
 		9
 	],
 	"../pages/tabs/tabs.module": [
-		362,
+		363,
 		8
 	],
 	"../pages/test-results/test-results.module": [
@@ -1347,11 +1347,11 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/school-list/school-list.module#SchoolListPageModule', name: 'SchoolListPage', segment: 'school-list', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-courses/show-courses.module#ShowCoursesPageModule', name: 'ShowCoursesPage', segment: 'show-courses', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-messages/show-messages.module#ShowMessagesPageModule', name: 'ShowMessagesPage', segment: 'show-messages', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-products/show-products.module#ShowProductsPageModule', name: 'ShowProductsPage', segment: 'show-products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-tests/show-tests.module#ShowTestsPageModule', name: 'ShowTestsPage', segment: 'show-tests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-quiz/show-quiz.module#ShowQuizPageModule', name: 'ShowQuizPage', segment: 'show-quiz', priority: 'low', defaultHistory: [] },
@@ -1359,8 +1359,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/tab-home/tab-home.module#TabsHomePageModule', name: 'TabsHomePage', segment: 'tab-home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-products/tab-products.module#TabProductsPageModule', name: 'TabProductsPage', segment: 'tab-products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-services/tab-services.module#TabServicesPageModule', name: 'TabServicesPage', segment: 'tab-services', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tab-tests/tab-tests.module#TabTestsPageModule', name: 'TabTestsPage', segment: 'tab-tests', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/test-results/test-results.module#TestResultsPageModule', name: 'TestResultsPage', segment: 'test-results', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/test-summary/test-summary.module#TestSummaryPageModule', name: 'TestSummaryPage', segment: 'test-summary', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
